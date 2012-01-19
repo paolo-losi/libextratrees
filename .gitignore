@@ -1,0 +1,7 @@
+.deps
+*.swp
+.hg
+.hgignore
+*.o
+*.a
+*.pyc

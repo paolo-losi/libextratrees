@@ -1,0 +1,5 @@
+documentare licenza e url: https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home
+double o float
+ottimizzazione:
+    1. mantenere vettore di min_max
+    2. passare da ricorsione a stack esplicito per split_problem
