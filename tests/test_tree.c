@@ -9,7 +9,7 @@ void test_leaf() {
     double vectors[] = { 1., 3.,
                          2., 4.,
                          1., 6.};
-    double labels[] = { 2., 3., 4. };
+    double labels[]  = { 2., 3., 4. };
 
     init_problem(&prob, vectors, labels);
     rt_print_problem(&prob);
