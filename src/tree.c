@@ -85,6 +85,8 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     uint32_t best_feature_idx;
     rt_problem *prob = tb->prob;
 
+    log_debug(">>> split_problem. n samples: %zu", kv_size(*sample_idxs));
+
     // TODO is that really necessary to calculate labels upfront?
 
     // initialize labels vector
@@ -115,6 +117,7 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
 
     // if labels are constant return leaf node
     if(labels_are_constant) {
+        log_debug("labels are constant. generating leaf node ...");
         node = (rt_base_node *) new_leaf_node(&labels);
         goto exit;
         

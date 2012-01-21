@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#define test_header() printf(">>> test: %s\n", __func__)
+#define test_header() fprintf(stderr, ">>> test: %s\n", __func__)
 
 #define init_problem(p, vectors, labels)                                       \
     do {                                                                       \

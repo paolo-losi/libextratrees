@@ -54,3 +54,6 @@ typedef struct tree_builder {
 typedef struct {
     double min, max;
 } min_max;
+
+
+extern rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs); 

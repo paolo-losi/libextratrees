@@ -8,7 +8,7 @@ void load_simple_file() {
     test_header();
     rt_problem *prob;
     prob = rt_load_libsvm_file("test1.libsvm");
-    rt_print_problem(prob);
+    rt_print_problem(stderr, prob);
 }
 
 void load_unexistent_file() {

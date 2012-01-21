@@ -1,3 +1,4 @@
+review api pubblica/headers etc.etc
 documentare licenza e url: https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home
 double o float
 ottimizzazione:

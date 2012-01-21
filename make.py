@@ -56,7 +56,7 @@ def compile_tests():
         cmd.extend(CCFLAGS.split(' '))
         cmd.extend(DEBUG_FLAGS.split(' '))
         cmd.extend(['-Isrc', cfile, 'build/debug/librandomtrees.a',
-                    '-o', strip_ext(cfile)])
+                    '-o', strip_ext(cfile), '-lm'])
         run(*cmd)
 
 
@@ -67,12 +67,14 @@ def make_library(mode='release'):
 
 
 def execute_tests():
+    print
+    print "Running unit test:"
     for tmatch in glob.glob('tests/test_*'):
         test = os.path.basename(tmatch)
         if strip_ext(test) != test:
             continue
-        print "=" * 30, test, "=" * 30
-        shell('cd', 'tests', '&&', './' + test, silent=False, shell=True)
+        shell('cd', 'tests', '&&', './runner.py', test, silent=False,
+                                                        shell=True)
 
 
 # --- utils ---

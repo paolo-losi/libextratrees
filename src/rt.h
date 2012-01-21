@@ -2,6 +2,7 @@
 # define RT_H
 
 # include <stdint.h>
+# include <stdio.h>
 # include "kvec.h"
 
 typedef kvec_t(double) double_vec;
@@ -16,6 +17,7 @@ typedef struct {
 
 
 rt_problem *rt_load_libsvm_file(char *fname);
-void rt_print_problem(rt_problem *prob);
+
+void rt_print_problem(FILE *f, rt_problem *prob);
 
 # endif 
