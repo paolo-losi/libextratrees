@@ -5,7 +5,7 @@
 
 #define test_header() fprintf(stderr, ">>> test: %s\n", __func__)
 
-#define init_problem(p, vectors, labels)                                       \
+#define problem_init(p, vectors, labels)                                       \
     do {                                                                       \
         (p)->vectors = vectors;                                                \
         (p)->labels = labels;                                                  \

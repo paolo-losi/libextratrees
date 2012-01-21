@@ -26,8 +26,9 @@ min_max get_feature_min_max(rt_problem *prob, int_vec *sample_idxs,
 
     min_max mm = {DBL_MAX, -DBL_MAX};
 
-    for (size_t s = 0; s < kv_size(*sample_idxs); s++) {
-        int val = PROB_GET(prob, s, fid);
+    for (size_t i = 0; i < kv_size(*sample_idxs); i++) {
+        int sample_idx = kv_A(*sample_idxs, i);
+        int val = PROB_GET(prob, sample_idx, fid);
         if (val > mm.max) mm.max = val;
         if (val < mm.min) mm.min = val;
     }
@@ -51,9 +52,10 @@ double regression_diversity(rt_problem *prob, int_vec *sample_idxs,
     double diversity = 0;
     size_t sample_size = kv_size(*sample_idxs);
 
-    for(size_t s = 0; s < sample_size; s++) {
-        double feat_val = PROB_GET(prob, s, feature_idx);
-        double label = prob->labels[s];
+    for(size_t i = 0; i < sample_size; i++) {
+        int sample_idx = kv_A(*sample_idxs, i);
+        double feat_val = PROB_GET(prob, sample_idx, feature_idx);
+        double label = prob->labels[sample_idx];
         if (feat_val <= threshold) {
             lowers_mean += label;
             lowers_count++;
@@ -62,12 +64,13 @@ double regression_diversity(rt_problem *prob, int_vec *sample_idxs,
             highers_count++;
         }
     }
-    lowers_mean /= lowers_count;
+    lowers_mean  /= lowers_count;
     highers_mean /= highers_count;
 
-    for(size_t s = 0; s < sample_size; s++) {
-        double feat_val = PROB_GET(prob, s, feature_idx);
-        double label = prob->labels[s];
+    for(size_t i = 0; i < sample_size; i++) {
+        int sample_idx = kv_A(*sample_idxs, i);
+        double feat_val = PROB_GET(prob, sample_idx, feature_idx);
+        double label = prob->labels[sample_idx];
         diversity += (feat_val <= threshold) ? pow(label - lowers_mean,  2) :
                                                pow(label - highers_mean, 2) ;
     }
@@ -85,7 +88,7 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     uint32_t best_feature_idx;
     rt_problem *prob = tb->prob;
 
-    log_debug(">>> split_problem. n samples: %zu", kv_size(*sample_idxs));
+    log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
 
     // TODO is that really necessary to calculate labels upfront?
 
@@ -99,7 +102,10 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
 
     // TODO this does not guarantee that leaf size is always >= min_split_size
     // check if min_split_size is reached
-    if(kv_size(*sample_idxs) < (size_t) tb->params.min_split_size) {
+    if(kv_size(*sample_idxs) <= (size_t) tb->params.min_split_size) {
+        log_debug("min size (%d) reached. current sample size: %zu", 
+                                                    tb->params.min_split_size,
+                                                    kv_size(*sample_idxs));
         node = (rt_base_node *) new_leaf_node(&labels);
         goto exit;
     }
@@ -129,15 +135,20 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
         uint32_t nb_features_to_test = tb->params.number_of_features_tested;
         int with_replacement = tb->params.select_features_with_replacement;
         
+        log_debug("number of features to test: %d", nb_features_to_test);
+
         // select best split
         do {
             min_max mm;
             uint32_t feature_idx;
             double threshold, diversity;
 
+            log_debug("--- new loop cycle ---");
+
             // select random feature
             if (with_replacement) {
                 feature_idx = random_int(&tb->rand_state, prob->n_features);
+                log_debug("selected feature WITH replacement");
             } else {
                 uint32_t deck_idx, end_idx, *deck;
 
@@ -147,25 +158,32 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
                 feature_idx = deck[deck_idx];
                 end_idx = prob->n_features - nb_features_tested - 1;
                 deck[deck_idx] = deck[end_idx];
-                deck[end_idx] = deck_idx;
+                deck[end_idx] = feature_idx;
                 nb_features_tested++;
+                log_debug("selected feature WITHOUT replacement: %d",
+                                                          nb_features_tested);
             }
+            log_debug("feature index: %d", feature_idx);
 
             // select random threshold in (min, max)
             mm = get_feature_min_max(prob, sample_idxs, feature_idx);
+            log_debug("values - min: %g max: %g", mm.min, mm.max);
             if (mm.min == mm.max) {
                 // FIXME are the following two lines correct?
                 // the alternative would be counting all non-constant features
                 // and selecting a percentage (e.g 50%, 200%) of non-constant
                 // features when params.select_features_with_replacement == 1.
                 if (with_replacement)
-                    nb_features_to_test--; 
+                    nb_features_to_test--;
+                log_debug("constant feature");
                 continue;
             } else split_found = 1;
             do {
                 double delta = mm.max - mm.min;
                 threshold = mm.min + random_double(&tb->rand_state) * delta;
             } while (threshold == mm.min);
+
+            log_debug("threshold: %g", threshold);
 
             // evaluate split diversity
             diversity = (tb->params.regression) ? 
@@ -174,13 +192,21 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
                 classification_diversity(prob, sample_idxs,
                                          feature_idx, threshold);
 
+            log_debug("%s diversity: %g", tb->params.regression?"regr":"class",
+                                          diversity);
+                                          
+                                                                
             if (diversity < best_diversity) {
+                log_debug("diversity is new best");
                 best_threshold = threshold;
+                best_diversity = diversity;
                 best_feature_idx = feature_idx;
             }
 
-            if (diversity == 0)
+            if (diversity == 0) {
+                log_debug("diversity == 0");
                 break;
+            }
 
             nb_features_to_test--;
 
@@ -190,6 +216,8 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     }
 
     if (split_found) {
+        log_debug("split found. feature_idx: %d, threshold: %g",                                                                best_feature_idx,
+                                                best_threshold);
         // let's build a split node ...
         rt_base_node *higher_node, *lower_node;
         rt_split_node *sn;
@@ -201,10 +229,13 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
             double val;
             uint32_t sample_idx = kv_A(*sample_idxs, i);
             val = PROB_GET(prob, sample_idx, best_feature_idx);
-            if (val <= best_threshold) 
+            if (val <= best_threshold) {
+                log_debug("sample_idx: %d, val: %g -> lower", sample_idx, val);
                 kv_push(int, lower_idxs, sample_idx);
-            else
+            } else {
+                log_debug("sample_idx: %d, val: %g -> higher", sample_idx, val);
                 kv_push(int, higher_idxs, sample_idx);
+            }
         }
 
         // recursively calculate sub nodes
@@ -230,5 +261,28 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     exit:
     kv_destroy(labels);
     return node;
+}
 
+
+int tree_builder_init(tree_builder *tb, rt_problem *prob) {
+    tb->prob = prob;
+    simplerandom_kiss2_seed(&tb->rand_state, 0, 0, 0, 0);
+
+    tb->features_deck = NULL;
+    tb->features_deck = malloc(sizeof(double) * prob->n_features);
+    check_mem(tb->features_deck);
+    for(uint32_t i = 0; i < prob->n_features; i++) {
+        tb->features_deck[i] = i;
+    }
+
+    // default parameters
+    EXTRA_TREE_DEFAULT_CLASS_PARAMS(*tb);
+    return 0;
+
+    exit:
+    return -1;
+}
+
+void tree_builder_destroy(tree_builder *tb) {
+    if (tb->features_deck) free(tb->features_deck);
 }

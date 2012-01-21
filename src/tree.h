@@ -49,6 +49,23 @@ typedef struct tree_builder {
 } tree_builder;
 
 
+# define EXTRA_TREE_DEFAULT_CLASS_PARAMS(tb) do {                              \
+    (tb).params.number_of_features_tested = ceil(sqrt((tb).prob->n_features)); \
+    (tb).params.number_of_trees           = 100;                               \
+    (tb).params.regression                = 0;                                 \
+    (tb).params.min_split_size            = 1;                                 \
+    (tb).params.select_features_with_replacement = 0;                          \
+    } while(0)
+
+# define EXTRA_TREE_DEFAULT_REGR_PARAMS(tb) do {                               \
+    (tb).params.number_of_features_tested = (tb).prob->n_features;             \
+    (tb).params.number_of_trees           = 100;                               \
+    (tb).params.regression                = 1;                                 \
+    (tb).params.min_split_size            = 1;                                 \
+    (tb).params.select_features_with_replacement = 0;                          \
+    } while(0)
+
+
 // --- utils ---
 
 typedef struct {
@@ -56,4 +73,6 @@ typedef struct {
 } min_max;
 
 
-extern rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs); 
+rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs);
+int tree_builder_init(tree_builder *tb, rt_problem *prob);
+void tree_builder_destroy(tree_builder *tb);
