@@ -10,6 +10,7 @@ void test_leaf() {
     rt_problem prob;
     tree_builder tb;
     int_vec samples_idx;
+    rt_base_node *node;
 
     double vectors[] = { 1., 3., 2.,
                          4., 1., 6.,
@@ -30,10 +31,12 @@ void test_leaf() {
         kv_push(int, samples_idx, i);
     }
 
-    split_problem(&tb, &samples_idx);
+    node = split_problem(&tb, &samples_idx);
 
     exit:
+    kv_destroy(samples_idx);
     tree_builder_destroy(&tb);
+    if (node) tree_destroy(node);
 }
 
 
@@ -43,6 +46,7 @@ void test_split() {
     rt_problem prob;
     tree_builder tb;
     int_vec samples_idx;
+    rt_base_node *node;
 
     double vectors[] = { 1., 3., 2., 3.,
                          4., 1., 6., 2.,
@@ -64,10 +68,12 @@ void test_split() {
         kv_push(int, samples_idx, i);
     }
 
-    split_problem(&tb, &samples_idx);
+    node = split_problem(&tb, &samples_idx);
 
     exit:
+    kv_destroy(samples_idx);
     tree_builder_destroy(&tb);
+    if (node) tree_destroy(node);
 }
 
 

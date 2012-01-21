@@ -264,6 +264,32 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
 }
 
 
+//TODO remove recursion
+void tree_destroy(rt_base_node *node) {
+    rt_split_node *sn = NULL;
+    rt_leaf_node  *ln = NULL;
+
+    switch (node->type) {
+        case LEAF_NODE:
+            ln = (rt_leaf_node *) node;
+            kv_destroy(ln->labels);
+            free(node);
+            break;
+        case SPLIT_NODE:
+            sn = (rt_split_node *) node;
+            tree_destroy((rt_base_node *) sn->higher_node);
+            tree_destroy((rt_base_node *) sn->lower_node);
+            free(node);
+            break;
+        default:
+            sentinel("unexpected split node type")
+    }
+
+    exit:
+    return;
+}
+
+
 int tree_builder_init(tree_builder *tb, rt_problem *prob) {
     tb->prob = prob;
     simplerandom_kiss2_seed(&tb->rand_state, 0, 0, 0, 0);

@@ -76,6 +76,7 @@ void parse_libsvm_file(parse_state *ps, FILE *f, int bufsize) {
             *bp++ = c;
         }
     }
+    free(buffer);
     return;
 
     exit:
