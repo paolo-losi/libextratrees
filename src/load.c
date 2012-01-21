@@ -129,7 +129,7 @@ void size_parser_destroy(size_parser *sp) {
 typedef struct load_parser {
     parse_state ops;
     int error_flag;
-    double *vectors;
+    float *vectors;
     double *labels;
     int sample_idx;
     int n_samples;
@@ -153,7 +153,7 @@ void load_parser_on_new_feature(parse_state *ps, int fid, double val) {
 }
 
 int load_parser_init(load_parser *lp, int n_features, int n_samples) {
-    double *vectors;
+    float *vectors;
     double *labels;
 
     lp->ops.on_error = load_parser_on_error;
@@ -164,7 +164,7 @@ int load_parser_init(load_parser *lp, int n_features, int n_samples) {
     lp->n_samples = n_samples;
     lp->n_features = n_features;
     
-    vectors = calloc(n_samples * n_features, sizeof(double));
+    vectors = calloc(n_samples * n_features, sizeof(float));
     check_mem(vectors);
     labels = calloc(n_samples, sizeof(double));
     check_mem(labels);

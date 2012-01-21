@@ -12,12 +12,12 @@ void test_leaf() {
     int_vec samples_idx;
     rt_base_node *node;
 
-    double vectors[] = { 1., 3., 2.,
-                         4., 1., 6.,
-                         1., 1., 1.,
-                         4., 6., 5.,
-                         7., 8., 0. };
-    double labels[]  = { 2., 2., 2. };
+    float vectors[] = { 1., 3., 2.,
+                        4., 1., 6.,
+                        1., 1., 1.,
+                        4., 6., 5.,
+                        7., 8., 0. };
+    double labels[] = { 2., 2., 2. };
 
     problem_init(&prob, vectors, labels);
     check_mem(! tree_builder_init(&tb, &prob));
@@ -48,13 +48,13 @@ void test_split() {
     int_vec samples_idx;
     rt_base_node *node;
 
-    double vectors[] = { 1., 3., 2., 3.,
-                         4., 1., 6., 2.,
-                         1., 1., 1., 1.,
-                         4., 6., 5., 7.,
-                         8., 6., 3., 3.,
-                         2., 2., 2., 2. };
-    double labels[]  = { 2., 2., 1., 3. };
+    float vectors[] = { 1., 3., 2., 3.,
+                        4., 1., 6., 2.,
+                        1., 1., 1., 1.,
+                        4., 6., 5., 7.,
+                        8., 6., 3., 3.,
+                        2., 2., 2., 2. };
+    double labels[] = { 2., 2., 1., 3. };
 
     problem_init(&prob, vectors, labels);
     check_mem(! tree_builder_init(&tb, &prob));

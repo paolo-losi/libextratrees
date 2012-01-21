@@ -295,7 +295,7 @@ int tree_builder_init(tree_builder *tb, rt_problem *prob) {
     simplerandom_kiss2_seed(&tb->rand_state, 0, 0, 0, 0);
 
     tb->features_deck = NULL;
-    tb->features_deck = malloc(sizeof(double) * prob->n_features);
+    tb->features_deck = malloc(sizeof(uint32_t) * prob->n_features);
     check_mem(tb->features_deck);
     for(uint32_t i = 0; i < prob->n_features; i++) {
         tb->features_deck[i] = i;

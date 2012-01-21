@@ -9,7 +9,7 @@ typedef kvec_t(double) double_vec;
 typedef kvec_t(int) int_vec;
 
 typedef struct {
-    double *vectors;
+    float *vectors;
     double *labels;
     uint32_t n_features;
     uint32_t n_samples;
