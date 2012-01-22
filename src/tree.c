@@ -14,13 +14,18 @@
         do { body } while(0); }                                             
 
 
-rt_leaf_node *new_leaf_node(double_vec *labels) {
+rt_leaf_node *new_leaf_node(rt_problem *prob, int_vec *sample_idxs) {
     rt_leaf_node *ln = NULL;
     ln = malloc(sizeof(rt_leaf_node));
     check_mem(ln);
+
     ln->base.type = LEAF_NODE;
+
     kv_init(ln->labels);
-    kv_copy(double, ln->labels, *labels);
+    FOR_SAMPLE_IDX_IN(*sample_idxs, {
+        double label = prob->labels[sample_idx];
+        kv_push(double, ln->labels, label);
+    });
 
     exit:
     return ln;
@@ -98,7 +103,6 @@ double regression_diversity(rt_problem *prob, int_vec *sample_idxs) {
 
 rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
 
-    double_vec labels;
     int labels_are_constant = 1;
     rt_base_node *node;
     int split_found = 0;
@@ -111,50 +115,41 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     kv_init(lower_idxs);      kv_init(higher_idxs);
     kv_init(best_lower_idxs); kv_init(best_higher_idxs);
 
-    // TODO #typedef diversity_f
     diversity_function diversity_f = (tb->params.regression) ?
                                                 regression_diversity :
                                                 classification_diversity;
 
     log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
 
-    // TODO is that really necessary to calculate labels upfront?
-
-    // initialize labels vector
-    kv_init(labels);
-    kv_resize(double, labels, kv_size(*sample_idxs));
-    kv_size(labels) = kv_size(*sample_idxs);
-    for(size_t i=0; i < kv_size(*sample_idxs); i++) {
-        kv_A(labels, i) = prob->labels[kv_A(*sample_idxs, i)];
-    }
-
-    // TODO this does not guarantee that leaf size is always >= min_split_size
+    // NOTE this does not guarantee that leaf size is always >= min_split_size
     // check if min_split_size is reached
     if(kv_size(*sample_idxs) <= (size_t) tb->params.min_split_size) {
         log_debug("min size (%d) reached. current sample size: %zu", 
                                                     tb->params.min_split_size,
                                                     kv_size(*sample_idxs));
-        node = (rt_base_node *) new_leaf_node(&labels);
+        node = (rt_base_node *) new_leaf_node(prob, sample_idxs);
         goto exit;
     }
 
     // check if labels are constant
     {
-        double first_label = kv_A(labels, 0);
-        for(size_t i=1; i < kv_size(labels); i++) {
-            if(first_label != kv_A(labels, i)) {
+        double first_label = 0;
+        FOR_SAMPLE_IDX_IN(*sample_idxs, {
+            double label = prob->labels[sample_idx];
+            if (i == 0) {
+                first_label = label;
+            } else if (first_label != label) {
                 labels_are_constant = 0;
                 break;
             }
-        }
+        });
     }
 
     // if labels are constant return leaf node
     if(labels_are_constant) {
         log_debug("labels are constant. generating leaf node ...");
-        node = (rt_base_node *) new_leaf_node(&labels);
+        node = (rt_base_node *) new_leaf_node(prob, sample_idxs);
         goto exit;
-        
     }
 
     {
@@ -267,7 +262,7 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
         sn->higher_node = higher_node;
         node = (rt_base_node *) sn;
     } else {
-        node = (rt_base_node *) new_leaf_node(&labels);
+        node = (rt_base_node *) new_leaf_node(prob, sample_idxs);
     }
 
     exit:
@@ -275,7 +270,6 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     kv_destroy(higher_idxs);
     kv_destroy(best_lower_idxs);
     kv_destroy(best_higher_idxs);
-    kv_destroy(labels);
     return node;
 }
 
