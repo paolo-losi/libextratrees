@@ -1,6 +1,25 @@
-review api pubblica/headers etc.etc
-documentare licenza e url: https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home
-double o float
-ottimizzazione:
-    1. mantenere vettore di min_max
-    2. passare da ricorsione a stack esplicito per split_problem
+TEST         rinforzare i test:
+                - aggiungere più samples e verificare a mano
+REFACTORING  calcolo della diversity
+                - va splittata un'unica
+FEATURE      foresta
+FEATURE      prediction
+                - semplice
+                - vicini
+                - curtailment
+FEATURE      serializzazione
+FEATURE      cross validation
+                - shuffle
+                - stratified
+FEATURE      tools command line
+FEATURE      multi thread
+FEATURE      calcolo della importanza variabili:
+                - ipotesi: sia per leaf che split salvare lo stato diversity
+FEATURE      implementare classification (gini diversity)
+FEATURE      implementare with replacement:
+                - ipotesi tree_builder deve contenere il ratio
+OPTIM        mantenere vettore di min_max
+OPTIM        eliminare recursion
+REFACTORING  review api pubblica/headers etc.etc
+DOC          documentare licenza
+                - url: https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home
