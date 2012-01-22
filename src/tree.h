@@ -24,6 +24,8 @@ typedef struct rt_leaf_node {
     //TODO kvec_t(int) sample_idx;
 } rt_leaf_node;
 
+typedef rt_base_node rt_tree;
+
 
 // --- params ---
 
@@ -67,11 +69,6 @@ typedef struct tree_builder {
 
 
 // --- utils ---
-
-typedef struct {
-    double min, max;
-} min_max;
-
 
 rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs);
 int tree_builder_init(tree_builder *tb, rt_problem *prob);

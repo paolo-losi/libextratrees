@@ -27,6 +27,11 @@ rt_leaf_node *new_leaf_node(double_vec *labels) {
 }
 
 
+typedef struct {
+    double min, max;
+} min_max;
+
+
 min_max get_feature_min_max(rt_problem *prob, int_vec *sample_idxs,
                             uint32_t fid) {
 
