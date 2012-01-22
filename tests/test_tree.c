@@ -48,13 +48,13 @@ void test_split() {
     int_vec samples_idx;
     rt_base_node *node;
 
-    float vectors[] = { 1., 3., 2., 3.,
-                        4., 1., 6., 2.,
-                        1., 1., 1., 1.,
-                        4., 6., 5., 7.,
-                        8., 6., 3., 3.,
-                        2., 2., 2., 2. };
-    double labels[] = { 2., 2., 1., 3. };
+    float vectors[] = { 1., 3., 2., 3., 0.,
+                        4., 1., 6., 2., 1.,
+                        1., 1., 1., 1., 1.,
+                        4., 6., 5., 7., 5.,
+                        8., 6., 3., 3., 1.,
+                        2., 2., 2., 3., 2. };
+    double labels[] = { 2., 2., 1., 3., 1. };
 
     problem_init(&prob, vectors, labels);
     check_mem(! tree_builder_init(&tb, &prob));

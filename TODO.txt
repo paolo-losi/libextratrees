@@ -18,6 +18,7 @@ FEATURE      calcolo della importanza variabili:
 FEATURE      implementare classification (gini diversity)
 FEATURE      implementare with replacement:
                 - ipotesi tree_builder deve contenere il ratio
+FEATURE      categorical features
 OPTIM        mantenere vettore di min_max
 OPTIM        eliminare recursion
 REFACTORING  review api pubblica/headers etc.etc

@@ -1,6 +1,6 @@
 >>> test: load_simple_file
 problem: samples=2 features=3
-sample 0. label=1.000000 features=10.000000 20.000000 0.000000
-sample 1. label=2.300000 features=0.000000 0.100000 1.000000
+sample 0. label=1 features=10 20 0
+sample 1. label=2.3 features=0 0.1 1
 >>> test: load_unexistent_file
 [ERROR]      src/load.c:196  errno=No such file or directory. Could not open foo.
