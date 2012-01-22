@@ -23,10 +23,12 @@ def main():
 
     reference_output = open(reference_fname).read()
 
+    reference_output = cleanup_output(reference_output)
+    test_output      = cleanup_output(test_output)
+
     if reference_output != test_output:
         differ = difflib.Differ()
-        diff_out = differ.compare(reference_output.splitlines(1),
-                                  test_output.splitlines(1))
+        diff_out = differ.compare(reference_output, test_output)
 
         print "%20s: FAILED" % test
         print
@@ -36,6 +38,15 @@ def main():
         print
     else:
         print "%20s: ok" % test
+
+
+def cleanup_output(output):
+    ret = []
+    for l in output.splitlines(1):
+        if l.startswith('[') and l[23] == ':':
+            l = l[:23] + l[27:]
+        ret.append(l)
+    return ret
 
 
 if __name__ == '__main__':

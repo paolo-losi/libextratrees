@@ -1,7 +1,7 @@
-TEST         rinforzare i test:
-                - aggiungere più samples e verificare a mano
 REFACTORING  calcolo della diversity
                 - va splittata un'unica
+TEST         rinforzare i test:
+                - aggiungere più samples e verificare a mano
 FEATURE      foresta
 FEATURE      prediction
                 - semplice
