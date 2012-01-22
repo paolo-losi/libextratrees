@@ -121,7 +121,7 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
 
     log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
 
-    // NOTE this does not guarantee that leaf size is always >= min_split_size
+    // NOTE: this does not guarantee that leaf size is always >= min_split_size
     // check if min_split_size is reached
     if(kv_size(*sample_idxs) <= (size_t) tb->params.min_split_size) {
         log_debug("min size (%d) reached. current sample size: %zu", 
