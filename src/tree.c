@@ -112,9 +112,9 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     kv_init(best_lower_idxs); kv_init(best_higher_idxs);
 
     // TODO #typedef diversity_f
-    double (*diversity_f)(rt_problem *prob, int_vec *sample_idxs) = 
-                    (tb->params.regression) ? regression_diversity :
-                                              classification_diversity;
+    diversity_function diversity_f = (tb->params.regression) ?
+                                                regression_diversity :
+                                                classification_diversity;
 
     log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
 

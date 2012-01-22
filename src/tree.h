@@ -70,6 +70,9 @@ typedef struct tree_builder {
 
 // --- utils ---
 
+typedef double (*diversity_function) (rt_problem *prob, int_vec *sample_idxs);
+
+
 rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs);
 int tree_builder_init(tree_builder *tb, rt_problem *prob);
 void tree_builder_destroy(tree_builder *tb);
