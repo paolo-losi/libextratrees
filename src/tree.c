@@ -11,7 +11,7 @@
 #define FOR_SAMPLE_IDX_IN(sample_idxs, body)                                \
     for (size_t i = 0; i < kv_size((sample_idxs)); i++) {                   \
         int sample_idx = kv_A((sample_idxs), i);                            \
-        do { body } while(0); }                                             \
+        do { body } while(0); }                                             
 
 
 rt_leaf_node *new_leaf_node(double_vec *labels) {
@@ -42,39 +42,50 @@ min_max get_feature_min_max(rt_problem *prob, int_vec *sample_idxs,
 }
 
 
-double classification_diversity(rt_problem *prob, int_vec *sample_idxs,
-                                uint32_t feature_idx, double threshold) {
+void split_on_threshold(rt_problem *prob, uint32_t feature_idx,
+                                          double threshold,
+                                          int_vec *sample_idxs, 
+                                          int_vec *higher_idxs,
+                                          int_vec *lower_idxs) {
+
+    kv_clear(*higher_idxs);
+    kv_clear(*lower_idxs);
+
+    FOR_SAMPLE_IDX_IN(*sample_idxs, {
+        double val = PROB_GET(prob, sample_idx, feature_idx);
+        if (val <= threshold) {
+            log_debug("sample_idx: %d, val: %g -> lower", sample_idx, val);
+            kv_push(int, *lower_idxs, sample_idx);
+        } else {
+            log_debug("sample_idx: %d, val: %g -> higher", sample_idx, val);
+            kv_push(int, *higher_idxs, sample_idx);
+        }
+    });
+}
+
+
+double classification_diversity(rt_problem *prob, int_vec *sample_idxs) {
     // FIXME implement it!
     return 0.0;
 }
 
 
-double regression_diversity(rt_problem *prob, int_vec *sample_idxs,
-                            uint32_t feature_idx, double threshold) {
+double regression_diversity(rt_problem *prob, int_vec *sample_idxs) {
 
-    double lowers_mean = 0, highers_mean = 0;
-    uint32_t lowers_count = 0, highers_count = 0;
+    double mean = 0;
+    uint32_t count = 0;
     double diversity = 0;
 
     FOR_SAMPLE_IDX_IN(*sample_idxs, {
-        double feat_val = PROB_GET(prob, sample_idx, feature_idx);
         double label = prob->labels[sample_idx];
-        if (feat_val <= threshold) {
-            lowers_mean += label;
-            lowers_count++;
-        } else {
-            highers_mean += label;
-            highers_count++;
-        }
+        mean += label;
+        count++;
     });
-    lowers_mean  /= lowers_count;
-    highers_mean /= highers_count;
+    mean  /= count;
 
     FOR_SAMPLE_IDX_IN(*sample_idxs, {
-        double feat_val = PROB_GET(prob, sample_idx, feature_idx);
         double label = prob->labels[sample_idx];
-        diversity += (feat_val <= threshold) ? pow(label - lowers_mean,  2) :
-                                               pow(label - highers_mean, 2) ;
+        diversity += pow(label - mean,  2);
     })
     return diversity;
 }
@@ -89,6 +100,16 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     double best_threshold;
     uint32_t best_feature_idx;
     rt_problem *prob = tb->prob;
+
+    double higher_diversity, lower_diversity;
+    int_vec lower_idxs, higher_idxs, best_lower_idxs, best_higher_idxs;
+    kv_init(lower_idxs);      kv_init(higher_idxs);
+    kv_init(best_lower_idxs); kv_init(best_higher_idxs);
+
+    // TODO #typedef diversity_f
+    double (*diversity_f)(rt_problem *prob, int_vec *sample_idxs) = 
+                    (tb->params.regression) ? regression_diversity :
+                                              classification_diversity;
 
     log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
 
@@ -188,11 +209,12 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
             log_debug("threshold: %g", threshold);
 
             // evaluate split diversity
-            diversity = (tb->params.regression) ? 
-                regression_diversity(prob, sample_idxs,
-                                     feature_idx, threshold) : 
-                classification_diversity(prob, sample_idxs,
-                                         feature_idx, threshold);
+            split_on_threshold(prob, feature_idx, threshold,
+                               sample_idxs, &higher_idxs, &lower_idxs);
+            higher_diversity = diversity_f(prob, &higher_idxs);
+            lower_diversity  = diversity_f(prob, &lower_idxs);
+
+            diversity = higher_diversity + lower_diversity;
 
             log_debug("%s diversity: %g", tb->params.regression?"regr":"class",
                                           diversity);
@@ -203,6 +225,8 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
                 best_threshold = threshold;
                 best_diversity = diversity;
                 best_feature_idx = feature_idx;
+                kv_copy(int, best_higher_idxs, higher_idxs);
+                kv_copy(int, best_lower_idxs,  lower_idxs);
             }
 
             if (diversity == 0) {
@@ -218,29 +242,15 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     }
 
     if (split_found) {
+        // let's build a split node ...
         log_debug("split found. feature_idx: %d, threshold: %g",                                                                best_feature_idx,
                                                 best_threshold);
-        // let's build a split node ...
         rt_base_node *higher_node, *lower_node;
         rt_split_node *sn;
-        int_vec lower_idxs, higher_idxs;
-        kv_init(lower_idxs); kv_init(higher_idxs);
-
-        // divide samples on threshold
-        FOR_SAMPLE_IDX_IN(*sample_idxs, {
-            double val = PROB_GET(prob, sample_idx, best_feature_idx);
-            if (val <= best_threshold) {
-                log_debug("sample_idx: %d, val: %g -> lower", sample_idx, val);
-                kv_push(int, lower_idxs, sample_idx);
-            } else {
-                log_debug("sample_idx: %d, val: %g -> higher", sample_idx, val);
-                kv_push(int, higher_idxs, sample_idx);
-            }
-        });
 
         // recursively calculate sub nodes
-        higher_node = split_problem(tb, &higher_idxs);
-        lower_node  = split_problem(tb, &lower_idxs);
+        higher_node = split_problem(tb, &best_higher_idxs);
+        lower_node  = split_problem(tb, &best_lower_idxs);
         if (higher_node == NULL || lower_node == NULL) return NULL;
 
         sn = malloc(sizeof(rt_split_node));
@@ -251,14 +261,15 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
         sn->lower_node = lower_node;
         sn->higher_node = higher_node;
         node = (rt_base_node *) sn;
-
-        kv_destroy(lower_idxs);
-        kv_destroy(higher_idxs);
     } else {
         node = (rt_base_node *) new_leaf_node(&labels);
     }
 
     exit:
+    kv_destroy(lower_idxs);
+    kv_destroy(higher_idxs);
+    kv_destroy(best_lower_idxs);
+    kv_destroy(best_higher_idxs);
     kv_destroy(labels);
     return node;
 }
@@ -308,6 +319,7 @@ int tree_builder_init(tree_builder *tb, rt_problem *prob) {
     exit:
     return -1;
 }
+
 
 void tree_builder_destroy(tree_builder *tb) {
     if (tb->features_deck) free(tb->features_deck);
