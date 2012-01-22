@@ -104,7 +104,7 @@ double regression_diversity(rt_problem *prob, int_vec *sample_idxs) {
 rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
 
     int labels_are_constant = 1;
-    rt_base_node *node;
+    rt_base_node *node = NULL;
     int split_found = 0;
     double best_threshold;
     uint32_t best_feature_idx;
@@ -114,10 +114,6 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     int_vec lower_idxs, higher_idxs, best_lower_idxs, best_higher_idxs;
     kv_init(lower_idxs);      kv_init(higher_idxs);
     kv_init(best_lower_idxs); kv_init(best_higher_idxs);
-
-    diversity_function diversity_f = (tb->params.regression) ?
-                                                regression_diversity :
-                                                classification_diversity;
 
     log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
 
@@ -157,6 +153,9 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
         uint32_t nb_features_tested = 0;
         uint32_t nb_features_to_test = tb->params.number_of_features_tested;
         int with_replacement = tb->params.select_features_with_replacement;
+        diversity_function diversity_f = (tb->params.regression) ?
+                                                    regression_diversity :
+                                                    classification_diversity;
         
         log_debug("number of features to test: %d", nb_features_to_test);
 
@@ -223,8 +222,8 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
             if (diversity < best_diversity) {
                 log_debug("diversity is new best");
                 best_threshold = threshold;
-                best_diversity = diversity;
                 best_feature_idx = feature_idx;
+                best_diversity = diversity;
                 kv_copy(int, best_higher_idxs, higher_idxs);
                 kv_copy(int, best_lower_idxs,  lower_idxs);
             }
