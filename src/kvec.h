@@ -91,7 +91,7 @@ int main() {
 						  : 0), (v).a[(i)]
 
 #define kv_range(type, v, max) do {           \
-        kv_resize(int, (v), (max));           \
+        kv_resize(type, (v), (max));          \
         (v).n = max;                          \
         for(size_t i = 0; i < (max); i++) {   \
             kv_A((v), i) = i;                 \

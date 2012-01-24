@@ -6,7 +6,7 @@
 # include "kvec.h"
 
 typedef kvec_t(double) double_vec;
-typedef kvec_t(int) int_vec;
+typedef kvec_t(uint32_t) int_vec;
 
 typedef struct {
     float *vectors;

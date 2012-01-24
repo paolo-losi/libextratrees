@@ -10,7 +10,7 @@
 
 #define FOR_SAMPLE_IDX_IN(sample_idxs, body)                                \
     for (size_t i = 0; i < kv_size((sample_idxs)); i++) {                   \
-        int sample_idx = kv_A((sample_idxs), i);                            \
+        uint32_t sample_idx = kv_A((sample_idxs), i);                       \
         do { body } while(0); }                                             
 
 
@@ -72,10 +72,10 @@ void split_on_threshold(rt_problem *prob, uint32_t feature_idx,
         double val = PROB_GET(prob, sample_idx, feature_idx);
         if (val <= threshold) {
             log_debug("sample_idx: %d, val: %g -> lower", sample_idx, val);
-            kv_push(int, *lower_idxs, sample_idx);
+            kv_push(uint32_t, *lower_idxs, sample_idx);
         } else {
             log_debug("sample_idx: %d, val: %g -> higher", sample_idx, val);
-            kv_push(int, *higher_idxs, sample_idx);
+            kv_push(uint32_t, *higher_idxs, sample_idx);
         }
     });
 }
@@ -230,8 +230,8 @@ void split_problem(tree_builder *tb, int_vec *sample_idxs,
                 best_threshold = threshold;
                 best_feature_idx = feature_idx;
                 best_diversity = diversity;
-                kv_copy(int, stack_node->higher_idxs, higher_idxs);
-                kv_copy(int, stack_node->lower_idxs,  lower_idxs);
+                kv_copy(uint32_t, stack_node->higher_idxs, higher_idxs);
+                kv_copy(uint32_t, stack_node->lower_idxs,  lower_idxs);
             }
 
             if (diversity == 0) {
@@ -338,7 +338,7 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
     {
         int_vec sample_idxs;
         kv_init(sample_idxs);
-        kv_range(int, sample_idxs, prob->n_samples);
+        kv_range(uint32_t, sample_idxs, prob->n_samples);
 
         // stack initialization
         curr_snode = ( kv_pushp(builder_stack_node, stack) );
