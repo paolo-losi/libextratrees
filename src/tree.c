@@ -14,6 +14,13 @@
         do { body } while(0); }                                             
 
 
+typedef struct {
+    rt_base_node *node;
+    int_vec higher_idxs;
+    int_vec lower_idxs;
+} builder_stack_node;
+
+
 rt_leaf_node *new_leaf_node(rt_problem *prob, int_vec *sample_idxs) {
     rt_leaf_node *ln = NULL;
     ln = malloc(sizeof(rt_leaf_node));
@@ -43,7 +50,7 @@ min_max get_feature_min_max(rt_problem *prob, int_vec *sample_idxs,
     min_max mm = {DBL_MAX, -DBL_MAX};
 
     FOR_SAMPLE_IDX_IN(*sample_idxs, {
-        int val = PROB_GET(prob, sample_idx, fid);
+        float val = PROB_GET(prob, sample_idx, fid);
         if (val > mm.max) mm.max = val;
         if (val < mm.min) mm.min = val;
     });
@@ -103,9 +110,8 @@ double regression_diversity(rt_problem *prob, int_vec *sample_idxs) {
 }
 
 
-rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs,
-                                              int_vec *best_higher_idxs,
-                                              int_vec *best_lower_idxs) {
+void split_problem(tree_builder *tb, int_vec *sample_idxs,
+                   builder_stack_node *stack_node) {
 
     int labels_are_constant = 1;
     rt_base_node *node = NULL;
@@ -228,8 +234,8 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs,
                 best_threshold = threshold;
                 best_feature_idx = feature_idx;
                 best_diversity = diversity;
-                kv_copy(int, *best_higher_idxs, higher_idxs);
-                kv_copy(int, *best_lower_idxs,  lower_idxs);
+                kv_copy(int, stack_node->higher_idxs, higher_idxs);
+                kv_copy(int, stack_node->lower_idxs,  lower_idxs);
             }
 
             if (diversity == 0) {
@@ -265,7 +271,7 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs,
     exit:
     kv_destroy(lower_idxs);
     kv_destroy(higher_idxs);
-    return node;
+    stack_node->node = node;
 }
 
 
@@ -320,13 +326,6 @@ void tree_builder_destroy(tree_builder *tb) {
 }
 
 
-typedef struct {
-    rt_base_node *node;
-    int_vec higher_idxs;
-    int_vec lower_idxs;
-} builder_stack_node;
-
-
 rt_tree *build_tree(rt_problem *prob, rt_params *params) {
     rt_tree *tree = NULL;
     tree_builder tb;
@@ -347,9 +346,8 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
         curr_snode = ( kv_pushp(builder_stack_node, stack) );
         kv_init(curr_snode->higher_idxs);
         kv_init(curr_snode->lower_idxs);
-        curr_snode->node = split_problem(&tb, &sample_idxs,
-                                         &curr_snode->higher_idxs,
-                                         &curr_snode->lower_idxs);
+        split_problem(&tb, &sample_idxs, curr_snode);
+        check_mem(curr_snode->node);
         kv_destroy(sample_idxs);
     }
 
@@ -401,9 +399,8 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
             curr_snode = ( kv_pushp(builder_stack_node, stack) );
             kv_init(curr_snode->higher_idxs);
             kv_init(curr_snode->lower_idxs);
-            curr_snode->node = split_problem(&tb, curr_sample_idxs,
-                                             &curr_snode->higher_idxs,
-                                             &curr_snode->lower_idxs);
+            split_problem(&tb, curr_sample_idxs, curr_snode);
+            check_mem(curr_snode->node);
         }
     }
 
