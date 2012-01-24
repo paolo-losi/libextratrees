@@ -6,8 +6,7 @@
 # include <stdbool.h>
 # include "kvec.h"
 
-typedef kvec_t(double) double_vec;
-typedef kvec_t(uint32_t) int_vec;
+typedef kvec_t(uint32_t) uint_vec;
 
 typedef struct {
     float *vectors;

@@ -47,7 +47,7 @@ typedef struct rt_params {
 
 // --- builder ---
 
-typedef double (*diversity_function) (rt_problem *prob, int_vec *sample_idxs);
+typedef double (*diversity_function) (rt_problem *prob, uint_vec *sample_idxs);
 
 typedef struct tree_builder {
     rt_problem *prob;

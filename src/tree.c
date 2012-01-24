@@ -16,12 +16,12 @@
 
 typedef struct {
     rt_base_node *node;
-    int_vec higher_idxs;
-    int_vec lower_idxs;
+    uint_vec higher_idxs;
+    uint_vec lower_idxs;
 } builder_stack_node;
 
 
-rt_leaf_node *new_leaf_node(rt_problem *prob, int_vec *sample_idxs) {
+rt_leaf_node *new_leaf_node(rt_problem *prob, uint_vec *sample_idxs) {
     rt_leaf_node *ln = NULL;
     ln = malloc(sizeof(rt_leaf_node));
     check_mem(ln);
@@ -44,7 +44,7 @@ typedef struct {
 } min_max;
 
 
-min_max get_feature_min_max(rt_problem *prob, int_vec *sample_idxs,
+min_max get_feature_min_max(rt_problem *prob, uint_vec *sample_idxs,
                             uint32_t fid) {
 
     min_max mm = {DBL_MAX, -DBL_MAX};
@@ -61,9 +61,9 @@ min_max get_feature_min_max(rt_problem *prob, int_vec *sample_idxs,
 
 void split_on_threshold(rt_problem *prob, uint32_t feature_idx,
                                           double threshold,
-                                          int_vec *sample_idxs, 
-                                          int_vec *higher_idxs,
-                                          int_vec *lower_idxs) {
+                                          uint_vec *sample_idxs, 
+                                          uint_vec *higher_idxs,
+                                          uint_vec *lower_idxs) {
 
     kv_clear(*higher_idxs);
     kv_clear(*lower_idxs);
@@ -81,7 +81,7 @@ void split_on_threshold(rt_problem *prob, uint32_t feature_idx,
 }
 
 
-double classification_diversity(rt_problem *prob, int_vec *sample_idxs) {
+double classification_diversity(rt_problem *prob, uint_vec *sample_idxs) {
     // FIXME implement it!
     UNUSED(prob);
     UNUSED(sample_idxs);
@@ -89,7 +89,7 @@ double classification_diversity(rt_problem *prob, int_vec *sample_idxs) {
 }
 
 
-double regression_diversity(rt_problem *prob, int_vec *sample_idxs) {
+double regression_diversity(rt_problem *prob, uint_vec *sample_idxs) {
 
     double mean = 0;
     uint32_t count = 0;
@@ -110,7 +110,7 @@ double regression_diversity(rt_problem *prob, int_vec *sample_idxs) {
 }
 
 
-void split_problem(tree_builder *tb, int_vec *sample_idxs,
+void split_problem(tree_builder *tb, uint_vec *sample_idxs,
                    builder_stack_node *stack_node) {
 
     bool labels_are_constant = true;
@@ -121,7 +121,7 @@ void split_problem(tree_builder *tb, int_vec *sample_idxs,
     rt_problem *prob = tb->prob;
 
     double higher_diversity, lower_diversity;
-    int_vec lower_idxs, higher_idxs;
+    uint_vec lower_idxs, higher_idxs;
     kv_init(lower_idxs); kv_init(higher_idxs);
 
     log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
@@ -336,7 +336,7 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
     check_mem(! tree_builder_init(&tb, prob, params) );
 
     {
-        int_vec sample_idxs;
+        uint_vec sample_idxs;
         kv_init(sample_idxs);
         kv_range(uint32_t, sample_idxs, prob->n_samples);
 
@@ -351,7 +351,7 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
 
     while (kv_size(stack) > 0) {
         bool link_to_parent_required = false;
-        int_vec *curr_sample_idxs = NULL;
+        uint_vec *curr_sample_idxs = NULL;
         curr_snode = &kv_last(stack);
 
         if (IS_SPLIT(curr_snode->node)) {
