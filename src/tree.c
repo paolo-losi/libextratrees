@@ -113,9 +113,9 @@ double regression_diversity(rt_problem *prob, int_vec *sample_idxs) {
 void split_problem(tree_builder *tb, int_vec *sample_idxs,
                    builder_stack_node *stack_node) {
 
-    int labels_are_constant = 1;
+    bool labels_are_constant = true;
     rt_base_node *node = NULL;
-    int split_found = 0;
+    bool split_found = false;
     double best_threshold = 0;       // initialized to silence compiler warn
     uint32_t best_feature_idx = 0.0; // initialized to silence compiler warn 
     rt_problem *prob = tb->prob;
@@ -144,7 +144,7 @@ void split_problem(tree_builder *tb, int_vec *sample_idxs,
             if (i == 0) {
                 first_label = label;
             } else if (first_label != label) {
-                labels_are_constant = 0;
+                labels_are_constant = false;
                 break;
             }
         });
@@ -161,7 +161,7 @@ void split_problem(tree_builder *tb, int_vec *sample_idxs,
         double best_diversity = DBL_MAX;
         uint32_t nb_features_tested = 0;
         uint32_t nb_features_to_test = tb->params.number_of_features_tested;
-        int with_replacement = tb->params.select_features_with_replacement;
+        bool with_replacement = tb->params.select_features_with_replacement;
         
         log_debug("number of features to test: %d", nb_features_to_test);
 
@@ -205,7 +205,7 @@ void split_problem(tree_builder *tb, int_vec *sample_idxs,
                     nb_features_to_test--;
                 log_debug("constant feature");
                 continue;
-            } else split_found = 1;
+            } else split_found = true;
             do {
                 double delta = mm.max - mm.min;
                 threshold = mm.min + random_double(&tb->rand_state) * delta;
@@ -350,7 +350,7 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
     }
 
     while (kv_size(stack) > 0) {
-        int link_to_parent_required = 0;
+        bool link_to_parent_required = false;
         int_vec *curr_sample_idxs = NULL;
         curr_snode = &kv_last(stack);
 
@@ -362,11 +362,11 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
             } else if (sn->lower_node == NULL) {
                 curr_sample_idxs = &curr_snode->lower_idxs;
             } else {
-                link_to_parent_required = 1;
+                link_to_parent_required = true;
             }
         } else {
             // node is a LEAF_NODE
-            link_to_parent_required = 1;
+            link_to_parent_required = true;
         }
 
         if (link_to_parent_required) {

@@ -3,6 +3,7 @@
 
 # include <stdint.h>
 # include <stdio.h>
+# include <stdbool.h>
 # include "kvec.h"
 
 typedef kvec_t(double) double_vec;

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <ctype.h>
 
 #include "rt.h"
@@ -131,7 +132,7 @@ void size_parser_destroy(size_parser *sp) {
 
 typedef struct load_parser {
     parse_state ops;
-    int error_flag;
+    bool error_flag;
     float *vectors;
     double *labels;
     int sample_idx;
@@ -142,7 +143,7 @@ typedef struct load_parser {
 void load_parser_on_error(parse_state *ps, char *error_msg) {
     UNUSED(error_msg);
     load_parser *lp = (load_parser *) ps;
-    lp->error_flag = 1;
+    lp->error_flag = true;
 }
 
 void load_parser_on_new_label(parse_state *ps, double val) {
@@ -163,7 +164,7 @@ int load_parser_init(load_parser *lp, int n_features, int n_samples) {
     lp->ops.on_error = load_parser_on_error;
     lp->ops.on_new_label = load_parser_on_new_label;
     lp->ops.on_new_feature = load_parser_on_new_feature;
-    lp->error_flag = 0;
+    lp->error_flag = false;
     lp->sample_idx = -1;
     lp->n_samples = n_samples;
     lp->n_features = n_features;
@@ -178,7 +179,7 @@ int load_parser_init(load_parser *lp, int n_features, int n_samples) {
     return 0;
 
     exit:
-    lp->error_flag = 1;
+    lp->error_flag = true;
     return -1;
 }
 

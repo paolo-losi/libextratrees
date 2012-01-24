@@ -39,9 +39,9 @@ typedef rt_base_node rt_tree;
 typedef struct rt_params {
     uint32_t number_of_features_tested;
     uint32_t number_of_trees;
-    int regression;
+    bool regression;
     uint32_t min_split_size;
-    int select_features_with_replacement;
+    bool select_features_with_replacement;
 } rt_params;
 
 
@@ -61,17 +61,17 @@ typedef struct tree_builder {
 # define EXTRA_TREE_DEFAULT_CLASS_PARAMS(prob, params) do {              \
     (params).number_of_features_tested = ceil(sqrt((prob).n_features));  \
     (params).number_of_trees           = 100;                            \
-    (params).regression                = 0;                              \
+    (params).regression                = false;                          \
     (params).min_split_size            = 1;                              \
-    (params).select_features_with_replacement = 0;                       \
+    (params).select_features_with_replacement = false;                   \
     } while(0)
 
 # define EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params) do {               \
-    (params).number_of_features_tested = (prob).n_features;             \
+    (params).number_of_features_tested = (prob).n_features;              \
     (params).number_of_trees           = 100;                            \
-    (params).regression                = 1;                              \
+    (params).regression                = true;                           \
     (params).min_split_size            = 1;                              \
-    (params).select_features_with_replacement = 0;                       \
+    (params).select_features_with_replacement = false;                   \
     } while(0)
 
 
