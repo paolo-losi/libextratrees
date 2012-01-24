@@ -5,12 +5,12 @@
 
 #define test_header() fprintf(stderr, ">>> test: %s\n", __func__)
 
-#define problem_init(p, vectors, labels)                                       \
+#define problem_init(p, _vectors, _labels)                                     \
     do {                                                                       \
-        (p)->vectors = vectors;                                                \
-        (p)->labels = labels;                                                  \
-        (p)->n_samples  = sizeof(labels)  / sizeof(*labels);                   \
-        (p)->n_features = sizeof(vectors) / sizeof(*vectors) / (p)->n_samples; \
+        (p)->vectors = _vectors;                                               \
+        (p)->labels = _labels;                                                 \
+        (p)->n_samples  = sizeof(_labels) /sizeof(*_labels);                   \
+        (p)->n_features = sizeof(_vectors)/sizeof(*_vectors) / (p)->n_samples; \
     } while(0);
 
 #endif

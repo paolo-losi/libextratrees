@@ -261,6 +261,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         sn->higher_node = NULL;
         node = (rt_base_node *) sn;
     } else {
+        log_debug("split NOT found. building leaf node ...");
         node = (rt_base_node *) new_leaf_node(prob, sample_idxs);
     }
 
@@ -298,9 +299,10 @@ void tree_destroy(rt_base_node *node) {
 
 
 int tree_builder_init(tree_builder *tb, rt_problem *prob,
-                      rt_params *params, uint32_t seed) {
+                      rt_params *params, uint32_t *seed) {
     tb->prob = prob;
-    simplerandom_kiss2_seed(&tb->rand_state, 0, 0, seed, 0);
+    simplerandom_kiss2_seed(&tb->rand_state, seed[0], seed[1],
+                                             seed[2], seed[3]);
 
     tb->features_deck = NULL;
     tb->features_deck = malloc(sizeof(uint32_t) * prob->n_features);
@@ -411,15 +413,25 @@ rt_forest *build_forest(rt_problem *prob, rt_params *params) {
     rt_forest *forest = NULL;
     rt_tree tree = NULL;
     tree_builder tb;
+    SimpleRandomKISS2_t rand_state;
 
-    forest = malloc(sizeof(forest));
+    simplerandom_kiss2_seed(&rand_state, 3346013320, 826458053,
+                                         1844335739, 274945865);
+                                         
+
+    forest = malloc(sizeof(rt_forest));
     check_mem(forest);
     forest->params = *params;
+    kv_init(forest->trees);
 
     for(uint32_t i = 0; i < params->number_of_trees; i++) {
-        uint32_t seed = i * 13 + 7;
+        uint32_t seed[4];
+
+        for (int i = 0; i < 4; i++) 
+            seed[i] = simplerandom_kiss2_next(&rand_state);
 
         check_mem(! tree_builder_init(&tb, prob, params, seed) );
+        log_debug("***** building tree # %d *****", i);
         tree = build_tree(&tb);
         tree_builder_destroy(&tb);
         check_mem(tree);

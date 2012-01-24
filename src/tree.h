@@ -91,8 +91,9 @@ typedef struct tree_builder {
 
 
 rt_tree build_tree(tree_builder *tb);
+rt_forest *build_forest(rt_problem *prob, rt_params *params);
 int tree_builder_init(tree_builder *tb, rt_problem *prob, rt_params *params,
-                      uint32_t seed);
+                      uint32_t *seed);
 void tree_builder_destroy(tree_builder *tb);
 void tree_destroy(rt_base_node *bn);
 
