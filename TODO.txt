@@ -1,11 +1,12 @@
-REFACTORING  review tutti double/float
-FEATURE      print albero
 FEATURE      foresta
+FEATURE      print albero
+                - statistiche
 FEATURE      prediction
                 - semplice
                 - vicini
                 - curtailment
 FEATURE      serializzazione
+                - conversione albero -> kvec_t(unsigned char) (uno ad uno)
 FEATURE      cross validation
                 - shuffle
                 - stratified
@@ -24,3 +25,7 @@ REFACTORING  review api pubblica/headers etc.etc
 REFACTORING  testing per confronto con versione python
 DOC          documentare licenza
                 - url: https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home
+
+### recurring ###
+
+REFACTORING  review tutti double/float

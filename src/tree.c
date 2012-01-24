@@ -297,9 +297,10 @@ void tree_destroy(rt_base_node *node) {
 }
 
 
-int tree_builder_init(tree_builder *tb, rt_problem *prob, rt_params *params) {
+int tree_builder_init(tree_builder *tb, rt_problem *prob,
+                      rt_params *params, uint32_t seed) {
     tb->prob = prob;
-    simplerandom_kiss2_seed(&tb->rand_state, 0, 0, 0, 0);
+    simplerandom_kiss2_seed(&tb->rand_state, 0, 0, seed, 0);
 
     tb->features_deck = NULL;
     tb->features_deck = malloc(sizeof(uint32_t) * prob->n_features);
@@ -324,27 +325,25 @@ void tree_builder_destroy(tree_builder *tb) {
 }
 
 
-rt_tree *build_tree(rt_problem *prob, rt_params *params) {
-    rt_tree *tree = NULL;
-    tree_builder tb;
-    builder_stack_node *curr_snode;
+rt_tree build_tree(tree_builder *tb) {
+    rt_tree tree = NULL;
     kvec_t(builder_stack_node) stack;
+    builder_stack_node *curr_snode;
 
     // general initialization
     kv_init(stack);
-    kv_resize(builder_stack_node, stack, prob->n_samples);
-    check_mem(! tree_builder_init(&tb, prob, params) );
+    kv_resize(builder_stack_node, stack, tb->prob->n_samples);
 
     {
         uint_vec sample_idxs;
         kv_init(sample_idxs);
-        kv_range(uint32_t, sample_idxs, prob->n_samples);
+        kv_range(uint32_t, sample_idxs, tb->prob->n_samples);
 
         // stack initialization
         curr_snode = ( kv_pushp(builder_stack_node, stack) );
         kv_init(curr_snode->higher_idxs);
         kv_init(curr_snode->lower_idxs);
-        split_problem(&tb, &sample_idxs, curr_snode);
+        split_problem(tb, &sample_idxs, curr_snode);
         check_mem(curr_snode->node);
         kv_destroy(sample_idxs);
     }
@@ -397,13 +396,37 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
             curr_snode = ( kv_pushp(builder_stack_node, stack) );
             kv_init(curr_snode->higher_idxs);
             kv_init(curr_snode->lower_idxs);
-            split_problem(&tb, curr_sample_idxs, curr_snode);
+            split_problem(tb, curr_sample_idxs, curr_snode);
             check_mem(curr_snode->node);
         }
     }
 
     exit:
-    tree_builder_destroy(&tb);
     kv_destroy(stack);
     return tree;
+}
+
+
+rt_forest *build_forest(rt_problem *prob, rt_params *params) {
+    rt_forest *forest = NULL;
+    rt_tree tree = NULL;
+    tree_builder tb;
+
+    forest = malloc(sizeof(forest));
+    check_mem(forest);
+    forest->params = *params;
+
+    for(uint32_t i = 0; i < params->number_of_trees; i++) {
+        uint32_t seed = i * 13 + 7;
+
+        check_mem(! tree_builder_init(&tb, prob, params, seed) );
+        tree = build_tree(&tb);
+        tree_builder_destroy(&tb);
+        check_mem(tree);
+
+        kv_push(rt_tree, forest->trees, tree);
+    }
+
+    exit:
+    return forest;
 }

@@ -1,5 +1,19 @@
+#ifndef __TREE_H__
+#define __TREE_H__
+
 #include "simplerandom.h"
 #include "kvec.h"
+
+
+// --- params ---
+
+typedef struct rt_params {
+    uint32_t number_of_features_tested;
+    uint32_t number_of_trees;
+    bool regression;
+    uint32_t min_split_size;
+    bool select_features_with_replacement;
+} rt_params;
 
 
 // --- tree ---
@@ -24,7 +38,7 @@ typedef struct rt_leaf_node {
     //TODO kvec_t(int) sample_idx;
 } rt_leaf_node;
 
-typedef rt_base_node rt_tree;
+typedef rt_base_node *rt_tree;
 
 
 #define IS_LEAF(n)  ((n)->type == LEAF_NODE)
@@ -34,15 +48,12 @@ typedef rt_base_node rt_tree;
 #define CAST_SPLIT(n) ((rt_split_node *) (n))
 
 
-// --- params ---
+// --- forest ---
 
-typedef struct rt_params {
-    uint32_t number_of_features_tested;
-    uint32_t number_of_trees;
-    bool regression;
-    uint32_t min_split_size;
-    bool select_features_with_replacement;
-} rt_params;
+typedef struct {
+    kvec_t(rt_tree) trees;
+    rt_params params;
+} rt_forest;
 
 
 // --- builder ---
@@ -79,8 +90,10 @@ typedef struct tree_builder {
 
 
 
-rt_base_node *build_tree(rt_problem *prob, rt_params *params);
-int tree_builder_init(tree_builder *tb, rt_problem *prob, rt_params *params);
+rt_tree build_tree(tree_builder *tb);
+int tree_builder_init(tree_builder *tb, rt_problem *prob, rt_params *params,
+                      uint32_t seed);
 void tree_builder_destroy(tree_builder *tb);
 void tree_destroy(rt_base_node *bn);
 
+#endif
