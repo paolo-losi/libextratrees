@@ -58,20 +58,20 @@ typedef struct tree_builder {
 } tree_builder;
 
 
-# define EXTRA_TREE_DEFAULT_CLASS_PARAMS(tb) do {                              \
-    (tb).params.number_of_features_tested = ceil(sqrt((tb).prob->n_features)); \
-    (tb).params.number_of_trees           = 100;                               \
-    (tb).params.regression                = 0;                                 \
-    (tb).params.min_split_size            = 1;                                 \
-    (tb).params.select_features_with_replacement = 0;                          \
+# define EXTRA_TREE_DEFAULT_CLASS_PARAMS(prob, params) do {              \
+    (params).number_of_features_tested = ceil(sqrt((prob).n_features));  \
+    (params).number_of_trees           = 100;                            \
+    (params).regression                = 0;                              \
+    (params).min_split_size            = 1;                              \
+    (params).select_features_with_replacement = 0;                       \
     } while(0)
 
-# define EXTRA_TREE_DEFAULT_REGR_PARAMS(tb) do {                               \
-    (tb).params.number_of_features_tested = (tb).prob->n_features;             \
-    (tb).params.number_of_trees           = 100;                               \
-    (tb).params.regression                = 1;                                 \
-    (tb).params.min_split_size            = 1;                                 \
-    (tb).params.select_features_with_replacement = 0;                          \
+# define EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params) do {               \
+    (params).number_of_features_tested = (prob).n_features;             \
+    (params).number_of_trees           = 100;                            \
+    (params).regression                = 1;                              \
+    (params).min_split_size            = 1;                              \
+    (params).select_features_with_replacement = 0;                       \
     } while(0)
 
 
@@ -80,7 +80,8 @@ typedef struct tree_builder {
 typedef double (*diversity_function) (rt_problem *prob, int_vec *sample_idxs);
 
 
-rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs);
-int tree_builder_init(tree_builder *tb, rt_problem *prob);
+rt_base_node *build_tree(rt_problem *prob, rt_params *params);
+int tree_builder_init(tree_builder *tb, rt_problem *prob, rt_params *params);
 void tree_builder_destroy(tree_builder *tb);
 void tree_destroy(rt_base_node *bn);
+

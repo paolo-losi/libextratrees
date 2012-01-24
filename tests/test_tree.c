@@ -8,9 +8,7 @@ void test_leaf() {
     test_header();
 
     rt_problem prob;
-    tree_builder tb;
-    int_vec samples_idx;
-    rt_base_node *node;
+    rt_params params;
 
     float vectors[] = { 1., 3., 2.,
                         4., 1., 6.,
@@ -20,23 +18,11 @@ void test_leaf() {
     double labels[] = { 2., 2., 2. };
 
     problem_init(&prob, vectors, labels);
-    check_mem(! tree_builder_init(&tb, &prob));
-
-    EXTRA_TREE_DEFAULT_REGR_PARAMS(tb);
-
     rt_print_problem(stderr, &prob);
 
-    kv_init(samples_idx);
-    for(uint32_t i = 0; i < prob.n_samples; i++) {
-        kv_push(int, samples_idx, i);
-    }
+    EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
 
-    node = split_problem(&tb, &samples_idx);
-
-    exit:
-    kv_destroy(samples_idx);
-    tree_builder_destroy(&tb);
-    if (node) tree_destroy(node);
+    build_tree(&prob, &params);
 }
 
 
@@ -44,9 +30,7 @@ void test_split() {
     test_header();
 
     rt_problem prob;
-    tree_builder tb;
-    int_vec samples_idx;
-    rt_base_node *node;
+    rt_params params;
 
     float vectors[] = { 1., 3., 2., 3., 0.,
                         4., 1., 6., 2., 1.,
@@ -57,23 +41,11 @@ void test_split() {
     double labels[] = { 2., 2., 1., 3., 1. };
 
     problem_init(&prob, vectors, labels);
-    check_mem(! tree_builder_init(&tb, &prob));
-
-    EXTRA_TREE_DEFAULT_REGR_PARAMS(tb);
-
     rt_print_problem(stderr, &prob);
 
-    kv_init(samples_idx);
-    for(uint32_t i = 0; i < prob.n_samples; i++) {
-        kv_push(int, samples_idx, i);
-    }
+    EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
 
-    node = split_problem(&tb, &samples_idx);
-
-    exit:
-    kv_destroy(samples_idx);
-    tree_builder_destroy(&tb);
-    if (node) tree_destroy(node);
+    build_tree(&prob, &params);
 }
 
 

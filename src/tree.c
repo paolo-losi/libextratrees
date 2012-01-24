@@ -103,7 +103,9 @@ double regression_diversity(rt_problem *prob, int_vec *sample_idxs) {
 }
 
 
-rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
+rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs,
+                                              int_vec *best_higher_idxs,
+                                              int_vec *best_lower_idxs) {
 
     int labels_are_constant = 1;
     rt_base_node *node = NULL;
@@ -113,9 +115,8 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     rt_problem *prob = tb->prob;
 
     double higher_diversity, lower_diversity;
-    int_vec lower_idxs, higher_idxs, best_lower_idxs, best_higher_idxs;
-    kv_init(lower_idxs);      kv_init(higher_idxs);
-    kv_init(best_lower_idxs); kv_init(best_higher_idxs);
+    int_vec lower_idxs, higher_idxs;
+    kv_init(lower_idxs); kv_init(higher_idxs);
 
     log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
 
@@ -227,8 +228,8 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
                 best_threshold = threshold;
                 best_feature_idx = feature_idx;
                 best_diversity = diversity;
-                kv_copy(int, best_higher_idxs, higher_idxs);
-                kv_copy(int, best_lower_idxs,  lower_idxs);
+                kv_copy(int, *best_higher_idxs, higher_idxs);
+                kv_copy(int, *best_lower_idxs,  lower_idxs);
             }
 
             if (diversity == 0) {
@@ -247,21 +248,15 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
         // let's build a split node ...
         log_debug("split found. feature_idx: %d, threshold: %g",                                                                best_feature_idx,
                                                 best_threshold);
-        rt_base_node *higher_node, *lower_node;
         rt_split_node *sn;
-
-        // recursively calculate sub nodes
-        higher_node = split_problem(tb, &best_higher_idxs);
-        lower_node  = split_problem(tb, &best_lower_idxs);
-        if (higher_node == NULL || lower_node == NULL) return NULL;
 
         sn = malloc(sizeof(rt_split_node));
         check_mem(sn);
         sn->base.type = SPLIT_NODE;
         sn->feature_id = best_feature_idx;
         sn->feature_val = best_threshold;
-        sn->lower_node = lower_node;
-        sn->higher_node = higher_node;
+        sn->lower_node = NULL;
+        sn->higher_node = NULL;
         node = (rt_base_node *) sn;
     } else {
         node = (rt_base_node *) new_leaf_node(prob, sample_idxs);
@@ -270,8 +265,6 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
     exit:
     kv_destroy(lower_idxs);
     kv_destroy(higher_idxs);
-    kv_destroy(best_lower_idxs);
-    kv_destroy(best_higher_idxs);
     return node;
 }
 
@@ -302,7 +295,7 @@ void tree_destroy(rt_base_node *node) {
 }
 
 
-int tree_builder_init(tree_builder *tb, rt_problem *prob) {
+int tree_builder_init(tree_builder *tb, rt_problem *prob, rt_params *params) {
     tb->prob = prob;
     simplerandom_kiss2_seed(&tb->rand_state, 0, 0, 0, 0);
 
@@ -313,8 +306,8 @@ int tree_builder_init(tree_builder *tb, rt_problem *prob) {
         tb->features_deck[i] = i;
     }
 
-    // default parameters
-    EXTRA_TREE_DEFAULT_CLASS_PARAMS(*tb);
+    tb->params = *params;
+
     return 0;
 
     exit:
@@ -324,4 +317,93 @@ int tree_builder_init(tree_builder *tb, rt_problem *prob) {
 
 void tree_builder_destroy(tree_builder *tb) {
     if (tb->features_deck) free(tb->features_deck);
+}
+
+
+typedef struct {
+    rt_base_node *node;
+    int_vec higher_idxs;
+    int_vec lower_idxs;
+} builder_stack_node;
+
+
+rt_tree *build_tree(rt_problem *prob, rt_params *params) {
+    rt_tree *tree = NULL;
+    tree_builder tb;
+    builder_stack_node *curr_snode;
+    kvec_t(builder_stack_node) stack;
+    int_vec sample_idxs;
+
+    // general initialization
+    kv_init(stack);
+    kv_resize(builder_stack_node, stack, prob->n_samples);
+    check_mem(! tree_builder_init(&tb, prob, params) );
+
+    kv_init(sample_idxs);
+    for(uint32_t i = 0; i < prob->n_samples; i++) {
+        kv_push(int, sample_idxs, i);
+    }
+
+    // stack initialization
+    curr_snode = ( kv_pushp(builder_stack_node, stack) );
+    kv_init(curr_snode->higher_idxs);
+    kv_init(curr_snode->lower_idxs);
+    curr_snode->node = split_problem(&tb, &sample_idxs,
+                                     &curr_snode->higher_idxs,
+                                     &curr_snode->lower_idxs);
+
+    while (kv_size(stack) > 0) {
+        int link_to_parent_required = 0;
+        int_vec *curr_sample_idxs = NULL;
+        curr_snode = &kv_last(stack);
+
+        if (IS_SPLIT(curr_snode->node)) {
+            rt_split_node *sn = CAST_SPLIT(curr_snode->node);
+
+            if (sn->higher_node == NULL) {
+                curr_sample_idxs = &curr_snode->higher_idxs;
+            } else if (sn->lower_node == NULL) {
+                curr_sample_idxs = &curr_snode->lower_idxs;
+            } else {
+                link_to_parent_required = 1;
+            }
+        } else {
+            // node is a LEAF_NODE
+            link_to_parent_required = 1;
+        }
+
+        if (link_to_parent_required) {
+            rt_split_node *sn = NULL;
+
+            UNUSED(kv_pop(stack));
+            if (kv_size(stack) == 0) {
+                tree = curr_snode->node;
+                break;
+            }
+
+            check(IS_SPLIT(kv_last(stack).node), "unexpected NON leaf node");
+            sn = CAST_SPLIT(kv_last(stack).node);
+
+            if (sn->higher_node == NULL) {
+                sn->higher_node = curr_snode->node;
+            } else if (sn->lower_node == NULL) {
+                sn->lower_node  = curr_snode->node;
+            } else {
+                sentinel("unexpected split node state in stack");
+            }
+            kv_destroy(curr_snode->higher_idxs);
+            kv_destroy(curr_snode->lower_idxs);
+
+        } else {
+            curr_snode = ( kv_pushp(builder_stack_node, stack) );
+            kv_init(curr_snode->higher_idxs);
+            kv_init(curr_snode->lower_idxs);
+            curr_snode->node = split_problem(&tb, curr_sample_idxs,
+                                             &curr_snode->higher_idxs,
+                                             &curr_snode->lower_idxs);
+        }
+    }
+
+    exit:
+    return tree;
 }
