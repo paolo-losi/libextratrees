@@ -90,11 +90,11 @@ int main() {
 						  : (v).n <= (size_t)(i)? (v).n = (i)			\
 						  : 0), (v).a[(i)]
 
-#define kv_range(type, v, n) do {           \
-        kv_resize(int, (v), (n));           \
-        (v).n = n;                          \
-        for(size_t i = 0; i < (n); i++) {   \
-            kv_A((v), i) = i;               \
-        }
+#define kv_range(type, v, max) do {           \
+        kv_resize(int, (v), (max));           \
+        (v).n = max;                          \
+        for(size_t i = 0; i < (max); i++) {   \
+            kv_A((v), i) = i;                 \
+        }} while (0)
 
 #endif

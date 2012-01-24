@@ -110,8 +110,8 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs,
     int labels_are_constant = 1;
     rt_base_node *node = NULL;
     int split_found = 0;
-    double best_threshold;
-    uint32_t best_feature_idx;
+    double best_threshold = 0;       // initialized to silence compiler warn
+    uint32_t best_feature_idx = 0.0; // initialized to silence compiler warn 
     rt_problem *prob = tb->prob;
 
     double higher_diversity, lower_diversity;
@@ -340,13 +340,8 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
 
     {
         int_vec sample_idxs;
-
         kv_init(sample_idxs);
-        kv_resize(int, sample_idxs, prob->n_samples);
-        kv_size(sample_idxs) = prob->n_samples;
-        for(uint32_t i = 0; i < prob->n_samples; i++) {
-            kv_A(sample_idxs, i) = i;
-        }
+        kv_range(int, sample_idxs, prob->n_samples);
 
         // stack initialization
         curr_snode = ( kv_pushp(builder_stack_node, stack) );
