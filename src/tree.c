@@ -332,25 +332,31 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
     tree_builder tb;
     builder_stack_node *curr_snode;
     kvec_t(builder_stack_node) stack;
-    int_vec sample_idxs;
 
     // general initialization
     kv_init(stack);
     kv_resize(builder_stack_node, stack, prob->n_samples);
     check_mem(! tree_builder_init(&tb, prob, params) );
 
-    kv_init(sample_idxs);
-    for(uint32_t i = 0; i < prob->n_samples; i++) {
-        kv_push(int, sample_idxs, i);
-    }
+    {
+        int_vec sample_idxs;
 
-    // stack initialization
-    curr_snode = ( kv_pushp(builder_stack_node, stack) );
-    kv_init(curr_snode->higher_idxs);
-    kv_init(curr_snode->lower_idxs);
-    curr_snode->node = split_problem(&tb, &sample_idxs,
-                                     &curr_snode->higher_idxs,
-                                     &curr_snode->lower_idxs);
+        kv_init(sample_idxs);
+        kv_resize(int, sample_idxs, prob->n_samples);
+        kv_size(sample_idxs) = prob->n_samples;
+        for(uint32_t i = 0; i < prob->n_samples; i++) {
+            kv_A(sample_idxs, i) = i;
+        }
+
+        // stack initialization
+        curr_snode = ( kv_pushp(builder_stack_node, stack) );
+        kv_init(curr_snode->higher_idxs);
+        kv_init(curr_snode->lower_idxs);
+        curr_snode->node = split_problem(&tb, &sample_idxs,
+                                         &curr_snode->higher_idxs,
+                                         &curr_snode->lower_idxs);
+        kv_destroy(sample_idxs);
+    }
 
     while (kv_size(stack) > 0) {
         int link_to_parent_required = 0;
@@ -377,6 +383,8 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
 
             UNUSED(kv_pop(stack));
             if (kv_size(stack) == 0) {
+                kv_destroy(curr_snode->higher_idxs);
+                kv_destroy(curr_snode->lower_idxs);
                 tree = curr_snode->node;
                 break;
             }
@@ -405,5 +413,7 @@ rt_tree *build_tree(rt_problem *prob, rt_params *params) {
     }
 
     exit:
+    tree_builder_destroy(&tb);
+    kv_destroy(stack);
     return tree;
 }

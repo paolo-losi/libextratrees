@@ -9,6 +9,7 @@ void test_leaf() {
 
     rt_problem prob;
     rt_params params;
+    rt_tree *tree;
 
     float vectors[] = { 1., 3., 2.,
                         4., 1., 6.,
@@ -22,7 +23,8 @@ void test_leaf() {
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
 
-    build_tree(&prob, &params);
+    tree = build_tree(&prob, &params);
+    tree_destroy(tree);
 }
 
 
@@ -31,6 +33,7 @@ void test_split() {
 
     rt_problem prob;
     rt_params params;
+    rt_tree *tree;
 
     float vectors[] = { 1., 3., 2., 3., 0.,
                         4., 1., 6., 2., 1.,
@@ -45,7 +48,8 @@ void test_split() {
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
 
-    build_tree(&prob, &params);
+    tree = build_tree(&prob, &params);
+    tree_destroy(tree);
 }
 
 
