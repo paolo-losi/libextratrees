@@ -47,14 +47,14 @@ typedef struct rt_params {
 
 // --- builder ---
 
+typedef double (*diversity_function) (rt_problem *prob, int_vec *sample_idxs);
+
 typedef struct tree_builder {
     rt_problem *prob;
     rt_params params;
     SimpleRandomKISS2_t rand_state;
     uint32_t *features_deck;
-    //TODO the following vals should help optimize constant feature detection
-    //double *max_vals;
-    //double *min_vals;
+    diversity_function diversity_f;
 } tree_builder;
 
 
@@ -77,7 +77,6 @@ typedef struct tree_builder {
 
 // --- utils ---
 
-typedef double (*diversity_function) (rt_problem *prob, int_vec *sample_idxs);
 
 
 rt_base_node *build_tree(rt_problem *prob, rt_params *params);

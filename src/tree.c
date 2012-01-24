@@ -162,10 +162,6 @@ void split_problem(tree_builder *tb, int_vec *sample_idxs,
         uint32_t nb_features_tested = 0;
         uint32_t nb_features_to_test = tb->params.number_of_features_tested;
         int with_replacement = tb->params.select_features_with_replacement;
-        // TODO tb.diversity_f
-        diversity_function diversity_f = (tb->params.regression) ?
-                                                    regression_diversity :
-                                                    classification_diversity;
         
         log_debug("number of features to test: %d", nb_features_to_test);
 
@@ -220,8 +216,8 @@ void split_problem(tree_builder *tb, int_vec *sample_idxs,
             // evaluate split diversity
             split_on_threshold(prob, feature_idx, threshold,
                                sample_idxs, &higher_idxs, &lower_idxs);
-            higher_diversity = diversity_f(prob, &higher_idxs);
-            lower_diversity  = diversity_f(prob, &lower_idxs);
+            higher_diversity = tb->diversity_f(prob, &higher_idxs);
+            lower_diversity  = tb->diversity_f(prob, &lower_idxs);
 
             diversity = higher_diversity + lower_diversity;
 
@@ -313,6 +309,8 @@ int tree_builder_init(tree_builder *tb, rt_problem *prob, rt_params *params) {
     }
 
     tb->params = *params;
+    tb->diversity_f = (tb->params.regression) ? regression_diversity :
+                                                classification_diversity;
 
     return 0;
 
