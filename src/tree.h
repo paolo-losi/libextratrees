@@ -27,6 +27,13 @@ typedef struct rt_leaf_node {
 typedef rt_base_node rt_tree;
 
 
+#define IS_LEAF(n)  ((n)->type == LEAF_NODE)
+#define IS_SPLIT(n) ((n)->type == SPLIT_NODE)
+
+#define CAST_LEAF(n)  ((rt_leaf_node *)  (n))
+#define CAST_SPLIT(n) ((rt_split_node *) (n))
+
+
 // --- params ---
 
 typedef struct rt_params {

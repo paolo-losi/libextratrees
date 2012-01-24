@@ -76,6 +76,8 @@ void split_on_threshold(rt_problem *prob, uint32_t feature_idx,
 
 double classification_diversity(rt_problem *prob, int_vec *sample_idxs) {
     // FIXME implement it!
+    UNUSED(prob);
+    UNUSED(sample_idxs);
     return 0.0;
 }
 
@@ -153,6 +155,7 @@ rt_base_node *split_problem(tree_builder *tb, int_vec *sample_idxs) {
         uint32_t nb_features_tested = 0;
         uint32_t nb_features_to_test = tb->params.number_of_features_tested;
         int with_replacement = tb->params.select_features_with_replacement;
+        // TODO tb.diversity_f
         diversity_function diversity_f = (tb->params.regression) ?
                                                     regression_diversity :
                                                     classification_diversity;

@@ -5,6 +5,7 @@
 #include "rt.h"
 #include "load.h"
 #include "log.h"
+#include "util.h"
 
 
 char *new_err_str(char *msg, int line_count, char *line) {
@@ -100,11 +101,13 @@ void size_parser_on_error(parse_state *ps, char *error_msg) {
 }
 
 void size_parser_on_new_label(parse_state *ps, double val) {
+    UNUSED(val);
     size_parser *sp = (size_parser *) ps;
     sp->n_samples += 1;
 }
 
 void size_parser_on_new_feature(parse_state *ps, int fid, double val) {
+    UNUSED(val);
     size_parser *sp = (size_parser *) ps;
     if (fid > sp->n_features) 
         sp->n_features = fid;
@@ -137,6 +140,7 @@ typedef struct load_parser {
 } load_parser;
 
 void load_parser_on_error(parse_state *ps, char *error_msg) {
+    UNUSED(error_msg);
     load_parser *lp = (load_parser *) ps;
     lp->error_flag = 1;
 }
