@@ -1,0 +1,568 @@
+>>> test: test_leaf
+problem: samples=3 features=5
+sample 0. label=2 features=1 4 1 4 7
+sample 1. label=2 features=3 1 1 6 8
+sample 2. label=2 features=2 6 1 5 0
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:155  labels are constant. generating leaf node ...
+>>> test: test_split
+problem: samples=5 features=6
+sample 0. label=2 features=1 4 1 4 8 2
+sample 1. label=2 features=3 1 1 6 6 2
+sample 2. label=1 features=2 6 1 5 3 2
+sample 3. label=3 features=3 2 1 7 3 3
+sample 4. label=1 features=0 1 1 5 1 2
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 6
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 1
+[DEBUG]     src/train.c:194  feature index: 0
+[DEBUG]     src/train.c:198  values - min: 0 max: 3
+[DEBUG]     src/train.c:214  threshold: 2.54861
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 1.16667
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 2
+[DEBUG]     src/train.c:194  feature index: 5
+[DEBUG]     src/train.c:198  values - min: 2 max: 3
+[DEBUG]     src/train.c:214  threshold: 2.68581
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 1
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 3
+[DEBUG]     src/train.c:194  feature index: 4
+[DEBUG]     src/train.c:198  values - min: 1 max: 8
+[DEBUG]     src/train.c:214  threshold: 1.80751
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 4
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 4 max: 7
+[DEBUG]     src/train.c:214  threshold: 5.93811
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 1.16667
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 5
+[DEBUG]     src/train.c:194  feature index: 2
+[DEBUG]     src/train.c:198  values - min: 1 max: 1
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 6
+[DEBUG]     src/train.c:194  feature index: 1
+[DEBUG]     src/train.c:198  values - min: 1 max: 6
+[DEBUG]     src/train.c:214  threshold: 2.15019
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2.5
+[DEBUG]     src/train.c:252  split found. feature_idx: 5, threshold: 2.68581
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 4
+[DEBUG]     src/train.c:166  number of features to test: 6
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 1
+[DEBUG]     src/train.c:194  feature index: 0
+[DEBUG]     src/train.c:198  values - min: 0 max: 3
+[DEBUG]     src/train.c:214  threshold: 0.92787
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0.666667
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 2
+[DEBUG]     src/train.c:194  feature index: 5
+[DEBUG]     src/train.c:198  values - min: 2 max: 2
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 3
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 4 max: 6
+[DEBUG]     src/train.c:214  threshold: 5.37172
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0.666667
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:192  selected feature WITHOUT replacement: 4
+[DEBUG]     src/train.c:194  feature index: 4
+[DEBUG]     src/train.c:198  values - min: 1 max: 8
+[DEBUG]     src/train.c:214  threshold: 5.39517
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:238  diversity == 0
+[DEBUG]     src/train.c:252  split found. feature_idx: 4, threshold: 5.39517
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:155  labels are constant. generating leaf node ...
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:155  labels are constant. generating leaf node ...
+>>> test: test_forest
+problem: samples=5 features=6
+sample 0. label=2 features=1 4 1 4 8 2
+sample 1. label=2 features=3 1 1 6 6 2
+sample 2. label=1 features=2 6 1 5 3 2
+sample 3. label=3 features=3 2 1 7 3 3
+sample 4. label=1 features=0 1 1 5 1 2
+[DEBUG]     src/train.c:426  ***** building tree # 0 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 2
+[DEBUG]     src/train.c:198  values - min: 1 max: 1
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
+[DEBUG]     src/train.c:426  ***** building tree # 1 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 0
+[DEBUG]     src/train.c:198  values - min: 0 max: 3
+[DEBUG]     src/train.c:214  threshold: 2.21
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 1.16667
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 0, threshold: 2.21
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 0
+[DEBUG]     src/train.c:198  values - min: 3 max: 3
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 2
+[DEBUG]     src/train.c:198  values - min: 1 max: 1
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
+[DEBUG]     src/train.c:426  ***** building tree # 2 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 1
+[DEBUG]     src/train.c:198  values - min: 1 max: 6
+[DEBUG]     src/train.c:214  threshold: 3.5026
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2.5
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 1, threshold: 3.5026
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 4 max: 5
+[DEBUG]     src/train.c:214  threshold: 4.47536
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:225  regr diversity: 0
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:238  diversity == 0
+[DEBUG]     src/train.c:252  split found. feature_idx: 3, threshold: 4.47536
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 5 max: 7
+[DEBUG]     src/train.c:214  threshold: 5.86769
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0.5
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 3, threshold: 5.86769
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 6 max: 7
+[DEBUG]     src/train.c:214  threshold: 6.60805
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:225  regr diversity: 0
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:238  diversity == 0
+[DEBUG]     src/train.c:252  split found. feature_idx: 3, threshold: 6.60805
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:426  ***** building tree # 3 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 4
+[DEBUG]     src/train.c:198  values - min: 1 max: 8
+[DEBUG]     src/train.c:214  threshold: 4.60494
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2.66667
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 4, threshold: 4.60494
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:155  labels are constant. generating leaf node ...
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 4
+[DEBUG]     src/train.c:198  values - min: 1 max: 3
+[DEBUG]     src/train.c:214  threshold: 2.56006
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 4, threshold: 2.56006
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 1
+[DEBUG]     src/train.c:198  values - min: 2 max: 6
+[DEBUG]     src/train.c:214  threshold: 5.47723
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:238  diversity == 0
+[DEBUG]     src/train.c:252  split found. feature_idx: 1, threshold: 5.47723
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:426  ***** building tree # 4 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 4
+[DEBUG]     src/train.c:198  values - min: 1 max: 8
+[DEBUG]     src/train.c:214  threshold: 2.3432
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 4, threshold: 2.3432
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 4
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 4
+[DEBUG]     src/train.c:198  values - min: 3 max: 8
+[DEBUG]     src/train.c:214  threshold: 6.68703
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 4, threshold: 6.68703
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 2
+[DEBUG]     src/train.c:198  values - min: 1 max: 1
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:426  ***** building tree # 5 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 5
+[DEBUG]     src/train.c:198  values - min: 2 max: 3
+[DEBUG]     src/train.c:214  threshold: 2.16587
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 1
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 5, threshold: 2.16587
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 4
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 2
+[DEBUG]     src/train.c:198  values - min: 1 max: 1
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
+[DEBUG]     src/train.c:426  ***** building tree # 6 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 1
+[DEBUG]     src/train.c:198  values - min: 1 max: 6
+[DEBUG]     src/train.c:214  threshold: 3.9782
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2.5
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 1, threshold: 3.9782
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 0
+[DEBUG]     src/train.c:198  values - min: 1 max: 2
+[DEBUG]     src/train.c:214  threshold: 1.0494
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:225  regr diversity: 0
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:238  diversity == 0
+[DEBUG]     src/train.c:252  split found. feature_idx: 0, threshold: 1.0494
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 5 max: 7
+[DEBUG]     src/train.c:214  threshold: 6.30878
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0.5
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 3, threshold: 6.30878
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 2
+[DEBUG]     src/train.c:198  values - min: 1 max: 1
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
+[DEBUG]     src/train.c:426  ***** building tree # 7 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 4 max: 7
+[DEBUG]     src/train.c:214  threshold: 6.68865
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 1
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 3, threshold: 6.68865
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 4
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 1
+[DEBUG]     src/train.c:198  values - min: 1 max: 6
+[DEBUG]     src/train.c:214  threshold: 4.33909
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0.666667
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 1, threshold: 4.33909
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 4
+[DEBUG]     src/train.c:198  values - min: 1 max: 8
+[DEBUG]     src/train.c:214  threshold: 6.87974
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0.5
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 4, threshold: 6.87974
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 5
+[DEBUG]     src/train.c:198  values - min: 2 max: 2
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
+[DEBUG]     src/train.c:426  ***** building tree # 8 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 1
+[DEBUG]     src/train.c:198  values - min: 1 max: 6
+[DEBUG]     src/train.c:214  threshold: 3.88251
+[DEBUG]     src/train.c:77   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 2.5
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 1, threshold: 3.88251
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 5
+[DEBUG]     src/train.c:198  values - min: 2 max: 2
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 1
+[DEBUG]     src/train.c:198  values - min: 1 max: 2
+[DEBUG]     src/train.c:214  threshold: 1.47082
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0.5
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 1, threshold: 1.47082
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 2
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 0
+[DEBUG]     src/train.c:198  values - min: 0 max: 3
+[DEBUG]     src/train.c:214  threshold: 1.18357
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:238  diversity == 0
+[DEBUG]     src/train.c:252  split found. feature_idx: 0, threshold: 1.18357
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:426  ***** building tree # 9 *****
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 5
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 4 max: 7
+[DEBUG]     src/train.c:214  threshold: 6.60125
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 1
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 3, threshold: 6.60125
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 4
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 3
+[DEBUG]     src/train.c:198  values - min: 4 max: 6
+[DEBUG]     src/train.c:214  threshold: 5.89901
+[DEBUG]     src/train.c:74   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:77   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:74   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:74   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:225  regr diversity: 0.666667
+[DEBUG]     src/train.c:229  diversity is new best
+[DEBUG]     src/train.c:252  split found. feature_idx: 3, threshold: 5.89901
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 1
+[DEBUG]     src/train.c:134  min size (1) reached. current sample size: 1
+[DEBUG]     src/train.c:127  >>>>> split_problem. n samples: 3
+[DEBUG]     src/train.c:166  number of features to test: 1
+[DEBUG]     src/train.c:174  --- new loop cycle ---
+[DEBUG]     src/train.c:179  selected feature WITH replacement
+[DEBUG]     src/train.c:194  feature index: 2
+[DEBUG]     src/train.c:198  values - min: 1 max: 1
+[DEBUG]     src/train.c:206  constant feature
+[DEBUG]     src/train.c:264  split NOT found. building leaf node ...
