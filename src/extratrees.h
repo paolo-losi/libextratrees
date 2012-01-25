@@ -1,5 +1,5 @@
-# ifndef RT_H
-# define RT_H
+# ifndef EXTRA_TREES_H
+# define EXTRA_TREES_H
 
 # include <stdint.h>
 # include <stdio.h>
@@ -13,11 +13,11 @@ typedef struct {
     double *labels;
     uint32_t n_features;
     uint32_t n_samples;
-} rt_problem;
+} ET_problem;
 
 
-rt_problem *rt_load_libsvm_file(char *fname);
+ET_problem *ET_load_libsvm_file(char *fname);
 
-void rt_print_problem(FILE *f, rt_problem *prob);
+void ET_print_problem(FILE *f, ET_problem *prob);
 
 # endif 

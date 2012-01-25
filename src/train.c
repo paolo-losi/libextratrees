@@ -1,8 +1,8 @@
 #include <float.h>
 #include <math.h>
 
-#include "rt.h"
-#include "tree.h"
+#include "extratrees.h"
+#include "train.h"
 #include "util.h"
 #include "problem.h"
 #include "log.h"
@@ -15,15 +15,15 @@
 
 
 typedef struct {
-    rt_base_node *node;
+    ET_base_node *node;
     uint_vec higher_idxs;
     uint_vec lower_idxs;
 } builder_stack_node;
 
 
-rt_leaf_node *new_leaf_node(rt_problem *prob, uint_vec *sample_idxs) {
-    rt_leaf_node *ln = NULL;
-    ln = malloc(sizeof(rt_leaf_node));
+ET_leaf_node *new_leaf_node(ET_problem *prob, uint_vec *sample_idxs) {
+    ET_leaf_node *ln = NULL;
+    ln = malloc(sizeof(ET_leaf_node));
     check_mem(ln);
 
     ln->base.type = LEAF_NODE;
@@ -44,7 +44,7 @@ typedef struct {
 } min_max;
 
 
-min_max get_feature_min_max(rt_problem *prob, uint_vec *sample_idxs,
+min_max get_feature_min_max(ET_problem *prob, uint_vec *sample_idxs,
                             uint32_t fid) {
 
     min_max mm = {DBL_MAX, -DBL_MAX};
@@ -59,7 +59,7 @@ min_max get_feature_min_max(rt_problem *prob, uint_vec *sample_idxs,
 }
 
 
-void split_on_threshold(rt_problem *prob, uint32_t feature_idx,
+void split_on_threshold(ET_problem *prob, uint32_t feature_idx,
                                           double threshold,
                                           uint_vec *sample_idxs, 
                                           uint_vec *higher_idxs,
@@ -81,7 +81,7 @@ void split_on_threshold(rt_problem *prob, uint32_t feature_idx,
 }
 
 
-double classification_diversity(rt_problem *prob, uint_vec *sample_idxs) {
+double classification_diversity(ET_problem *prob, uint_vec *sample_idxs) {
     // FIXME implement it!
     UNUSED(prob);
     UNUSED(sample_idxs);
@@ -89,7 +89,7 @@ double classification_diversity(rt_problem *prob, uint_vec *sample_idxs) {
 }
 
 
-double regression_diversity(rt_problem *prob, uint_vec *sample_idxs) {
+double regression_diversity(ET_problem *prob, uint_vec *sample_idxs) {
 
     double mean = 0;
     uint32_t count = 0;
@@ -114,11 +114,11 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
                    builder_stack_node *stack_node) {
 
     bool labels_are_constant = true;
-    rt_base_node *node = NULL;
+    ET_base_node *node = NULL;
     bool split_found = false;
     double best_threshold = 0;       // initialized to silence compiler warn
     uint32_t best_feature_idx = 0.0; // initialized to silence compiler warn 
-    rt_problem *prob = tb->prob;
+    ET_problem *prob = tb->prob;
 
     double higher_diversity, lower_diversity;
     uint_vec lower_idxs, higher_idxs;
@@ -132,7 +132,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         log_debug("min size (%d) reached. current sample size: %zu", 
                                                     tb->params.min_split_size,
                                                     kv_size(*sample_idxs));
-        node = (rt_base_node *) new_leaf_node(prob, sample_idxs);
+        node = (ET_base_node *) new_leaf_node(prob, sample_idxs);
         goto exit;
     }
 
@@ -153,7 +153,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
     // if labels are constant return leaf node
     if(labels_are_constant) {
         log_debug("labels are constant. generating leaf node ...");
-        node = (rt_base_node *) new_leaf_node(prob, sample_idxs);
+        node = (ET_base_node *) new_leaf_node(prob, sample_idxs);
         goto exit;
     }
 
@@ -250,19 +250,19 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         // let's build a split node ...
         log_debug("split found. feature_idx: %d, threshold: %g",                                                                best_feature_idx,
                                                 best_threshold);
-        rt_split_node *sn;
+        ET_split_node *sn;
 
-        sn = malloc(sizeof(rt_split_node));
+        sn = malloc(sizeof(ET_split_node));
         check_mem(sn);
         sn->base.type = SPLIT_NODE;
         sn->feature_id = best_feature_idx;
         sn->feature_val = best_threshold;
         sn->lower_node = NULL;
         sn->higher_node = NULL;
-        node = (rt_base_node *) sn;
+        node = (ET_base_node *) sn;
     } else {
         log_debug("split NOT found. building leaf node ...");
-        node = (rt_base_node *) new_leaf_node(prob, sample_idxs);
+        node = (ET_base_node *) new_leaf_node(prob, sample_idxs);
     }
 
     exit:
@@ -273,20 +273,20 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
 
 
 //TODO remove recursion
-void tree_destroy(rt_base_node *node) {
-    rt_split_node *sn = NULL;
-    rt_leaf_node  *ln = NULL;
+void tree_destroy(ET_base_node *node) {
+    ET_split_node *sn = NULL;
+    ET_leaf_node  *ln = NULL;
 
     switch (node->type) {
         case LEAF_NODE:
-            ln = (rt_leaf_node *) node;
+            ln = (ET_leaf_node *) node;
             kv_destroy(ln->labels);
             free(node);
             break;
         case SPLIT_NODE:
-            sn = (rt_split_node *) node;
-            tree_destroy((rt_base_node *) sn->higher_node);
-            tree_destroy((rt_base_node *) sn->lower_node);
+            sn = (ET_split_node *) node;
+            tree_destroy((ET_base_node *) sn->higher_node);
+            tree_destroy((ET_base_node *) sn->lower_node);
             free(node);
             break;
         default:
@@ -298,8 +298,8 @@ void tree_destroy(rt_base_node *node) {
 }
 
 
-int tree_builder_init(tree_builder *tb, rt_problem *prob,
-                      rt_params *params, uint32_t *seed) {
+int tree_builder_init(tree_builder *tb, ET_problem *prob,
+                      ET_params *params, uint32_t *seed) {
     tb->prob = prob;
     simplerandom_kiss2_seed(&tb->rand_state, seed[2], seed[3],
                                              seed[1], seed[0]);
@@ -327,8 +327,8 @@ void tree_builder_destroy(tree_builder *tb) {
 }
 
 
-rt_tree build_tree(tree_builder *tb) {
-    rt_tree tree = NULL;
+ET_tree build_tree(tree_builder *tb) {
+    ET_tree tree = NULL;
     kvec_t(builder_stack_node) stack;
     builder_stack_node *curr_snode;
 
@@ -356,7 +356,7 @@ rt_tree build_tree(tree_builder *tb) {
         curr_snode = &kv_last(stack);
 
         if (IS_SPLIT(curr_snode->node)) {
-            rt_split_node *sn = CAST_SPLIT(curr_snode->node);
+            ET_split_node *sn = CAST_SPLIT(curr_snode->node);
 
             if (sn->higher_node == NULL) {
                 curr_sample_idxs = &curr_snode->higher_idxs;
@@ -371,7 +371,7 @@ rt_tree build_tree(tree_builder *tb) {
         }
 
         if (link_to_parent_required) {
-            rt_split_node *sn = NULL;
+            ET_split_node *sn = NULL;
 
             UNUSED(kv_pop(stack));
             if (kv_size(stack) == 0) {
@@ -409,14 +409,14 @@ rt_tree build_tree(tree_builder *tb) {
 }
 
 
-rt_forest *build_forest(rt_problem *prob, rt_params *params) {
-    rt_forest *forest = NULL;
-    rt_tree tree = NULL;
+ET_forest *build_forest(ET_problem *prob, ET_params *params) {
+    ET_forest *forest = NULL;
+    ET_tree tree = NULL;
     tree_builder tb;
     // random seed obtained from mersenne twister invocation
     uint32_t seed[4] = {3346013320, 826458053, 1844335739, 274945865};
 
-    forest = malloc(sizeof(rt_forest));
+    forest = malloc(sizeof(ET_forest));
     check_mem(forest);
     forest->params = *params;
     kv_init(forest->trees);
@@ -426,7 +426,7 @@ rt_forest *build_forest(rt_problem *prob, rt_params *params) {
         log_debug("***** building tree # %d *****", i);
         tree = build_tree(&tb);
         check_mem(tree);
-        kv_push(rt_tree, forest->trees, tree);
+        kv_push(ET_tree, forest->trees, tree);
     }
 
     exit:

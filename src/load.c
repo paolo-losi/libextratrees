@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-#include "rt.h"
+#include "extratrees.h"
 #include "load.h"
 #include "log.h"
 #include "util.h"
@@ -191,11 +191,11 @@ void load_parser_destroy(load_parser* lp) {
 }
 
 
-rt_problem *rt_load_libsvm_file(char *fname) {
+ET_problem *ET_load_libsvm_file(char *fname) {
     FILE *f;
     size_parser *sp = NULL;
     load_parser *lp = NULL;
-    rt_problem *prob = NULL;
+    ET_problem *prob = NULL;
 
     f = fopen(fname, "r");
     check(f, "Could not open %s.", fname);
@@ -214,7 +214,7 @@ rt_problem *rt_load_libsvm_file(char *fname) {
     parse_libsvm_file((parse_state *) lp, f, PARSE_BUF_SIZE);
     check(! lp->error_flag, "Unexpected failure in loading phase.");
 
-    prob = malloc(sizeof(rt_problem));
+    prob = malloc(sizeof(ET_problem));
     check_mem(prob);
 
     prob->vectors = lp->vectors;

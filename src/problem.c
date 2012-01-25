@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "rt.h"
+#include "extratrees.h"
 #include "problem.h"
 
 
-void rt_print_problem(FILE *fout, rt_problem *prob) {
+void ET_print_problem(FILE *fout, ET_problem *prob) {
     fprintf(fout, "problem: samples=%d features=%d\n", prob->n_samples,
                                                        prob->n_features);
     for(uint32_t s = 0; s < prob->n_samples; s++) {

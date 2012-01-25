@@ -1,5 +1,5 @@
-#include "rt.h"
-#include "tree.h"
+#include "extratrees.h"
+#include "train.h"
 #include "test.h"
 #include "log.h"
 
@@ -24,14 +24,14 @@ double small_labels[] = { 2., 2., 2. };
 void test_leaf() {
     test_header();
 
-    rt_problem prob;
-    rt_params params;
-    rt_tree tree;
+    ET_problem prob;
+    ET_params params;
+    ET_tree tree;
     tree_builder tb;
     uint32_t seed[] = {0, 0, 0, 0};
 
     problem_init(&prob, small_vectors, small_labels);
-    rt_print_problem(stderr, &prob);
+    ET_print_problem(stderr, &prob);
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
 
@@ -47,14 +47,14 @@ void test_leaf() {
 void test_split() {
     test_header();
 
-    rt_problem prob;
-    rt_params params;
-    rt_tree tree;
+    ET_problem prob;
+    ET_params params;
+    ET_tree tree;
     tree_builder tb;
     uint32_t seed[] = {0, 0, 0, 0};
 
     problem_init(&prob, big_vectors, big_labels);
-    rt_print_problem(stderr, &prob);
+    ET_print_problem(stderr, &prob);
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
 
@@ -70,11 +70,11 @@ void test_split() {
 void test_forest() {
     test_header();
 
-    rt_problem prob;
-    rt_params params;
+    ET_problem prob;
+    ET_params params;
 
     problem_init(&prob, big_vectors, big_labels);
-    rt_print_problem(stderr, &prob);
+    ET_print_problem(stderr, &prob);
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
     params.number_of_trees = 10;
