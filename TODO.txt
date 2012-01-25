@@ -1,17 +1,21 @@
-FEATURE      foresta
-FEATURE      print albero
-                - statistiche
 FEATURE      prediction
                 - semplice
                 - vicini
                 - curtailment
+FIX          gestire i casi:
+                - foglia vuota
+                - split non ha splittato (zero elementi da una parte)
+                  (potrebbe essere per problemi numerici)
 FEATURE      serializzazione
                 - conversione albero -> kvec_t(unsigned char) (uno ad uno)
 FEATURE      cross validation
                 - shuffle
                 - stratified
 FEATURE      tools command line
+FEATURE      print albero
+                - statistiche
 FEATURE      multi thread
+                - generare in modo parallelo (vedi mersenne jump)
 FEATURE      calcolo della importanza variabili:
                 - ipotesi: sia per leaf che split salvare lo stato diversity
                 - dev'essere passato 
