@@ -256,7 +256,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         check_mem(sn);
         sn->base.type = SPLIT_NODE;
         sn->feature_id = best_feature_idx;
-        sn->feature_val = best_threshold;
+        sn->threshold = best_threshold;
         sn->lower_node = NULL;
         sn->higher_node = NULL;
         node = (ET_base_node *) sn;
@@ -432,4 +432,13 @@ ET_forest *build_forest(ET_problem *prob, ET_params *params) {
     exit:
     tree_builder_destroy(&tb);
     return forest;
+}
+
+
+void ET_forest_destroy(ET_forest *forest) {
+    for(uint32_t i = 0; i < kv_size(forest->trees); i++) {
+        ET_tree t = kv_A(forest->trees, i);
+        tree_destroy(t);
+    }
+    kv_destroy(forest->trees);
 }

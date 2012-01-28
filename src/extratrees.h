@@ -7,6 +7,9 @@
 # include "kvec.h"
 
 typedef kvec_t(uint32_t) uint_vec;
+typedef kvec_t(double) double_vec;
+
+// --- problem ---
 
 typedef struct {
     float *vectors;
@@ -16,8 +19,69 @@ typedef struct {
 } ET_problem;
 
 
-ET_problem *ET_load_libsvm_file(char *fname);
+// --- params ---
 
+typedef struct ET_params {
+    uint32_t number_of_features_tested;
+    uint32_t number_of_trees;
+    bool regression;
+    uint32_t min_split_size;
+    bool select_features_with_replacement;
+} ET_params;
+
+
+# define EXTRA_TREE_DEFAULT_CLASS_PARAMS(prob, params) do {              \
+    (params).number_of_features_tested = ceil(sqrt((prob).n_features));  \
+    (params).number_of_trees           = 100;                            \
+    (params).regression                = false;                          \
+    (params).min_split_size            = 1;                              \
+    (params).select_features_with_replacement = false;                   \
+    } while(0)
+
+# define EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params) do {               \
+    (params).number_of_features_tested = (prob).n_features;              \
+    (params).number_of_trees           = 100;                            \
+    (params).regression                = true;                           \
+    (params).min_split_size            = 1;                              \
+    (params).select_features_with_replacement = false;                   \
+    } while(0)
+
+
+// --- tree ---
+
+typedef struct ET_base_node {
+    char type;
+} ET_base_node;
+
+typedef struct ET_split_node {
+    ET_base_node base;
+    float threshold;
+    uint32_t feature_id;
+    ET_base_node *lower_node, *higher_node;
+} ET_split_node;
+
+typedef struct ET_leaf_node {
+    ET_base_node base;
+    double_vec labels;
+    //TODO kvec_t(int) sample_idx;
+} ET_leaf_node;
+
+typedef ET_base_node *ET_tree;
+
+// --- forest ---
+
+typedef struct {
+    kvec_t(ET_tree) trees;
+    ET_params params;
+} ET_forest;
+
+
+// --- functions ---
+
+ET_problem *ET_load_libsvm_file(char *fname);
+ET_forest *build_forest(ET_problem *prob, ET_params *params);
+void ET_forest_destroy(ET_forest *forest);
+double ET_predict(ET_forest *forest, double *vector);
 void ET_print_problem(FILE *f, ET_problem *prob);
 
 # endif 

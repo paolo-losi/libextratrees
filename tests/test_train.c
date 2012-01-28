@@ -72,6 +72,7 @@ void test_forest() {
 
     ET_problem prob;
     ET_params params;
+    ET_forest *forest;
 
     problem_init(&prob, big_vectors, big_labels);
     ET_print_problem(stderr, &prob);
@@ -81,8 +82,9 @@ void test_forest() {
     params.number_of_features_tested = 1;
     params.select_features_with_replacement = true;
 
-    build_forest(&prob, &params);
-
+    forest = build_forest(&prob, &params);
+    ET_forest_destroy(forest);
+    free(forest);
 }
 
 
