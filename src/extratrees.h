@@ -8,6 +8,7 @@
 
 typedef kvec_t(uint32_t) uint_vec;
 typedef kvec_t(double) double_vec;
+typedef kvec_t(unsigned char) uchar_vec;
 
 // --- problem ---
 
@@ -49,6 +50,9 @@ typedef struct ET_params {
 
 // --- tree ---
 
+#define ET_LEAF_NODE 'L'
+#define ET_SPLIT_NODE 'S'
+
 typedef struct ET_base_node {
     char type;
 } ET_base_node;
@@ -81,6 +85,7 @@ typedef struct {
 ET_problem *ET_load_libsvm_file(char *fname);
 ET_forest *build_forest(ET_problem *prob, ET_params *params);
 void ET_forest_destroy(ET_forest *forest);
+int ET_forest_dump(ET_forest *forest, uchar_vec *buffer);
 double ET_predict(ET_forest *forest, double *vector);
 void ET_print_problem(FILE *f, ET_problem *prob);
 

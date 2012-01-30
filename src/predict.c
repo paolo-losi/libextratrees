@@ -1,5 +1,5 @@
 #include "extratrees.h"
-#include "train.h"
+#include "util.h"
 #include "log.h"
 
 
@@ -8,13 +8,13 @@ static double predict_tree(ET_tree tree, double *vector) {
 
     while(1) {
         switch(node->type) {
-            case SPLIT_NODE: {
+            case ET_SPLIT_NODE: {
                 ET_split_node *split = CAST_SPLIT(node);
                 node = (vector[split->feature_id] <= split->threshold) ?
                        split->lower_node : split->higher_node;
                 break;
             }    
-            case LEAF_NODE: {
+            case ET_LEAF_NODE: {
                 double_vec *labels = &CAST_LEAF(node)->labels;
 
                 //TODO classification FIXME

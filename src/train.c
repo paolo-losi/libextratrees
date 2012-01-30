@@ -26,7 +26,7 @@ ET_leaf_node *new_leaf_node(ET_problem *prob, uint_vec *sample_idxs) {
     ln = malloc(sizeof(ET_leaf_node));
     check_mem(ln);
 
-    ln->base.type = LEAF_NODE;
+    ln->base.type = ET_LEAF_NODE;
 
     kv_init(ln->labels);
     FOR_SAMPLE_IDX_IN(*sample_idxs, {
@@ -254,7 +254,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
 
         sn = malloc(sizeof(ET_split_node));
         check_mem(sn);
-        sn->base.type = SPLIT_NODE;
+        sn->base.type = ET_SPLIT_NODE;
         sn->feature_id = best_feature_idx;
         sn->threshold = best_threshold;
         sn->lower_node = NULL;
@@ -278,12 +278,12 @@ void tree_destroy(ET_base_node *node) {
     ET_leaf_node  *ln = NULL;
 
     switch (node->type) {
-        case LEAF_NODE:
+        case ET_LEAF_NODE:
             ln = (ET_leaf_node *) node;
             kv_destroy(ln->labels);
             free(node);
             break;
-        case SPLIT_NODE:
+        case ET_SPLIT_NODE:
             sn = (ET_split_node *) node;
             tree_destroy((ET_base_node *) sn->higher_node);
             tree_destroy((ET_base_node *) sn->lower_node);
@@ -366,7 +366,7 @@ ET_tree build_tree(tree_builder *tb) {
                 link_to_parent_required = true;
             }
         } else {
-            // node is a LEAF_NODE
+            // node is a ET_LEAF_NODE
             link_to_parent_required = true;
         }
 

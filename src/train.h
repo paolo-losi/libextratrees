@@ -5,18 +5,6 @@
 #include "kvec.h"
 
 
-// --- tree ---
-
-#define LEAF_NODE 'L'
-#define SPLIT_NODE 'S'
-
-#define IS_LEAF(n)  ((n)->type == LEAF_NODE)
-#define IS_SPLIT(n) ((n)->type == SPLIT_NODE)
-
-#define CAST_LEAF(n)  ((ET_leaf_node *)  (n))
-#define CAST_SPLIT(n) ((ET_split_node *) (n))
-
-//
 // --- builder ---
 
 typedef double (*diversity_function) (ET_problem *prob, uint_vec *sample_idxs);
