@@ -4468,7 +4468,10 @@
 [DEBUG]     src/train.c:198  values - min: 1 max: 1
 [DEBUG]     src/train.c:206  constant feature
 [DEBUG]     src/train.c:264  split NOT found. building leaf node ...
-forest dump: 10496 bytes
+forest dump: 7808 bytes
+orig   forest pred: 1.90733
+cloned forest pred: 1.90733
+>>> test: test_double_float
 2.2354e-10 == 2.2354e-10 - buffer used: 8
 2.2354e-10 == 2.2354e-10 - buffer used: 4
 7821334 == 7821334 - buffer used: 4
