@@ -87,6 +87,7 @@ ET_forest *build_forest(ET_problem *prob, ET_params *params);
 void ET_forest_destroy(ET_forest *forest);
 int ET_forest_dump(ET_forest *forest, uchar_vec *buffer);
 double ET_predict(ET_forest *forest, double *vector);
-void ET_print_problem(FILE *f, ET_problem *prob);
+void ET_problem_print(ET_problem *prob, FILE *f);
+void ET_problem_destroy(ET_problem *prob);
 
 # endif 

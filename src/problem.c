@@ -5,7 +5,7 @@
 #include "problem.h"
 
 
-void ET_print_problem(FILE *fout, ET_problem *prob) {
+void ET_problem_print(ET_problem *prob, FILE *fout) {
     fprintf(fout, "problem: samples=%d features=%d\n", prob->n_samples,
                                                        prob->n_features);
     for(uint32_t s = 0; s < prob->n_samples; s++) {
@@ -16,4 +16,9 @@ void ET_print_problem(FILE *fout, ET_problem *prob) {
         }
         fprintf(fout, "\n");
     }
+}
+
+void ET_problem_destroy(ET_problem *prob) {
+    if (prob->labels)  free(prob->labels);
+    if (prob->vectors) free(prob->vectors);
 }
