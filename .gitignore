@@ -5,3 +5,6 @@
 *.o
 *.a
 *.pyc
+python/build
+*.egg-info
+*.so
