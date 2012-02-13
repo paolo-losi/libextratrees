@@ -409,7 +409,7 @@ ET_tree build_tree(tree_builder *tb) {
 }
 
 
-ET_forest *build_forest(ET_problem *prob, ET_params *params) {
+ET_forest *ET_forest_build(ET_problem *prob, ET_params *params) {
     ET_forest *forest = NULL;
     ET_tree tree = NULL;
     tree_builder tb;

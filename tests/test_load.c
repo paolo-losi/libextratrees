@@ -8,7 +8,7 @@ void load_simple_file() {
     test_header();
     ET_problem *prob;
     prob = ET_load_libsvm_file("test1.libsvm");
-    ET_print_problem(stderr, prob);
+    ET_problem_print(prob, stderr);
 }
 
 void load_unexistent_file() {

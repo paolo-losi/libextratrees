@@ -53,7 +53,7 @@ void test_forest_serialization() {
     ET_forest *forest, *forest2;
     uchar_vec buffer;
     unsigned char *mobile_buffer;
-    double vector[] = {3, 1, 1, 6, 6, 2};
+    float vector[] = {3, 1, 1, 6, 6, 2};
 
     kv_init(buffer);
     problem_init(&prob, big_vectors, big_labels);
@@ -63,7 +63,7 @@ void test_forest_serialization() {
     params.number_of_features_tested = 1;
     params.select_features_with_replacement = true;
 
-    forest = build_forest(&prob, &params);
+    forest = ET_forest_build(&prob, &params);
     ET_forest_dump(forest, &buffer);
     fprintf(stderr, "forest dump: %zu bytes\n", kv_size(buffer));
 
@@ -71,8 +71,10 @@ void test_forest_serialization() {
     forest2 = ET_forest_load(&mobile_buffer);
     forest2->params = forest->params; // FIXME
 
-    fprintf(stderr, "orig   forest pred: %g\n", ET_predict(forest, vector));
-    fprintf(stderr, "cloned forest pred: %g\n", ET_predict(forest2, vector));
+    fprintf(stderr, "orig   forest pred: %g\n",
+        ET_forest_predict(forest, vector));
+    fprintf(stderr, "cloned forest pred: %g\n",
+        ET_forest_predict(forest2, vector));
 
     kv_destroy(buffer);
     ET_forest_destroy(forest);

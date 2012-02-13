@@ -3,7 +3,7 @@
 #include "log.h"
 
 
-static double predict_tree(ET_tree tree, double *vector) {
+static double predict_tree(ET_tree tree, float *vector) {
     ET_base_node *node = tree;
 
     while(1) {
@@ -35,7 +35,7 @@ static double predict_tree(ET_tree tree, double *vector) {
     return 0.0;
 }
 
-double ET_predict(ET_forest *forest, double *vector) {
+double ET_forest_predict(ET_forest *forest, float *vector) {
     //TODO classification FIXME
     double mean = 0.0;
     uint32_t n_trees = kv_size(forest->trees);

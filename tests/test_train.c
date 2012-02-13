@@ -31,7 +31,7 @@ void test_leaf() {
     uint32_t seed[] = {0, 0, 0, 0};
 
     problem_init(&prob, small_vectors, small_labels);
-    ET_print_problem(stderr, &prob);
+    ET_problem_print(&prob, stderr);
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
 
@@ -54,7 +54,7 @@ void test_split() {
     uint32_t seed[] = {0, 0, 0, 0};
 
     problem_init(&prob, big_vectors, big_labels);
-    ET_print_problem(stderr, &prob);
+    ET_problem_print(&prob, stderr);
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
 
@@ -75,14 +75,14 @@ void test_forest() {
     ET_forest *forest;
 
     problem_init(&prob, big_vectors, big_labels);
-    ET_print_problem(stderr, &prob);
+    ET_problem_print(&prob, stderr);
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
     params.number_of_trees = 10;
     params.number_of_features_tested = 1;
     params.select_features_with_replacement = true;
 
-    forest = build_forest(&prob, &params);
+    forest = ET_forest_build(&prob, &params);
     ET_forest_destroy(forest);
     free(forest);
 }
