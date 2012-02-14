@@ -12,7 +12,8 @@ def main():
                                            stderr=subprocess.PIPE)
     test_output = sp.stderr.read()
 
-    reference_fname = '%s.out' % test[:-4]
+    test = test[:-4]
+    reference_fname = '%s.out' % test
 
     if not os.path.exists(reference_fname):
         fout = open(reference_fname, 'w')
