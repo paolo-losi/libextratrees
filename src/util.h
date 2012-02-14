@@ -29,6 +29,6 @@ typedef struct {
     bool lower_visited;
 } visit_stack_node;
 
-visit_stack_node *visit_stack_node_new(ET_base_node *node);
+void visit_stack_node_init(visit_stack_node *stack_node, ET_base_node *node);
 
 #endif

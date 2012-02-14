@@ -144,20 +144,19 @@ static ET_base_node *node_load(unsigned char **bufferp) {
 
 
 int ET_tree_dump(ET_tree tree, uchar_vec *buffer) {
-    kvec_t(visit_stack_node *) stack;
+    kvec_t(visit_stack_node) stack;
     visit_stack_node *stack_node;
 
     kv_init(stack);
 
     node_dump(tree, buffer);
     if(IS_SPLIT(tree)) {
-        stack_node = visit_stack_node_new(tree);
-        check_mem(stack_node);
-        kv_push(visit_stack_node *, stack, stack_node);
+        stack_node = (kv_pushp(visit_stack_node, stack));
+        visit_stack_node_init(stack_node, tree);
     }
 
     while (kv_size(stack)) {
-        stack_node = kv_last(stack);
+        stack_node = &kv_last(stack);
         ET_base_node *next_node = NULL;
         if (!stack_node->higher_visited) {
             next_node = stack_node->node->higher_node;
@@ -170,22 +169,16 @@ int ET_tree_dump(ET_tree tree, uchar_vec *buffer) {
         if (next_node) {
             node_dump(next_node, buffer);
             if(IS_SPLIT(next_node)) {
-                visit_stack_node *next_stack_node = NULL;
-                next_stack_node = visit_stack_node_new(next_node);
-                check_mem(next_stack_node);
-                kv_push(visit_stack_node *, stack, next_stack_node);
+                visit_stack_node *next_stack_node;
+                next_stack_node = (kv_pushp(visit_stack_node, stack));
+                visit_stack_node_init(next_stack_node, next_node);
             }
         } else {
             UNUSED(kv_pop(stack));
-            free(stack_node);
         }
     }
     kv_destroy(stack);
     return 0;
-
-    exit:
-    kv_destroy(stack);
-    return -1;
 }
 
 
