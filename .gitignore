@@ -6,5 +6,6 @@
 *.a
 *.pyc
 python/build
+tests/*.exe
 *.egg-info
 *.so
