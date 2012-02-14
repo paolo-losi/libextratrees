@@ -341,6 +341,7 @@ ET_tree build_tree(tree_builder *tb) {
     kv_resize(builder_stack_node, stack, tb->prob->n_samples);
 
     {
+        double diversity = -1;
         uint_vec sample_idxs;
         kv_init(sample_idxs);
         kv_range(uint32_t, sample_idxs, tb->prob->n_samples);
@@ -349,9 +350,12 @@ ET_tree build_tree(tree_builder *tb) {
         curr_snode = ( kv_pushp(builder_stack_node, stack) );
         kv_init(curr_snode->higher_idxs);
         kv_init(curr_snode->lower_idxs);
+
+        diversity = tb->diversity_f(tb->prob, &sample_idxs);
+        log_debug("node diversity for next split: %g", diversity);
         split_problem(tb, &sample_idxs, curr_snode);
         check_mem(curr_snode->node);
-        curr_snode->node->diversity = tb->diversity_f(tb->prob, &sample_idxs);
+        curr_snode->node->diversity = diversity;
         kv_destroy(sample_idxs);
     }
 
@@ -406,6 +410,7 @@ ET_tree build_tree(tree_builder *tb) {
             curr_snode = ( kv_pushp(builder_stack_node, stack) );
             kv_init(curr_snode->higher_idxs);
             kv_init(curr_snode->lower_idxs);
+            log_debug("node diversity for next split: %g", curr_diversity);
             split_problem(tb, curr_sample_idxs, curr_snode);
             check_mem(curr_snode->node);
             curr_snode->node->diversity = curr_diversity;
