@@ -142,38 +142,18 @@ static ET_base_node *node_load(unsigned char **bufferp) {
 
 // --- dump tree ---
 
-// can we make tree navigation generic?
-
-typedef struct {
-    ET_split_node *node;
-    bool higher_visited;
-    bool lower_visited;
-} dump_stack_node;
-
-
-static dump_stack_node *dump_stack_node_new(ET_base_node *node) {
-        dump_stack_node *stack_node = NULL;
-        stack_node = malloc(sizeof(dump_stack_node));
-        check_mem(stack_node);
-        stack_node->node = CAST_SPLIT(node);
-        stack_node->higher_visited = false;
-        stack_node->lower_visited = false;
-        exit:
-        return stack_node;
-}
-
 
 int ET_tree_dump(ET_tree tree, uchar_vec *buffer) {
-    kvec_t(dump_stack_node *) stack;
-    dump_stack_node *stack_node;
+    kvec_t(visit_stack_node *) stack;
+    visit_stack_node *stack_node;
 
     kv_init(stack);
 
     node_dump(tree, buffer);
     if(IS_SPLIT(tree)) {
-        stack_node = dump_stack_node_new(tree);
+        stack_node = visit_stack_node_new(tree);
         check_mem(stack_node);
-        kv_push(dump_stack_node *, stack, stack_node);
+        kv_push(visit_stack_node *, stack, stack_node);
     }
 
     while (kv_size(stack)) {
@@ -190,10 +170,10 @@ int ET_tree_dump(ET_tree tree, uchar_vec *buffer) {
         if (next_node) {
             node_dump(next_node, buffer);
             if(IS_SPLIT(next_node)) {
-                dump_stack_node *next_stack_node = NULL;
-                next_stack_node = dump_stack_node_new(next_node);
+                visit_stack_node *next_stack_node = NULL;
+                next_stack_node = visit_stack_node_new(next_node);
                 check_mem(next_stack_node);
-                kv_push(dump_stack_node *, stack, next_stack_node);
+                kv_push(visit_stack_node *, stack, next_stack_node);
             }
         } else {
             UNUSED(kv_pop(stack));

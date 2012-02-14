@@ -1,5 +1,7 @@
 #include <stdint.h>
 #include "simplerandom.h"
+#include "util.h"
+#include "log.h"
 
 // pick a random integer between [0, max_val)
 uint32_t random_int(SimpleRandomKISS2_t *rnd, uint32_t max_val) {
@@ -15,3 +17,15 @@ double random_double(SimpleRandomKISS2_t *rnd) {
     uint32_t i = simplerandom_kiss2_next(rnd);
     return i * 2.3283064365386963e-10;
 }
+
+visit_stack_node *visit_stack_node_new(ET_base_node *node) {
+        visit_stack_node *stack_node = NULL;
+        stack_node = malloc(sizeof(visit_stack_node));
+        check_mem(stack_node);
+        stack_node->node = CAST_SPLIT(node);
+        stack_node->higher_visited = false;
+        stack_node->lower_visited = false;
+        exit:
+        return stack_node;
+}
+
