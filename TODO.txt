@@ -1,5 +1,4 @@
 FEATURE      prediction
-                - semplice
                 - vicini
                 - curtailment
 FIX          gestire i casi:
@@ -8,6 +7,7 @@ FIX          gestire i casi:
                   (potrebbe essere per problemi numerici)
 FEATURE      serializzazione
                 - conversione albero -> kvec_t(unsigned char) (uno ad uno)
+                - aggancio a python
 FEATURE      cross validation
                 - shuffle
                 - stratified
@@ -23,6 +23,7 @@ FEATURE      implementare classification (gini diversity)
 FEATURE      implementare with replacement:
                 - ipotesi tree_builder deve contenere il ratio
 FEATURE      categorical features
+FEATURE      "adaptive" feature subset selection
 OPTIM        mantenere vettore di features costanti
 OPTIM        eliminare recursion ovunque
 REFACTORING  review api pubblica/headers etc.etc
