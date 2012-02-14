@@ -55,6 +55,7 @@ typedef struct ET_params {
 
 typedef struct ET_base_node {
     char type;
+    double diversity;
 } ET_base_node;
 
 typedef struct ET_split_node {

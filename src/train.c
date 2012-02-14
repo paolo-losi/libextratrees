@@ -18,6 +18,8 @@ typedef struct {
     ET_base_node *node;
     uint_vec higher_idxs;
     uint_vec lower_idxs;
+    double higher_diversity;
+    double lower_diversity;
 } builder_stack_node;
 
 
@@ -232,6 +234,8 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
                 best_diversity = diversity;
                 kv_copy(uint32_t, stack_node->higher_idxs, higher_idxs);
                 kv_copy(uint32_t, stack_node->lower_idxs,  lower_idxs);
+                stack_node->higher_diversity = higher_diversity;
+                stack_node->lower_diversity = lower_diversity;
             }
 
             if (diversity == 0) {
@@ -347,12 +351,14 @@ ET_tree build_tree(tree_builder *tb) {
         kv_init(curr_snode->lower_idxs);
         split_problem(tb, &sample_idxs, curr_snode);
         check_mem(curr_snode->node);
+        curr_snode->node->diversity = tb->diversity_f(tb->prob, &sample_idxs);
         kv_destroy(sample_idxs);
     }
 
     while (kv_size(stack) > 0) {
         bool link_to_parent_required = false;
         uint_vec *curr_sample_idxs = NULL;
+        double curr_diversity = -1;
         curr_snode = &kv_last(stack);
 
         if (IS_SPLIT(curr_snode->node)) {
@@ -360,8 +366,10 @@ ET_tree build_tree(tree_builder *tb) {
 
             if (sn->higher_node == NULL) {
                 curr_sample_idxs = &curr_snode->higher_idxs;
+                curr_diversity = curr_snode->higher_diversity;
             } else if (sn->lower_node == NULL) {
                 curr_sample_idxs = &curr_snode->lower_idxs;
+                curr_diversity = curr_snode->lower_diversity;
             } else {
                 link_to_parent_required = true;
             }
@@ -400,6 +408,7 @@ ET_tree build_tree(tree_builder *tb) {
             kv_init(curr_snode->lower_idxs);
             split_problem(tb, curr_sample_idxs, curr_snode);
             check_mem(curr_snode->node);
+            curr_snode->node->diversity = curr_diversity;
         }
     }
 
