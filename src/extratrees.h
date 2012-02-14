@@ -78,6 +78,8 @@ typedef ET_base_node *ET_tree;
 typedef struct {
     kvec_t(ET_tree) trees;
     ET_params params;
+    uint32_t n_features;
+    uint32_t n_samples;
 } ET_forest;
 
 

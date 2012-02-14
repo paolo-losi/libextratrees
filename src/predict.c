@@ -47,3 +47,43 @@ double ET_forest_predict(ET_forest *forest, float *vector) {
 
     return mean / n_trees;
 }
+
+void node_diversity(ET_base_node *node, double_vec *diversity_reduction) {
+    if (IS_SPLIT(node)) {
+        double curr_reduction;
+        ET_split_node *sn = CAST_SPLIT(node);
+        curr_reduction = node->diversity - sn->higher_node->diversity
+                                         - sn->lower_node->diversity;
+        kv_A(*diversity_reduction, sn->feature_id) += curr_reduction;
+    }
+}
+
+double_vec *ET_forest_variable_importance(ET_forest *forest) {
+    double_vec *diversity_reduction = NULL;
+
+    diversity_reduction = malloc(sizeof(double_vec));
+    check_mem(diversity_reduction);
+
+    kv_init(*diversity_reduction);
+    kv_resize(double, *diversity_reduction, forest->n_features);
+    for(uint32_t i = 0; i < forest->n_features; i++) {
+        kv_A(*diversity_reduction, i) = 0;
+    }
+
+    for(uint32_t i = 0; i < forest->params.number_of_trees; i++) {
+        tree_navigate(kv_A(forest->trees, i),
+                      (node_processor) node_diversity,
+                      diversity_reduction);
+    }
+
+    for(uint32_t i = 0; i < forest->n_features; i++) {
+        ET_tree tree = kv_A(forest->trees, 0);
+        double den = forest->params.number_of_trees * tree->diversity;
+        kv_A(*diversity_reduction, i) /= den;
+    }
+
+    exit:
+    return diversity_reduction;
+}
+
+

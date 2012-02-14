@@ -433,6 +433,8 @@ ET_forest *ET_forest_build(ET_problem *prob, ET_params *params) {
     forest = malloc(sizeof(ET_forest));
     check_mem(forest);
     forest->params = *params;
+    forest->n_samples  = prob->n_samples;
+    forest->n_features = prob->n_features;
     kv_init(forest->trees);
     check_mem(! tree_builder_init(&tb, prob, params, seed) );
 
