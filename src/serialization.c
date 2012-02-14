@@ -143,42 +143,8 @@ static ET_base_node *node_load(unsigned char **bufferp) {
 // --- dump tree ---
 
 
-int ET_tree_dump(ET_tree tree, uchar_vec *buffer) {
-    kvec_t(visit_stack_node) stack;
-    visit_stack_node *stack_node;
-
-    kv_init(stack);
-
-    node_dump(tree, buffer);
-    if(IS_SPLIT(tree)) {
-        stack_node = (kv_pushp(visit_stack_node, stack));
-        visit_stack_node_init(stack_node, tree);
-    }
-
-    while (kv_size(stack)) {
-        stack_node = &kv_last(stack);
-        ET_base_node *next_node = NULL;
-        if (!stack_node->higher_visited) {
-            next_node = stack_node->node->higher_node;
-            stack_node->higher_visited = true;
-        } else if (!stack_node->lower_visited) {
-            next_node = stack_node->node->lower_node;
-            stack_node->lower_visited = true;
-        }
-
-        if (next_node) {
-            node_dump(next_node, buffer);
-            if(IS_SPLIT(next_node)) {
-                visit_stack_node *next_stack_node;
-                next_stack_node = (kv_pushp(visit_stack_node, stack));
-                visit_stack_node_init(next_stack_node, next_node);
-            }
-        } else {
-            UNUSED(kv_pop(stack));
-        }
-    }
-    kv_destroy(stack);
-    return 0;
+void ET_tree_dump(ET_tree tree, uchar_vec *buffer) {
+    tree_navigate(tree, (node_processor) node_dump, buffer);
 }
 
 
@@ -225,7 +191,7 @@ ET_tree ET_tree_load(unsigned char **bufferp) {
 // --- dump / load forest ---
 
 
-int ET_forest_dump(ET_forest *forest, uchar_vec *buffer) {
+void ET_forest_dump(ET_forest *forest, uchar_vec *buffer) {
     uint32_t size = (uint32_t) kv_size(forest->trees);
 
     //FIXME dump parameters
@@ -233,12 +199,8 @@ int ET_forest_dump(ET_forest *forest, uchar_vec *buffer) {
     dump_uint32(size, buffer);
     
     for(uint32_t i = 0; i < size; i++) {
-        int ret = ET_tree_dump(kv_A(forest->trees, i), buffer);
-        check_mem(!ret);
+        ET_tree_dump(kv_A(forest->trees, i), buffer);
     }
-    return 0;
-    exit:
-    return -1;
 }
 
 ET_forest *ET_forest_load(unsigned char **bufferp) {
