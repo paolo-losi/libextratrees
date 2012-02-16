@@ -58,7 +58,7 @@ void node_diversity(ET_base_node *node, double_vec *diversity_reduction) {
     }
 }
 
-double_vec *ET_forest_variable_importance(ET_forest *forest) {
+double_vec *ET_forest_feature_importance(ET_forest *forest) {
     double_vec *diversity_reduction = NULL;
 
     diversity_reduction = malloc(sizeof(double_vec));

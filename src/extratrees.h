@@ -87,6 +87,7 @@ typedef struct {
 
 ET_problem *ET_load_libsvm_file(char *fname);
 ET_forest *ET_forest_build(ET_problem *prob, ET_params *params);
+double_vec *ET_forest_feature_importance(ET_forest *forest);
 void ET_forest_destroy(ET_forest *forest);
 void ET_forest_dump(ET_forest *forest, uchar_vec *buffer);
 double ET_forest_predict(ET_forest *forest, float *vector);
