@@ -4,6 +4,7 @@
 # include <stdint.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <math.h>
 # include "kvec.h"
 
 typedef kvec_t(uint32_t) uint_vec;
@@ -31,7 +32,7 @@ typedef struct ET_params {
 } ET_params;
 
 
-# define EXTRA_TREE_DEFAULT_CLASS_PARAMS(prob, params) do {              \
+# define EXTRA_TREE_DEFAULT_CLASSIF_PARAMS(prob, params) do {            \
     (params).number_of_features_tested = ceil(sqrt((prob).n_features));  \
     (params).number_of_trees           = 100;                            \
     (params).regression                = false;                          \

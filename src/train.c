@@ -6,6 +6,7 @@
 #include "util.h"
 #include "problem.h"
 #include "log.h"
+#include "kal.h"
 
 
 #define FOR_SAMPLE_IDX_IN(sample_idxs, body)                                \
@@ -83,11 +84,46 @@ void split_on_threshold(ET_problem *prob, uint32_t feature_idx,
 }
 
 
+typedef struct {
+    double key;
+    uint32_t value;
+} class_counter_elm;
+
+
 double classification_diversity(ET_problem *prob, uint_vec *sample_idxs) {
-    // FIXME implement it!
-    UNUSED(prob);
-    UNUSED(sample_idxs);
-    return 0.0;
+    double n_samples = kv_size(*sample_idxs);
+    double gini_diversity = 0.0;
+    kvec_t(class_counter_elm) class_counter;
+
+    kv_init(class_counter);
+    
+    FOR_SAMPLE_IDX_IN(*sample_idxs, {
+        class_counter_elm *countp;
+
+        double label = prob->labels[sample_idx];
+        kal_getp(class_counter, label, countp);
+        if (countp) {
+            countp->value += 1;
+        } else {
+            kv_push(class_counter_elm,
+                    class_counter,
+                    ((class_counter_elm) { label, 1 }));
+        }
+    });
+
+    log_debug("class counter:");
+    for(size_t i = 0; i < kv_size(class_counter); i++) {
+        double class;
+        uint32_t count;
+        class = kv_A(class_counter, i).key;
+        count = kv_A(class_counter, i).value;
+
+        log_debug("    > class: %g count:%d", class, count);
+
+        gini_diversity += count * (1.0 - count / n_samples);
+    }
+    log_debug("gini index: %g", gini_diversity / n_samples);
+    return gini_diversity;
 }
 
 
@@ -102,7 +138,7 @@ double regression_diversity(ET_problem *prob, uint_vec *sample_idxs) {
         mean += label;
         count++;
     });
-    mean  /= count;
+    mean /= count;
 
     FOR_SAMPLE_IDX_IN(*sample_idxs, {
         double label = prob->labels[sample_idx];

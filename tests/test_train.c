@@ -44,7 +44,7 @@ void test_leaf() {
 }
 
 
-void test_split() {
+void test_split_regression() {
     test_header();
 
     ET_problem prob;
@@ -57,6 +57,29 @@ void test_split() {
     ET_problem_print(&prob, stderr);
 
     EXTRA_TREE_DEFAULT_REGR_PARAMS(prob, params);
+
+    check_mem( !tree_builder_init(&tb, &prob, &params, seed) );
+    tree = build_tree(&tb);
+
+    exit:
+    tree_builder_destroy(&tb);
+    tree_destroy(tree);
+}
+
+
+void test_split_classification() {
+    test_header();
+
+    ET_problem prob;
+    ET_params params;
+    ET_tree tree;
+    tree_builder tb;
+    uint32_t seed[] = {0, 0, 0, 0};
+
+    problem_init(&prob, big_vectors, big_labels);
+    ET_problem_print(&prob, stderr);
+
+    EXTRA_TREE_DEFAULT_CLASSIF_PARAMS(prob, params);
 
     check_mem( !tree_builder_init(&tb, &prob, &params, seed) );
     tree = build_tree(&tb);
@@ -90,7 +113,8 @@ void test_forest() {
 
 int main() {
     test_leaf();
-    test_split();
+    test_split_classification();
+    test_split_regression();
     test_forest();
     return 0;
 }
