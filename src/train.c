@@ -235,10 +235,6 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
             mm = get_feature_min_max(prob, sample_idxs, feature_idx);
             log_debug("values - min: %g max: %g", mm.min, mm.max);
             if (mm.min == mm.max) {
-                // FIXME are the following two lines correct?
-                // the alternative would be counting all non-constant features
-                // and selecting a percentage (e.g 50%, 200%) of non-constant
-                // features when params.select_features_with_replacement == 1.
                 if (with_replacement)
                     nb_features_to_test--;
                 log_debug("constant feature");
