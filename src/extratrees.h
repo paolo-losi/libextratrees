@@ -102,8 +102,10 @@ ET_forest *ET_forest_build(ET_problem *prob, ET_params *params);
 double_vec *ET_forest_feature_importance(ET_forest *forest);
 void ET_forest_destroy(ET_forest *forest);
 void ET_forest_dump(ET_forest *forest, uchar_vec *buffer);
-double ET_forest_predict(ET_forest *forest, float *vector);
 void ET_problem_print(ET_problem *prob, FILE *f);
 void ET_problem_destroy(ET_problem *prob);
 
+double ET_forest_predict(ET_forest *forest, float *vector);
+double ET_forest_predict_regression(ET_forest *forest, float *v,
+                                    uint32_t curtail_min_size);
 # endif 

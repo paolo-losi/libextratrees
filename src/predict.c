@@ -76,6 +76,7 @@ neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
                                           uint32_t curtail_min_size) {
     uint_vec **neigh_detail;
     neighbour_weight_vec *nwvec;
+    size_t n_trees = kv_size(forest->trees);
 
     nwvec = malloc(sizeof(neighbour_weight_vec));
     check_mem(nwvec);
@@ -84,9 +85,9 @@ neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
     neigh_detail = forest_neighbors_detail(forest, vector, curtail_min_size);
     check_mem(neigh_detail);
 
-    for(size_t i = 0; i < kv_size(forest->trees); i++) {
+    for(size_t i = 0; i < n_trees; i++) {
         uint_vec *tree_neighs = neigh_detail[i];
-        double incr = 1.0 / (double) kv_size(*tree_neighs);
+        double incr = 1.0 / (double) (kv_size(*tree_neighs) * n_trees);
 
         for(size_t j = 0; j < kv_size(*tree_neighs); j++) {
             neighbour_weight *nw = NULL;
@@ -122,6 +123,7 @@ double ET_forest_predict_regression(ET_forest *forest,
         neighbour_weight nw = kv_A(*nwvec, i);
         double weight = nw.weight;
         uint32_t sample_index = nw.key;
+        log_debug("sample_idx: %d weight: %g", sample_index, weight);
         double val = forest->labels[sample_index];
 
         num += val * weight;

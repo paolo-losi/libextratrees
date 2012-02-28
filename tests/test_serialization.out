@@ -18,11 +18,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.21
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.21
@@ -53,11 +53,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.5026
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.5026
@@ -69,8 +69,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 5
 [DEBUG]     src/train.c:246  threshold: 4.47536
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -89,9 +89,9 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.86769
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.86769
@@ -103,8 +103,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 6 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.60805
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -127,11 +127,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 4.60494
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.66667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 4.60494
@@ -146,9 +146,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.56006
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.56006
@@ -160,8 +160,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 2 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.47723
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -184,11 +184,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 2.3432
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.3432
@@ -200,10 +200,10 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.68703
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 6.68703
@@ -231,11 +231,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.16587
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.16587
@@ -260,11 +260,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.9782
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.9782
@@ -276,8 +276,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.0494
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -296,9 +296,9 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.30878
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.30878
@@ -323,11 +323,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.68865
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.68865
@@ -342,10 +342,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.33909
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.33909
@@ -360,9 +360,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.87974
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 6.87974
@@ -387,11 +387,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.88251
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.88251
@@ -412,9 +412,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.47082
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.47082
@@ -429,8 +429,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.18357
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -450,11 +450,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.60125
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.60125
@@ -469,10 +469,10 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.89901
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.89901
@@ -497,11 +497,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.420718
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.420718
@@ -513,10 +513,10 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 8
 [DEBUG]     src/train.c:246  threshold: 4.00174
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 4.00174
@@ -531,8 +531,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 2 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.81494
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -555,11 +555,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.419215
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.419215
@@ -571,10 +571,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 1.91382
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.91382
@@ -586,9 +586,9 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 1 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.55189
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.55189
@@ -619,11 +619,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.14002
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.14002
@@ -644,9 +644,9 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.62376
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.62376
@@ -658,8 +658,8 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.14553
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -682,11 +682,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.955
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.955
@@ -698,9 +698,9 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.37107
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.37107
@@ -715,8 +715,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.36285
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -735,8 +735,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 1.24602
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -756,11 +756,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.67111
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 6.67111
@@ -775,10 +775,10 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.34399
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.34399
@@ -793,9 +793,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.95318
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -815,11 +815,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.87483
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.87483
@@ -831,8 +831,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 6 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.64722
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -851,9 +851,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 1.70545
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 1.70545
@@ -878,11 +878,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.51169
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.51169
@@ -907,11 +907,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.11349
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.11349
@@ -926,10 +926,10 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 3.69032
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -949,11 +949,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 1.89913
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.89913
@@ -965,9 +965,9 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.63163
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.63163
@@ -982,8 +982,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.69393
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1012,11 +1012,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.20801
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 6.20801
@@ -1031,10 +1031,10 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.75071
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.75071
@@ -1069,11 +1069,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.25534
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.25534
@@ -1098,11 +1098,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.000407199
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.000407199
@@ -1114,10 +1114,10 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 4.62731
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 4.62731
@@ -1129,9 +1129,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.11739
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 4.11739
@@ -1146,8 +1146,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.2181
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1173,11 +1173,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.34685
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.34685
@@ -1192,10 +1192,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.08093
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.08093
@@ -1210,9 +1210,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 4
 [DEBUG]     src/train.c:246  threshold: 1.43823
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.43823
@@ -1237,11 +1237,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 7.56436
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 7.56436
@@ -1266,11 +1266,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.58556
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.58556
@@ -1315,11 +1315,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.81647
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.81647
@@ -1334,10 +1334,10 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.51292
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.51292
@@ -1349,8 +1349,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.76926
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1369,8 +1369,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 5
 [DEBUG]     src/train.c:246  threshold: 4.49616
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 4, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1390,11 +1390,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.93163
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.93163
@@ -1415,9 +1415,9 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 5
 [DEBUG]     src/train.c:246  threshold: 4.18468
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 4, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1437,11 +1437,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.41087
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 6.41087
@@ -1456,10 +1456,10 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.6313
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.6313
@@ -1474,9 +1474,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.74321
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.74321
@@ -1501,11 +1501,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.03146
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.03146
@@ -1517,8 +1517,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 6 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.18032
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1537,9 +1537,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 5.20906
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1569,11 +1569,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.12584
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.12584
@@ -1588,10 +1588,10 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.34716
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.34716
@@ -1606,9 +1606,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.24556
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.24556
@@ -1623,8 +1623,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 1
 [DEBUG]     src/train.c:246  threshold: 0.519085
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1644,11 +1644,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.30505
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.30505
@@ -1660,8 +1660,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.87961
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1680,9 +1680,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.43337
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.43337
@@ -1717,11 +1717,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.82701
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 6.82701
@@ -1736,10 +1736,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.06928
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.06928
@@ -1754,9 +1754,9 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.36848
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.36848
@@ -1781,11 +1781,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 2.29784
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.29784
@@ -1797,10 +1797,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.8962
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 2.8962
@@ -1821,8 +1821,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 6 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.47264
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1845,11 +1845,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.84601
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.84601
@@ -1880,11 +1880,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.30828
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.30828
@@ -1905,9 +1905,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 2.21113
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.21113
@@ -1919,8 +1919,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 5
 [DEBUG]     src/train.c:246  threshold: 4.48348
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -1943,11 +1943,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.15065
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.15065
@@ -1962,10 +1962,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.18891
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 5.18891
@@ -1980,9 +1980,9 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.1984
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 4, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 4.1984
@@ -1994,8 +1994,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.77786
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2018,11 +2018,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.40761
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.40761
@@ -2047,11 +2047,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.28102
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.28102
@@ -2066,10 +2066,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.29985
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 2.29985
@@ -2090,8 +2090,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.28802
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2111,11 +2111,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.42095
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.42095
@@ -2130,10 +2130,10 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 7.19636
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 7.19636
@@ -2148,9 +2148,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.68831
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2170,11 +2170,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.01046
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.01046
@@ -2189,10 +2189,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.42827
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 2.42827
@@ -2204,8 +2204,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 5
 [DEBUG]     src/train.c:246  threshold: 4.36563
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2244,11 +2244,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.52188
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.52188
@@ -2260,8 +2260,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 8
 [DEBUG]     src/train.c:246  threshold: 4.69918
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2280,9 +2280,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.1387
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 5.1387
@@ -2297,8 +2297,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.19644
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2328,11 +2328,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.65338
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.65338
@@ -2347,10 +2347,10 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.170461
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.170461
@@ -2375,11 +2375,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 2.90951
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.90951
@@ -2391,10 +2391,10 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 1 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.10719
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.10719
@@ -2406,8 +2406,8 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.15543
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2426,8 +2426,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.39187
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2450,11 +2450,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.39852
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.39852
@@ -2479,11 +2479,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.84969
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.84969
@@ -2495,9 +2495,9 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.94325
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.94325
@@ -2512,8 +2512,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.19819
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2532,8 +2532,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 1
 [DEBUG]     src/train.c:246  threshold: 0.608176
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2553,11 +2553,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.08769
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 2.08769
@@ -2569,8 +2569,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.04467
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2589,9 +2589,9 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.4442
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.4442
@@ -2616,11 +2616,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 1.10415
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.10415
@@ -2632,9 +2632,9 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.62882
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.62882
@@ -2668,11 +2668,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.08573
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.08573
@@ -2684,8 +2684,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.63035
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2704,9 +2704,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.97039
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.97039
@@ -2718,8 +2718,8 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.66584
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2742,11 +2742,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 2.18626
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.18626
@@ -2771,11 +2771,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 4.88262
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 4, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 4.88262
@@ -2787,10 +2787,10 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 1.64214
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 1.64214
@@ -2802,9 +2802,9 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.11621
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.11621
@@ -2816,8 +2816,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 6 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.14272
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2846,11 +2846,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.68892
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 6.68892
@@ -2865,10 +2865,10 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.89883
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 2.89883
@@ -2880,9 +2880,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.65053
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 5.65053
@@ -2897,8 +2897,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.86257
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -2931,11 +2931,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 7.04668
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 7.04668
@@ -2950,10 +2950,10 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.393407
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.393407
@@ -2978,11 +2978,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 5.81678
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.66667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 5.81678
@@ -2997,9 +2997,9 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.65259
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3019,11 +3019,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.13633
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 5.13633
@@ -3038,10 +3038,10 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.447595
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.447595
@@ -3066,11 +3066,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 4.35823
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.66667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 4.35823
@@ -3085,9 +3085,9 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.393263
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.393263
@@ -3132,11 +3132,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.44676
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.44676
@@ -3148,8 +3148,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 8
 [DEBUG]     src/train.c:246  threshold: 5.72434
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3178,11 +3178,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 5.99975
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.66667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 5.99975
@@ -3197,9 +3197,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.21286
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.21286
@@ -3214,8 +3214,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.91463
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3235,11 +3235,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.29026
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.29026
@@ -3260,9 +3260,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.93694
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 2.93694
@@ -3274,8 +3274,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.45742
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3298,11 +3298,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.67409
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.67409
@@ -3317,10 +3317,10 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.04512
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.04512
@@ -3335,9 +3335,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 4.12651
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3357,11 +3357,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.79868
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.79868
@@ -3376,10 +3376,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.22802
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.22802
@@ -3391,8 +3391,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.45032
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3411,8 +3411,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.1982
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3432,11 +3432,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.16999
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.16999
@@ -3448,8 +3448,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 6 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.10455
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3468,9 +3468,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.13916
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.13916
@@ -3482,8 +3482,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.40699
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3506,11 +3506,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 4.70514
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.66667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 4.70514
@@ -3525,9 +3525,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.94472
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 1.94472
@@ -3539,8 +3539,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.02999
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3563,11 +3563,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.81492
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.81492
@@ -3588,9 +3588,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 5.72871
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3610,11 +3610,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 4.95017
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 4, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 4.95017
@@ -3626,10 +3626,10 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.79591
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.79591
@@ -3641,9 +3641,9 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.46109
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.46109
@@ -3658,8 +3658,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.51138
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3685,11 +3685,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.73834
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.73834
@@ -3701,8 +3701,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.6413
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3721,9 +3721,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 5.55509
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3743,11 +3743,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.64195
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.64195
@@ -3762,10 +3762,10 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.34659
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.34659
@@ -3780,9 +3780,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.49085
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.49085
@@ -3794,8 +3794,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.98631
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3818,11 +3818,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.15923
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.15923
@@ -3834,9 +3834,9 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.57345
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 4.57345
@@ -3851,8 +3851,8 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.50502
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3871,8 +3871,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 7.46072
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -3892,11 +3892,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.45026
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 5.45026
@@ -3921,11 +3921,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 4.44549
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 4, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 4.44549
@@ -3950,11 +3950,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 1.19154
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 1.19154
@@ -3979,11 +3979,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.44511
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.44511
@@ -3998,10 +3998,10 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.6282
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.6282
@@ -4016,9 +4016,9 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.55015
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.55015
@@ -4033,8 +4033,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 1
 [DEBUG]     src/train.c:246  threshold: 0.95754
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4054,11 +4054,11 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 6.4371
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 6.4371
@@ -4073,10 +4073,10 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.48808
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.48808
@@ -4091,9 +4091,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.83782
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.83782
@@ -4108,8 +4108,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.07627
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4129,11 +4129,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 2.84154
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 2.84154
@@ -4145,8 +4145,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.43031
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4165,9 +4165,9 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.04147
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.04147
@@ -4192,11 +4192,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 3.90245
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.90245
@@ -4208,8 +4208,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.54662
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4228,9 +4228,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.03744
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.03744
@@ -4255,11 +4255,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.58773
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.58773
@@ -4284,11 +4284,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.94348
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.94348
@@ -4300,9 +4300,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 1.93588
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.93588
@@ -4314,8 +4314,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.09331
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4337,8 +4337,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 1
 [DEBUG]     src/train.c:246  threshold: 0.20678
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4358,11 +4358,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 4.41879
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 4, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2.75
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 4.41879
@@ -4374,10 +4374,10 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 5 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.74882
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.74882
@@ -4405,11 +4405,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.83609
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.83609
@@ -4424,10 +4424,10 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 7.81478
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 4, threshold: 7.81478
@@ -4452,11 +4452,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.66075
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.66075
@@ -4471,10 +4471,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.02486
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 5.02486
@@ -4489,9 +4489,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 4
 [DEBUG]     src/train.c:246  threshold: 3.61208
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 3.61208
@@ -4516,11 +4516,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.975406
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.975406
@@ -4532,10 +4532,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 1.45565
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.45565
@@ -4547,9 +4547,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 2 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.97682
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.97682
@@ -4564,8 +4564,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 2 max: 4
 [DEBUG]     src/train.c:246  threshold: 3.59393
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4591,11 +4591,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 5.88927
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 5.88927
@@ -4610,10 +4610,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 4
 [DEBUG]     src/train.c:246  threshold: 1.41883
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.41883
@@ -4625,8 +4625,8 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.67579
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4645,8 +4645,8 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.736443
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4666,11 +4666,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.80982
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 2.80982
@@ -4682,8 +4682,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 3 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.3809
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 3 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4712,11 +4712,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.98479
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 6.98479
@@ -4731,10 +4731,10 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.05226
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 5 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 4, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0.666667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 4.05226
@@ -4769,11 +4769,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.73271
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.73271
@@ -4785,8 +4785,8 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 6 max: 7
 [DEBUG]     src/train.c:246  threshold: 6.73734
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 6 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4805,9 +4805,9 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 2
 [DEBUG]     src/train.c:246  threshold: 1.27246
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.27246
@@ -4822,8 +4822,8 @@
 [DEBUG]     src/train.c:230  feature index: 4
 [DEBUG]     src/train.c:234  values - min: 1 max: 8
 [DEBUG]     src/train.c:246  threshold: 2.57482
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 8 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 8 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -4843,11 +4843,11 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.99791
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 2 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 5, threshold: 2.99791
@@ -4872,11 +4872,11 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 0 max: 3
 [DEBUG]     src/train.c:246  threshold: 0.911301
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 1 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 3 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 0 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 0 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 0.911301
@@ -4888,10 +4888,10 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 1.14757
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 1.14757
@@ -4903,9 +4903,9 @@
 [DEBUG]     src/train.c:230  feature index: 0
 [DEBUG]     src/train.c:234  values - min: 1 max: 3
 [DEBUG]     src/train.c:246  threshold: 1.90148
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 2 -> higher
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 2 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 0, threshold: 1.90148
@@ -4936,11 +4936,11 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.69392
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 1 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 3, val: 2 -> lower
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 2
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.69392
@@ -4965,11 +4965,11 @@
 [DEBUG]     src/train.c:230  feature index: 3
 [DEBUG]     src/train.c:234  values - min: 4 max: 7
 [DEBUG]     src/train.c:246  threshold: 5.3605
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 1, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 2, val: 5 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 7 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 5 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 7 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 5 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 1.16667
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 3, threshold: 5.3605
@@ -4981,8 +4981,8 @@
 [DEBUG]     src/train.c:230  feature index: 5
 [DEBUG]     src/train.c:234  values - min: 2 max: 3
 [DEBUG]     src/train.c:246  threshold: 2.41829
-[DEBUG]     src/train.c:75   sample_idx: 1, val: 2 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 3, val: 3 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 1, val: 2 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 3, val: 3 -> higher
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -5001,9 +5001,9 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 6
 [DEBUG]     src/train.c:246  threshold: 4.62138
-[DEBUG]     src/train.c:75   sample_idx: 0, val: 4 -> lower
-[DEBUG]     src/train.c:78   sample_idx: 2, val: 6 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 2, val: 6 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0.5
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:286  split found. feature_idx: 1, threshold: 4.62138
@@ -5018,8 +5018,8 @@
 [DEBUG]     src/train.c:230  feature index: 1
 [DEBUG]     src/train.c:234  values - min: 1 max: 4
 [DEBUG]     src/train.c:246  threshold: 2.28609
-[DEBUG]     src/train.c:78   sample_idx: 0, val: 4 -> higher
-[DEBUG]     src/train.c:75   sample_idx: 4, val: 1 -> lower
+[DEBUG]     src/train.c:81   sample_idx: 0, val: 4 -> higher
+[DEBUG]     src/train.c:81   sample_idx: 4, val: 1 -> lower
 [DEBUG]     src/train.c:257  regr diversity: 0
 [DEBUG]     src/train.c:261  diversity is new best
 [DEBUG]     src/train.c:272  diversity == 0
@@ -5041,7 +5041,17 @@
 [DEBUG]     src/train.c:238  constant feature
 [DEBUG]     src/train.c:299  split NOT found. building leaf node ...
 forest dump: 12748 bytes
+[DEBUG]   src/predict.c:126  sample_idx: 0 weight: 0.0976667
+[DEBUG]   src/predict.c:126  sample_idx: 1 weight: 0.606
+[DEBUG]   src/predict.c:126  sample_idx: 2 weight: 0.0735
+[DEBUG]   src/predict.c:126  sample_idx: 3 weight: 0.101833
+[DEBUG]   src/predict.c:126  sample_idx: 4 weight: 0.121
 orig   forest pred: 1.90733
+[DEBUG]   src/predict.c:126  sample_idx: 0 weight: 0.0976667
+[DEBUG]   src/predict.c:126  sample_idx: 1 weight: 0.606
+[DEBUG]   src/predict.c:126  sample_idx: 2 weight: 0.0735
+[DEBUG]   src/predict.c:126  sample_idx: 3 weight: 0.101833
+[DEBUG]   src/predict.c:126  sample_idx: 4 weight: 0.121
 cloned forest pred: 1.90733
 >>> test: test_double_float
 2.2354e-10 == 2.2354e-10 - buffer used: 8

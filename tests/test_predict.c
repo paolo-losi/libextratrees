@@ -16,7 +16,7 @@ void test_predict() {
     ET_forest *forest;
     float vector1[3] = {3, 4, 4};
     float vector2[3] = {2, 1, 1};
-    double prediction1, prediction2;
+    double prediction1, prediction2, prediction3, prediction4;
 
     problem_init(&prob, vectors, labels);
     ET_problem_print(&prob, stderr);
@@ -29,9 +29,16 @@ void test_predict() {
     forest = ET_forest_build(&prob, &params);
 
     prediction1 = ET_forest_predict(forest, vector1);
-    prediction2 = ET_forest_predict(forest, vector2);
     fprintf(stderr, "prediction vector1: %g\n", prediction1);
+
+    prediction2 = ET_forest_predict(forest, vector2);
     fprintf(stderr, "prediction vector2: %g\n", prediction2);
+
+    prediction3 = ET_forest_predict_regression(forest, vector1, 5);
+    fprintf(stderr, "prediction vector1 (curtail=5): %g\n", prediction3);
+
+    prediction4 = ET_forest_predict_regression(forest, vector2, 5);
+    fprintf(stderr, "prediction vector2 (curtail=5): %g\n", prediction4);
 
     ET_forest_destroy(forest);
     free(forest);
