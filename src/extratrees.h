@@ -56,6 +56,7 @@ typedef struct ET_params {
 
 typedef struct ET_base_node {
     char type;
+    uint32_t n_samples;
     double diversity;
 } ET_base_node;
 
@@ -68,8 +69,7 @@ typedef struct ET_split_node {
 
 typedef struct ET_leaf_node {
     ET_base_node base;
-    double_vec labels;
-    //TODO kvec_t(int) sample_idx;
+    uint_vec indexes;
 } ET_leaf_node;
 
 typedef ET_base_node *ET_tree;
@@ -81,7 +81,18 @@ typedef struct {
     ET_params params;
     uint32_t n_features;
     uint32_t n_samples;
+    double *labels;
 } ET_forest;
+
+
+// --- predict types ---
+
+typedef struct {
+    uint32_t key;
+    double weight;
+} neighbour_weight;
+
+typedef kvec_t(neighbour_weight) neighbour_weight_vec;
 
 
 // --- functions ---

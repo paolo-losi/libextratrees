@@ -24,18 +24,16 @@ typedef struct {
 } builder_stack_node;
 
 
-ET_leaf_node *new_leaf_node(ET_problem *prob, uint_vec *sample_idxs) {
+ET_leaf_node *new_leaf_node(uint_vec *sample_idxs) {
     ET_leaf_node *ln = NULL;
     ln = malloc(sizeof(ET_leaf_node));
     check_mem(ln);
 
     ln->base.type = ET_LEAF_NODE;
 
-    kv_init(ln->labels);
-    FOR_SAMPLE_IDX_IN(*sample_idxs, {
-        double label = prob->labels[sample_idx];
-        kv_push(double, ln->labels, label);
-    });
+    kv_init(ln->indexes);
+    kv_copy(uint32_t, ln->indexes, *sample_idxs);
+    ln->base.n_samples = kv_size(*sample_idxs);
 
     exit:
     return ln;
@@ -170,7 +168,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         log_debug("min size (%d) reached. current sample size: %zu", 
                                                     tb->params.min_split_size,
                                                     kv_size(*sample_idxs));
-        node = (ET_base_node *) new_leaf_node(prob, sample_idxs);
+        node = (ET_base_node *) new_leaf_node(sample_idxs);
         goto exit;
     }
 
@@ -191,7 +189,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
     // if labels are constant return leaf node
     if(labels_are_constant) {
         log_debug("labels are constant. generating leaf node ...");
-        node = (ET_base_node *) new_leaf_node(prob, sample_idxs);
+        node = (ET_base_node *) new_leaf_node(sample_idxs);
         goto exit;
     }
 
@@ -291,6 +289,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         sn = malloc(sizeof(ET_split_node));
         check_mem(sn);
         sn->base.type = ET_SPLIT_NODE;
+        sn->base.n_samples = kv_size(*sample_idxs);
         sn->feature_id = best_feature_idx;
         sn->threshold = best_threshold;
         sn->lower_node = NULL;
@@ -298,7 +297,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         node = (ET_base_node *) sn;
     } else {
         log_debug("split NOT found. building leaf node ...");
-        node = (ET_base_node *) new_leaf_node(prob, sample_idxs);
+        node = (ET_base_node *) new_leaf_node(sample_idxs);
     }
 
     exit:
@@ -316,7 +315,7 @@ void tree_destroy(ET_base_node *node) {
     switch (node->type) {
         case ET_LEAF_NODE:
             ln = (ET_leaf_node *) node;
-            kv_destroy(ln->labels);
+            kv_destroy(ln->indexes);
             free(node);
             break;
         case ET_SPLIT_NODE:
@@ -467,6 +466,10 @@ ET_forest *ET_forest_build(ET_problem *prob, ET_params *params) {
     forest->params = *params;
     forest->n_samples  = prob->n_samples;
     forest->n_features = prob->n_features;
+    forest->labels = malloc(prob->n_samples * sizeof(double));
+    check_mem(forest->labels);
+    memcpy(forest->labels, prob->labels, prob->n_samples * sizeof(double));
+
     kv_init(forest->trees);
     check_mem(! tree_builder_init(&tb, prob, params, seed) );
 
@@ -489,4 +492,5 @@ void ET_forest_destroy(ET_forest *forest) {
         tree_destroy(t);
     }
     kv_destroy(forest->trees);
+    free(forest->labels);
 }

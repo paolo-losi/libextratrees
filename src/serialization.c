@@ -65,6 +65,7 @@ static uint32_t load_uint32(unsigned char **bufferp) {
     return i;
 }
 
+/*
 static void dump_double_vec(double_vec *dv, uchar_vec *buffer) {
     uint32_t size = (uint32_t) kv_size(*dv);
 
@@ -82,16 +83,49 @@ static void load_double_vec(double_vec *dv, unsigned char **bufferp) {
         kv_push(double, *dv, val);
     }
 }
+*/
+
+static void dump_uint_vec(uint_vec *uiv, uchar_vec *buffer) {
+    uint32_t size = (uint32_t) kv_size(*uiv);
+
+    dump_uint32(size, buffer);
+    for(uint32_t i = 0; i < size; i++) {
+        dump_uint32(kv_A(*uiv, i), buffer);
+    }
+}
+
+static void load_uint_vec(uint_vec *uiv, unsigned char **bufferp) {
+    uint32_t size = load_uint32(bufferp);
+    //TODO verify the state of dv;
+    for(uint32_t i = 0; i < size; i++) {
+        double val = load_uint32(bufferp);
+        kv_push(uint32_t, *uiv, val);
+    }
+}
+
+static void dump_data(void *data, size_t n, uchar_vec *buffer) {
+    size_t buffer_size = kv_size(*buffer);
+    kv_resize(unsigned char, *buffer, buffer_size + n);
+    memcpy(&kv_A(*buffer, buffer_size), data, n);
+    kv_size(*buffer) = buffer_size + n;
+}
+
+static void load_data(void *data, size_t n, unsigned char **bufferp) {
+    memcpy(data, *bufferp, n);
+    *bufferp += n;
+}
 
 
 // --- dump / load node ---
 
 static void node_dump(ET_base_node *node, uchar_vec *buffer) {
     dump_char(node->type, buffer);
+    dump_uint32(node->n_samples, buffer);
+    dump_double(node->diversity, buffer);
     switch(node->type) {
         case ET_LEAF_NODE: {
             ET_leaf_node *ln = CAST_LEAF(node);
-            dump_double_vec(&ln->labels, buffer);
+            dump_uint_vec(&ln->indexes, buffer);
             break;
         }
         case ET_SPLIT_NODE: {
@@ -105,15 +139,20 @@ static void node_dump(ET_base_node *node, uchar_vec *buffer) {
 
 static ET_base_node *node_load(unsigned char **bufferp) {
     char type;
+    double diversity;
+    uint32_t n_samples;
     ET_base_node *node = NULL;
 
     type = load_char(bufferp);
+    n_samples = load_uint32(bufferp);
+    diversity = load_double(bufferp);
+
     switch(type) {
         case ET_LEAF_NODE: {
             ET_leaf_node *ln = malloc(sizeof(ET_leaf_node));
             check_mem(ln);
-            kv_init(ln->labels);
-            load_double_vec(&ln->labels, bufferp);
+            kv_init(ln->indexes);
+            load_uint_vec(&ln->indexes, bufferp);
             node = (ET_base_node *) ln;
             break;
         }
@@ -133,6 +172,8 @@ static ET_base_node *node_load(unsigned char **bufferp) {
             sentinel("unexpected node type: %x", type);
     }
     node->type = type;
+    node->n_samples = n_samples;
+    node->diversity = diversity;
 
     exit:
     return node;
@@ -191,11 +232,18 @@ ET_tree ET_tree_load(unsigned char **bufferp) {
 // --- dump / load forest ---
 
 
+//FIXME handle endianess
 void ET_forest_dump(ET_forest *forest, uchar_vec *buffer) {
     uint32_t size = (uint32_t) kv_size(forest->trees);
 
-    //FIXME dump parameters
-    //FIXME handle endianess
+    dump_data(&forest->params, sizeof(ET_params), buffer);
+    dump_double(forest->n_features, buffer);
+    dump_double(forest->n_samples, buffer);
+    
+    for(uint32_t i = 0; i < forest->n_samples; i++) {
+        dump_double(forest->labels[i], buffer);
+    }
+
     dump_uint32(size, buffer);
     
     for(uint32_t i = 0; i < size; i++) {
@@ -210,6 +258,17 @@ ET_forest *ET_forest_load(unsigned char **bufferp) {
     forest = malloc(sizeof(ET_forest));
     check_mem(forest);
     kv_init(forest->trees);
+
+    load_data(&forest->params, sizeof(ET_params), bufferp);
+    forest->n_features = load_double(bufferp);
+    forest->n_samples = load_double(bufferp);
+
+    forest->labels = malloc(sizeof(double) * forest->n_samples);
+    check_mem(forest->labels);
+
+    for(size_t i = 0; i < forest->n_samples; i++) {
+        forest->labels[i] = load_double(bufferp);
+    }
 
     n_trees = load_uint32(bufferp);
     for(uint32_t i = 0; i < n_trees; i++) {
