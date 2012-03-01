@@ -82,12 +82,6 @@ void split_on_threshold(ET_problem *prob, uint32_t feature_idx,
 }
 
 
-typedef struct {
-    double key;
-    uint32_t value;
-} class_counter_elm;
-
-
 double classification_diversity(ET_problem *prob, uint_vec *sample_idxs) {
     double n_samples = kv_size(*sample_idxs);
     double gini_diversity = 0.0;
@@ -101,7 +95,7 @@ double classification_diversity(ET_problem *prob, uint_vec *sample_idxs) {
         double label = prob->labels[sample_idx];
         kal_getp(class_counter, label, countp);
         if (countp) {
-            countp->value += 1;
+            countp->count+= 1;
         } else {
             kv_push(class_counter_elm,
                     class_counter,
@@ -114,7 +108,7 @@ double classification_diversity(ET_problem *prob, uint_vec *sample_idxs) {
         double class;
         uint32_t count;
         class = kv_A(class_counter, i).key;
-        count = kv_A(class_counter, i).value;
+        count = kv_A(class_counter, i).count;
 
         log_debug("    > class: %g count:%d", class, count);
 

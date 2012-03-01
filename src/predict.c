@@ -53,8 +53,7 @@ static uint_vec *tree_neighbors(ET_tree tree, float *vector,
 }
 
 
-// TODO public?
-static uint_vec **forest_neighbors_detail(ET_forest *forest, float *vector,
+uint_vec **ET_forest_neighbors_detail(ET_forest *forest, float *vector,
                                          uint32_t curtail_min_size) {
     uint32_t n_trees = kv_size(forest->trees);
     uint_vec **neighbors_array = NULL;
@@ -82,7 +81,7 @@ neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
     check_mem(nwvec);
     kv_init(*nwvec);
 
-    neigh_detail = forest_neighbors_detail(forest, vector, curtail_min_size);
+    neigh_detail = ET_forest_neighbors_detail(forest, vector, curtail_min_size);
     check_mem(neigh_detail);
 
     for(size_t i = 0; i < n_trees; i++) {
@@ -111,6 +110,88 @@ neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
 }
 
 
+double ET_forest_predict_class_majority(ET_forest *forest,
+                                        float *vector,
+                                        uint32_t curtail_min_size) {
+    uint_vec **neigh_detail;
+    kvec_t(class_counter_elm) class_counter_global, class_counter_tree;
+
+    kv_init(class_counter_global);
+    kv_init(class_counter_tree);
+    neigh_detail = ET_forest_neighbors_detail(forest, vector, curtail_min_size);
+    check_mem(neigh_detail);
+
+    for(size_t i=0; i < kv_size(forest->trees); i++) {
+        class_counter_elm *ce2;
+        double most_frequent_class;
+        int32_t most_frequent_count = -1;
+        uint_vec *tree_neighs = neigh_detail[i];
+
+        log_debug(" --- tree count # %zu", i);
+        kv_clear(class_counter_tree);
+        for(size_t j=0; j < kv_size(*tree_neighs); j++) {
+            class_counter_elm *ce1;
+            uint32_t sample_idx = kv_A(*tree_neighs, j);
+            double class = forest->labels[sample_idx];
+
+            // count class freq in tree
+            kal_getp(class_counter_tree, class, ce1);
+            if (ce1 == NULL) {
+                kv_push(class_counter_elm, class_counter_tree,
+                        ((class_counter_elm) {class, 1}));
+            } else {
+                ce1->count += 1;
+            }
+
+        }
+
+        // look for most frequent class in tree
+        for(size_t k=0; k < kv_size(class_counter_tree); k++) {
+            class_counter_elm *ce3 = &(kv_A(class_counter_tree, k));
+            log_debug("class: %g count: %d", ce3->key, ce3->count);
+            if (most_frequent_count < (int32_t) ce3->count) {
+                most_frequent_count = ce3->count;
+                most_frequent_class = ce3->key;
+            } else if (most_frequent_count == (int32_t) ce3->count) {
+                log_warn("labels in leaf are balanced");
+            }
+        }
+
+        // record most frequent class for tree
+        kal_getp(class_counter_global, most_frequent_class, ce2);
+        if (ce2 == NULL) {
+            kv_push(class_counter_elm, class_counter_global,
+                    ((class_counter_elm) {most_frequent_class, 1}));
+
+        } else {
+            ce2->count += 1;
+        }
+
+        kv_destroy(*tree_neighs);
+    }
+
+    free(neigh_detail);
+    {
+        double best_class;
+        int32_t best_count = -1;
+
+        log_debug(" --- global count");
+        for(size_t i=0; i < kv_size(class_counter_global); i++) {
+            class_counter_elm *ce4 = &(kv_A(class_counter_global, i));
+            log_debug("class: %g count: %d", ce4->key, ce4->count);
+            if (best_count < (int32_t) ce4->count) {
+                best_count = ce4->count;
+                best_class = ce4->key;
+            }
+        }
+        return best_class;
+    }
+
+    exit:
+    return 0.0;
+}
+
+
 double ET_forest_predict_regression(ET_forest *forest,
                                     float *vector,
                                     uint32_t curtail_min_size) {
@@ -122,9 +203,9 @@ double ET_forest_predict_regression(ET_forest *forest,
     for(size_t i = 0; i < kv_size(*nwvec); i++) {
         neighbour_weight nw = kv_A(*nwvec, i);
         double weight = nw.weight;
-        uint32_t sample_index = nw.key;
-        log_debug("sample_idx: %d weight: %g", sample_index, weight);
-        double val = forest->labels[sample_index];
+        uint32_t sample_idx = nw.key;
+        log_debug("sample_idx: %d weight: %g", sample_idx, weight);
+        double val = forest->labels[sample_idx];
 
         num += val * weight;
         den += weight;
@@ -141,8 +222,7 @@ double ET_forest_predict(ET_forest *forest, float *vector) {
     if (forest->params.regression) {
         return ET_forest_predict_regression(forest, vector, 1);
     } else {
-        // FIXME classification
-        return 0.0;
+        return ET_forest_predict_class_majority(forest, vector, 1);
     }
 }
 

@@ -21,7 +21,11 @@ double random_double(SimpleRandomKISS2_t *rnd);
 #define STATIC static
 #endif
 
-// can we make tree navigation generic?
+typedef struct {
+    double key;
+    uint32_t count;
+} class_counter_elm;
+
 
 typedef struct {
     ET_split_node *node;
