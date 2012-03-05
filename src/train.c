@@ -6,7 +6,7 @@
 #include "util.h"
 #include "problem.h"
 #include "log.h"
-#include "kal.h"
+#include "counter.h"
 
 
 #define FOR_SAMPLE_IDX_IN(sample_idxs, body)                                \
@@ -85,22 +85,14 @@ void split_on_threshold(ET_problem *prob, uint32_t feature_idx,
 double classification_diversity(ET_problem *prob, uint_vec *sample_idxs) {
     double n_samples = kv_size(*sample_idxs);
     double gini_diversity = 0.0;
-    kvec_t(class_counter_elm) class_counter;
+    ET_class_counter class_counter;
 
-    kv_init(class_counter);
-    
+    ET_class_counter_init(class_counter);
+
+
     FOR_SAMPLE_IDX_IN(*sample_idxs, {
-        class_counter_elm *countp;
-
         double label = prob->labels[sample_idx];
-        kal_getp(class_counter, label, countp);
-        if (countp) {
-            countp->count+= 1;
-        } else {
-            kv_push(class_counter_elm,
-                    class_counter,
-                    ((class_counter_elm) { label, 1 }));
-        }
+        ET_class_counter_incr(&class_counter, label);
     });
 
     log_debug("class counter:");
@@ -115,6 +107,7 @@ double classification_diversity(ET_problem *prob, uint_vec *sample_idxs) {
         gini_diversity += count * (1.0 - count / n_samples);
     }
     log_debug("gini index: %g", gini_diversity / n_samples);
+
     return gini_diversity;
 }
 
@@ -461,6 +454,7 @@ ET_forest *ET_forest_build(ET_problem *prob, ET_params *params) {
     forest->n_samples  = prob->n_samples;
     forest->n_features = prob->n_features;
     forest->labels = malloc(prob->n_samples * sizeof(double));
+    forest->class_frequency = NULL;
     check_mem(forest->labels);
     memcpy(forest->labels, prob->labels, prob->n_samples * sizeof(double));
 
@@ -487,4 +481,7 @@ void ET_forest_destroy(ET_forest *forest) {
     }
     kv_destroy(forest->trees);
     free(forest->labels);
+    if(forest->class_frequency) {
+        free(forest->class_frequency);
+    }
 }

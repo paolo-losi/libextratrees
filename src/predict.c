@@ -1,7 +1,7 @@
 #include "extratrees.h"
 #include "util.h"
 #include "log.h"
-#include "kal.h"
+#include "counter.h"
 
 
 static void append_neighbors(ET_base_node *node, uint_vec *neighbors) {
@@ -114,65 +114,49 @@ double ET_forest_predict_class_majority(ET_forest *forest,
                                         float *vector,
                                         uint32_t curtail_min_size) {
     uint_vec **neigh_detail;
-    kvec_t(class_counter_elm) class_counter_global, class_counter_tree;
+    ET_class_counter class_counter_global, class_counter_tree;
 
-    kv_init(class_counter_global);
-    kv_init(class_counter_tree);
+    ET_class_counter_init(class_counter_global);
+    ET_class_counter_init(class_counter_tree);
     neigh_detail = ET_forest_neighbors_detail(forest, vector, curtail_min_size);
     check_mem(neigh_detail);
 
     for(size_t i=0; i < kv_size(forest->trees); i++) {
-        class_counter_elm *ce2;
-        double most_frequent_class;
+        double most_frequent_class = 0;
         int32_t most_frequent_count = -1;
         uint_vec *tree_neighs = neigh_detail[i];
 
         log_debug(" --- tree count # %zu", i);
         kv_clear(class_counter_tree);
+
+        // count class freq in tree
         for(size_t j=0; j < kv_size(*tree_neighs); j++) {
-            class_counter_elm *ce1;
             uint32_t sample_idx = kv_A(*tree_neighs, j);
             double class = forest->labels[sample_idx];
-
-            // count class freq in tree
-            kal_getp(class_counter_tree, class, ce1);
-            if (ce1 == NULL) {
-                kv_push(class_counter_elm, class_counter_tree,
-                        ((class_counter_elm) {class, 1}));
-            } else {
-                ce1->count += 1;
-            }
-
+            ET_class_counter_incr(&class_counter_tree, class);
         }
 
         // look for most frequent class in tree
         for(size_t k=0; k < kv_size(class_counter_tree); k++) {
-            class_counter_elm *ce3 = &(kv_A(class_counter_tree, k));
-            log_debug("class: %g count: %d", ce3->key, ce3->count);
-            if (most_frequent_count < (int32_t) ce3->count) {
-                most_frequent_count = ce3->count;
-                most_frequent_class = ce3->key;
-            } else if (most_frequent_count == (int32_t) ce3->count) {
+            class_counter_elm *ce = &(kv_A(class_counter_tree, k));
+            log_debug("class: %g count: %d", ce->key, ce->count);
+            if (most_frequent_count < (int32_t) ce->count) {
+                most_frequent_count = ce->count;
+                most_frequent_class = ce->key;
+            } else if (most_frequent_count == (int32_t) ce->count) {
                 log_warn("labels in leaf are balanced");
             }
         }
 
         // record most frequent class for tree
-        kal_getp(class_counter_global, most_frequent_class, ce2);
-        if (ce2 == NULL) {
-            kv_push(class_counter_elm, class_counter_global,
-                    ((class_counter_elm) {most_frequent_class, 1}));
-
-        } else {
-            ce2->count += 1;
-        }
+        ET_class_counter_incr(&class_counter_global, most_frequent_class);
 
         kv_destroy(*tree_neighs);
     }
 
     free(neigh_detail);
     {
-        double best_class;
+        double best_class = 0;
         int32_t best_count = -1;
 
         log_debug(" --- global count");

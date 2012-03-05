@@ -266,6 +266,8 @@ ET_forest *ET_forest_load(unsigned char **bufferp) {
     forest->labels = malloc(sizeof(double) * forest->n_samples);
     check_mem(forest->labels);
 
+    forest->class_frequency = NULL;
+
     for(size_t i = 0; i < forest->n_samples; i++) {
         forest->labels[i] = load_double(bufferp);
     }

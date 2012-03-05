@@ -76,12 +76,18 @@ typedef ET_base_node *ET_tree;
 
 // --- forest ---
 
+#ifndef ET_CLASS_COUNTER
+#define ET_CLASS_COUNTER 
+typedef struct ET_class_counter_struct ET_class_counter;
+#endif
+
 typedef struct {
     kvec_t(ET_tree) trees;
     ET_params params;
     uint32_t n_features;
     uint32_t n_samples;
     double *labels;
+    ET_class_counter *class_frequency;
 } ET_forest;
 
 
