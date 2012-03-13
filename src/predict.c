@@ -32,7 +32,7 @@ static uint_vec *tree_neighbors(ET_tree tree, float *vector,
                     goto curtail;
                 node = next_node;
                 break;
-            }    
+            }
             case ET_LEAF_NODE: {
                 kv_copy(uint32_t, *sample_idxs, CAST_LEAF(node)->indexes);
                 return sample_idxs;
@@ -49,7 +49,7 @@ static uint_vec *tree_neighbors(ET_tree tree, float *vector,
     exit:
     //sentinel
     return NULL;
-    
+
 }
 
 
@@ -57,7 +57,7 @@ uint_vec **ET_forest_neighbors_detail(ET_forest *forest, float *vector,
                                          uint32_t curtail_min_size) {
     uint32_t n_trees = kv_size(forest->trees);
     uint_vec **neighbors_array = NULL;
-    
+
     neighbors_array = malloc(sizeof(uint_vec *) * n_trees);
     check_mem(neighbors_array);
 
