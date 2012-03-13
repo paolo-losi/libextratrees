@@ -4,6 +4,25 @@
 #include "counter.h"
 
 
+static int compute_class_frequency(ET_forest *forest) {
+    ET_class_counter *cc = NULL;
+    cc = ET_class_counter_new();
+    check_mem(cc);
+
+    for(size_t i = 0; i < forest->n_samples; i++) {
+        ET_class_counter_incr(cc, forest->labels[i]);
+    }
+
+    ET_class_counter_sort(cc);
+
+    forest->class_frequency = cc;
+    return 0;
+
+    exit:
+    return -1;
+}
+
+
 static void append_neighbors(ET_base_node *node, uint_vec *neighbors) {
     if IS_LEAF(node) {
         uint_vec *new_neighbors = &CAST_LEAF(node)->indexes;
@@ -180,9 +199,8 @@ double ET_forest_predict_regression(ET_forest *forest,
                                     float *vector,
                                     uint32_t curtail_min_size) {
     neighbour_weight_vec *nwvec = NULL;
-    double den = 0.0;
-    double num = 0.0;
-    
+    double y = 0.0;
+
     nwvec = ET_forest_neighbors(forest, vector, curtail_min_size);
     for(size_t i = 0; i < kv_size(*nwvec); i++) {
         neighbour_weight nw = kv_A(*nwvec, i);
@@ -191,14 +209,75 @@ double ET_forest_predict_regression(ET_forest *forest,
         log_debug("sample_idx: %d weight: %g", sample_idx, weight);
         double val = forest->labels[sample_idx];
 
-        num += val * weight;
-        den += weight;
+        y += val * weight;
     }
 
     kv_destroy(*nwvec);
     free(nwvec);
 
-    return num / den;
+    return y;
+}
+
+
+class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
+                                                     float *vector,
+                                                     uint32_t curtail_min_size,
+                                                     bool smooth) {
+    class_probability_vec *prob_vec = NULL;
+    neighbour_weight_vec *nwvec = NULL;
+
+    prob_vec = malloc(sizeof(class_probability_vec));
+    check_mem(prob_vec);
+    kv_init(*prob_vec);
+
+    if (!forest->class_frequency) {
+        compute_class_frequency(forest);
+    }
+
+    for(size_t i = 0; i < kv_size(*forest->class_frequency); i++) {
+        double label = kv_A(*forest->class_frequency, i).key;
+        kv_push(class_probability, *prob_vec, ((class_probability) {label, 0}));
+    }
+
+    nwvec = ET_forest_neighbors(forest, vector, curtail_min_size);
+    check_mem(nwvec);
+
+    for(size_t i = 0; i < kv_size(*nwvec); i++) {
+        uint32_t sample_idx = kv_A(*nwvec, i).key;
+        double weight       = kv_A(*nwvec, i).weight;
+        double label = forest->labels[sample_idx];
+
+        for(size_t j = 0; j < kv_size(*prob_vec); j++) {
+            class_probability *cp = &kv_A(*prob_vec, i);
+            if (cp->label == label) {
+                cp->probability += weight;
+                break;
+            }
+        }
+    }
+
+    if (smooth) {
+        double n_samples = forest->n_samples;
+
+        for(size_t i = 0; i < kv_size(*prob_vec); i++) {
+            double unsmoothed_prob, prior_prob;
+            class_probability *cp = &kv_A(*prob_vec, i);
+            unsmoothed_prob = cp->probability;
+            prior_prob = kv_A(*forest->class_frequency, i).count / n_samples;
+
+            cp->probability = (1 - 1 / n_samples) * unsmoothed_prob +
+                              (1 / n_samples) * prior_prob;
+        }
+    }
+
+    free(nwvec);
+    return prob_vec;
+
+    exit:
+    if (prob_vec == NULL) free(prob_vec);
+    if (nwvec == NULL) free(nwvec);
+    return prob_vec;
+
 }
 
 

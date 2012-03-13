@@ -101,6 +101,14 @@ typedef struct {
 typedef kvec_t(neighbour_weight) neighbour_weight_vec;
 
 
+typedef struct {
+    double label;
+    double probability;
+} class_probability;
+
+typedef kvec_t(class_probability) class_probability_vec;
+
+
 // --- functions ---
 
 ET_problem *ET_load_libsvm_file(char *fname);
