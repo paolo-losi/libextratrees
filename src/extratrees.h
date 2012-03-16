@@ -77,7 +77,7 @@ typedef ET_base_node *ET_tree;
 // --- forest ---
 
 #ifndef ET_CLASS_COUNTER
-#define ET_CLASS_COUNTER 
+#define ET_CLASS_COUNTER
 typedef struct ET_class_counter_struct ET_class_counter;
 #endif
 
@@ -124,4 +124,9 @@ double ET_forest_predict_regression(ET_forest *forest, float *v,
                                     uint32_t curtail_min_size);
 double ET_forest_predict_class_majority(ET_forest *forest, float *v,
                                         uint32_t curtail_min_size);
-# endif 
+class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
+                                                    float *vector,
+                                                    uint32_t curtail_min_size,
+                                                    bool smooth);
+
+# endif

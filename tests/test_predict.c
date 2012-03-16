@@ -18,6 +18,7 @@ void test_predict() {
     float vector2[3] = {2, 1, 1};
     float vector3[3] = {2.1, 1, 1};
     double prediction;
+    class_probability_vec *cpv;
 
     problem_init(&prob, vectors, labels);
     ET_problem_print(&prob, stderr);
@@ -46,6 +47,20 @@ void test_predict() {
 
     prediction = ET_forest_predict_class_majority(forest, vector3, 4);
     fprintf(stderr, "class prediction vector3 (curtail=4): %g\n", prediction);
+
+    for(int smooth = 0; smooth <= 1; smooth++) {
+        cpv = ET_forest_predict_probability(forest, vector3, 0, smooth);
+
+        fprintf(stderr, "class probability vector3. smooth: %d\n", smooth);
+        for(size_t i = 0; i < kv_size(*cpv); i++) {
+            class_probability *cp = &kv_A(*cpv, i);
+            fprintf(stderr, "    class %g -> %g\n", cp->label, cp->probability);
+        }
+
+        kv_destroy(*cpv);
+        free(cpv);
+    }
+
     ET_forest_destroy(forest);
     free(forest);
 }

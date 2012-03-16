@@ -8,7 +8,7 @@
 #include "log.h"
 
 #ifndef ET_CLASS_COUNTER
-#define ET_CLASS_COUNTER 
+#define ET_CLASS_COUNTER
 typedef struct ET_class_counter_struct ET_class_counter;
 #endif
 
@@ -50,13 +50,14 @@ inline void ET_class_counter_incr(ET_class_counter *cc, double label) {
 static int compare_on_label(const void *a, const void *b) {
     class_counter_elm *ea = (class_counter_elm *) a;
     class_counter_elm *eb = (class_counter_elm *) b;
-    if (ea < eb) { return -1; } else
-    if (ea > eb) { return +1; } else
+    if (ea < eb) { return +1; } else
+    if (ea > eb) { return -1; } else
     { return 0; }
 }
 
 inline void ET_class_counter_sort(ET_class_counter *cc) {
-    qsort((void *) (cc), kv_size(*(cc)), kv_size(*(cc)), &compare_on_label);
+    qsort((void *) cc->a, kv_size(*cc), sizeof(class_counter_elm),
+                                        &compare_on_label);
 }
 
 #endif

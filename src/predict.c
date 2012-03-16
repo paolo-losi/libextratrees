@@ -132,6 +132,7 @@ neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
 double ET_forest_predict_class_majority(ET_forest *forest,
                                         float *vector,
                                         uint32_t curtail_min_size) {
+    double best_class = 0;
     uint_vec **neigh_detail;
     ET_class_counter class_counter_global, class_counter_tree;
 
@@ -171,11 +172,11 @@ double ET_forest_predict_class_majority(ET_forest *forest,
         ET_class_counter_incr(&class_counter_global, most_frequent_class);
 
         kv_destroy(*tree_neighs);
+        free(tree_neighs);
     }
 
     free(neigh_detail);
     {
-        double best_class = 0;
         int32_t best_count = -1;
 
         log_debug(" --- global count");
@@ -187,11 +188,12 @@ double ET_forest_predict_class_majority(ET_forest *forest,
                 best_class = ce4->key;
             }
         }
-        return best_class;
     }
 
     exit:
-    return 0.0;
+    ET_class_counter_destroy(class_counter_tree);
+    ET_class_counter_destroy(class_counter_global);
+    return best_class;
 }
 
 
@@ -223,6 +225,7 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
                                                      float *vector,
                                                      uint32_t curtail_min_size,
                                                      bool smooth) {
+    bool error = true;
     class_probability_vec *prob_vec = NULL;
     neighbour_weight_vec *nwvec = NULL;
 
@@ -230,7 +233,7 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
     check_mem(prob_vec);
     kv_init(*prob_vec);
 
-    if (!forest->class_frequency) {
+    if (forest->class_frequency == NULL) {
         compute_class_frequency(forest);
     }
 
@@ -246,9 +249,11 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
         uint32_t sample_idx = kv_A(*nwvec, i).key;
         double weight       = kv_A(*nwvec, i).weight;
         double label = forest->labels[sample_idx];
+        log_debug("sample_idx: %d weight: %g label: %g",
+                                                    sample_idx, weight, label);
 
         for(size_t j = 0; j < kv_size(*prob_vec); j++) {
-            class_probability *cp = &kv_A(*prob_vec, i);
+            class_probability *cp = &kv_A(*prob_vec, j);
             if (cp->label == label) {
                 cp->probability += weight;
                 break;
@@ -270,14 +275,46 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
         }
     }
 
-    free(nwvec);
-    return prob_vec;
+    error = false;
 
     exit:
-    if (prob_vec == NULL) free(prob_vec);
-    if (nwvec == NULL) free(nwvec);
+    if (error && prob_vec != NULL) {
+        kv_destroy(*prob_vec);
+        free(prob_vec);
+    }
+    if (nwvec != NULL) {
+        kv_destroy(*nwvec);
+        free(nwvec);
+    }
     return prob_vec;
 
+}
+
+
+double ET_forest_predict_class_bayes(ET_forest *forest, float *vector,
+                                     uint32_t curtail_min_size) {
+    double best_label = 0;
+    double best_probability = -1;
+    class_probability_vec *cpv = NULL;
+
+    cpv = ET_forest_predict_probability(forest, vector,
+                                        curtail_min_size, false);
+    check_mem(cpv);
+
+    for(size_t i = 0; i < kv_size(*cpv); i++) {
+        class_probability *cp = &kv_A(*cpv, i);
+        if (cp->probability > best_probability) {
+            best_probability = cp->probability;
+            best_label = cp->label;
+        }
+    }
+
+    exit:
+    if (cpv != NULL) {
+        kv_destroy(*cpv);
+        free(cpv);
+    }
+    return best_label;
 }
 
 

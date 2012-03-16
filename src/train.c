@@ -12,7 +12,7 @@
 #define FOR_SAMPLE_IDX_IN(sample_idxs, body)                                \
     for (size_t i = 0; i < kv_size((sample_idxs)); i++) {                   \
         uint32_t sample_idx = kv_A((sample_idxs), i);                       \
-        do { body } while(0); }                                             
+        do { body } while(0); }
 
 
 typedef struct {
@@ -62,7 +62,7 @@ min_max get_feature_min_max(ET_problem *prob, uint_vec *sample_idxs,
 
 void split_on_threshold(ET_problem *prob, uint32_t feature_idx,
                                           double threshold,
-                                          uint_vec *sample_idxs, 
+                                          uint_vec *sample_idxs,
                                           uint_vec *higher_idxs,
                                           uint_vec *lower_idxs) {
 
@@ -140,7 +140,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
     ET_base_node *node = NULL;
     bool split_found = false;
     double best_threshold = 0;       // initialized to silence compiler warn
-    uint32_t best_feature_idx = 0.0; // initialized to silence compiler warn 
+    uint32_t best_feature_idx = 0.0; // initialized to silence compiler warn
     ET_problem *prob = tb->prob;
 
     double higher_diversity, lower_diversity;
@@ -152,7 +152,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
     // NOTE: this does not guarantee that leaf size is always >= min_split_size
     // check if min_split_size is reached
     if(kv_size(*sample_idxs) <= (size_t) tb->params.min_split_size) {
-        log_debug("min size (%d) reached. current sample size: %zu", 
+        log_debug("min size (%d) reached. current sample size: %zu",
                                                     tb->params.min_split_size,
                                                     kv_size(*sample_idxs));
         node = (ET_base_node *) new_leaf_node(sample_idxs);
@@ -185,7 +185,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         uint32_t nb_features_tested = 0;
         uint32_t nb_features_to_test = tb->params.number_of_features_tested;
         bool with_replacement = tb->params.select_features_with_replacement;
-        
+
         log_debug("number of features to test: %d", nb_features_to_test);
 
         // select best split
@@ -242,8 +242,8 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
 
             log_debug("%s diversity: %g", tb->params.regression?"regr":"class",
                                           diversity);
-                                          
-                                                                
+
+
             if (diversity < best_diversity) {
                 log_debug("diversity is new best");
                 best_threshold = threshold;
@@ -262,7 +262,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
 
             nb_features_to_test--;
 
-        } while (nb_features_to_test && 
+        } while (nb_features_to_test &&
                                     (with_replacement ||
                                      nb_features_tested < prob->n_features));
     }
@@ -482,6 +482,7 @@ void ET_forest_destroy(ET_forest *forest) {
     kv_destroy(forest->trees);
     free(forest->labels);
     if(forest->class_frequency) {
+        ET_class_counter_destroy(*forest->class_frequency);
         free(forest->class_frequency);
     }
 }
