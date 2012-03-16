@@ -8316,3 +8316,10 @@ class probability vector3. smooth: 1
     class 0 -> 0.037037
     class 1 -> 0.143704
     class 2 -> 0.819259
+[DEBUG]   src/predict.c:253  sample_idx: 3 weight: 0.04 label: 1
+[DEBUG]   src/predict.c:253  sample_idx: 4 weight: 0.04 label: 1
+[DEBUG]   src/predict.c:253  sample_idx: 5 weight: 0.04 label: 1
+[DEBUG]   src/predict.c:253  sample_idx: 0 weight: 0.293333 label: 2
+[DEBUG]   src/predict.c:253  sample_idx: 1 weight: 0.293333 label: 2
+[DEBUG]   src/predict.c:253  sample_idx: 2 weight: 0.293333 label: 2
+class prediction vector3 (bayes): 2

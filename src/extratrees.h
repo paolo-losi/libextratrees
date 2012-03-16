@@ -124,6 +124,8 @@ double ET_forest_predict_regression(ET_forest *forest, float *v,
                                     uint32_t curtail_min_size);
 double ET_forest_predict_class_majority(ET_forest *forest, float *v,
                                         uint32_t curtail_min_size);
+double ET_forest_predict_class_bayes(ET_forest *forest, float *v,
+                                     uint32_t curtail_min_size);
 class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
                                                     float *vector,
                                                     uint32_t curtail_min_size,
