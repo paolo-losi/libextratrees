@@ -292,13 +292,13 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
 
 
 double ET_forest_predict_class_bayes(ET_forest *forest, float *vector,
-                                     uint32_t curtail_min_size) {
+                                     uint32_t curtail_min_size, bool smooth) {
     double best_label = 0;
     double best_probability = -1;
     class_probability_vec *cpv = NULL;
 
     cpv = ET_forest_predict_probability(forest, vector,
-                                        curtail_min_size, false);
+                                        curtail_min_size, smooth);
     check_mem(cpv);
 
     for(size_t i = 0; i < kv_size(*cpv); i++) {

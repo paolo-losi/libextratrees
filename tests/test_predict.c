@@ -61,7 +61,7 @@ void test_predict() {
         free(cpv);
     }
 
-    prediction = ET_forest_predict_class_bayes(forest, vector3, 1);
+    prediction = ET_forest_predict_class_bayes(forest, vector3, 1, false);
     fprintf(stderr, "class prediction vector3 (bayes): %g\n", prediction);
 
     ET_forest_destroy(forest);
