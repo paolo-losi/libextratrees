@@ -2,10 +2,14 @@ import numpy
 cimport cython
 cimport numpy as np
 from libc.stdlib cimport malloc, free
+from libc.stdint cimport uint32_t
 from libc cimport math
+from libcpp cimport bool
 from cextratrees cimport (ET_problem, ET_problem_destroy,
                           ET_forest, ET_forest_destroy, ET_forest_build,
-                          ET_forest_predict, ET_params)
+                          ET_forest_predict, ET_forest_predict_regression,
+                          ET_forest_predict_class_majority, 
+                          ET_forest_predict_class_bayes, ET_params)
 
 
 cdef class Problem:
@@ -50,6 +54,19 @@ cdef Problem problem_factory(ET_problem *prob):
     return instance
 
 
+cdef double _p_simple(ET_forest *f, float *v, uint32_t curtail, bool _):
+    return ET_forest_predict(f, v)
+
+cdef double _p_regression(ET_forest *f, float *v, uint32_t curtail, bool _):
+    return ET_forest_predict_regression(f, v, curtail)
+
+cdef double _p_class_majority(ET_forest *f, float *v, uint32_t curtail, bool _):
+    return ET_forest_predict_class_majority(f, v, curtail)
+
+cdef double _p_cl_bayes(ET_forest *f, float *v, uint32_t curtail, bool smooth):
+    return ET_forest_predict_class_bayes(f, v, curtail, smooth)
+
+
 cdef class Forest:
 
     cdef ET_forest *_forest
@@ -61,10 +78,31 @@ cdef class Forest:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def predict(self, np.ndarray[np.float64_t, ndim=2] X):
+    def predict(self, np.ndarray[np.float64_t, ndim=2] X, bytes mode=None,
+                curtail=1, smooth=False):
         cdef np.ndarray[np.float64_t, ndim=1] y
         cdef float *vector
         cdef int sample_idx, feature_idx
+        cdef uint32_t _curtail = curtail
+        cdef bool _smooth = smooth
+        cdef double (*predict_f)(ET_forest *f, float *v, uint32_t c, bool s)
+
+        if mode is None:
+            predict_f = _p_simple
+        elif mode == 'regression':
+            predict_f = _p_regression
+        elif mode == 'classify_majority':
+            predict_f = _p_class_majority
+        elif mode == 'classify_bayes':
+            predict_f = _p_cl_bayes
+        else:
+            raise ValueError('unsupported predict mode: %r' % mode)
+
+        if mode is None and curtail != 1:
+            raise ValueError('curtail not supported for simple prediction')
+
+        if mode != 'classify_bayes' and smooth == True:
+            raise ValueError('smooth supported only for "classify_bayes" mode')
 
         y = numpy.empty(shape=(X.shape[0],), dtype=numpy.float64)
         vector = <float *> malloc(sizeof(float) * X.shape[1])
@@ -75,7 +113,7 @@ cdef class Forest:
             for feature_idx in xrange(X.shape[1]):
                 vector[feature_idx] = X[sample_idx, feature_idx]
 
-            y[sample_idx] = ET_forest_predict(self._forest, vector)
+            y[sample_idx] = predict_f(self._forest, vector, _curtail, _smooth)
 
         return y
 
