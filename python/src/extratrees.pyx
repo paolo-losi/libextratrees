@@ -115,6 +115,7 @@ cdef class Forest:
 
             y[sample_idx] = predict_f(self._forest, vector, _curtail, _smooth)
 
+        free(vector)
         return y
 
 

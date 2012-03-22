@@ -108,6 +108,7 @@ double classification_diversity(ET_problem *prob, uint_vec *sample_idxs) {
     }
     log_debug("gini index: %g", gini_diversity / n_samples);
 
+    ET_class_counter_destroy(class_counter);
     return gini_diversity;
 }
 
