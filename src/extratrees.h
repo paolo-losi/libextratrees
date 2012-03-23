@@ -82,10 +82,10 @@ typedef struct ET_class_counter_struct ET_class_counter;
 #endif
 
 typedef struct {
-    kvec_t(ET_tree) trees;
-    ET_params params;
     uint32_t n_features;
     uint32_t n_samples;
+    kvec_t(ET_tree) trees;
+    ET_params params;
     double *labels;
     ET_class_counter *class_frequency;
 } ET_forest;
@@ -126,6 +126,8 @@ double ET_forest_predict_class_majority(ET_forest *forest, float *v,
                                         uint32_t curtail_min_size);
 double ET_forest_predict_class_bayes(ET_forest *forest, float *v,
                                      uint32_t curtail_min_size, bool smooth);
+neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
+                                          uint32_t curtail_min_size);
 class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
                                                     float *vector,
                                                     uint32_t curtail_min_size,

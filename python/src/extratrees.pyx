@@ -8,8 +8,13 @@ from libcpp cimport bool
 from cextratrees cimport (ET_problem, ET_problem_destroy,
                           ET_forest, ET_forest_destroy, ET_forest_build,
                           ET_forest_predict, ET_forest_predict_regression,
-                          ET_forest_predict_class_majority, 
-                          ET_forest_predict_class_bayes, ET_params)
+                          ET_forest_predict_class_majority,
+                          ET_forest_predict_probability,
+                          ET_forest_neighbors, ET_params,
+                          ET_forest_predict_class_bayes,
+                          class_probability_vec, class_probability,
+                          neighbour_weight, neighbour_weight_vec,
+                          double_vec, ET_forest_feature_importance)
 
 
 cdef class Problem:
@@ -118,6 +123,105 @@ cdef class Forest:
         free(vector)
         return y
 
+    @cython.boundscheck(False)
+    @cython.wraparound(False)
+    def predict_proba(self, np.ndarray[np.float64_t, ndim=2] X,
+                      curtail=1, smooth=False):
+        cdef float *vector
+        cdef int sample_idx, feature_idx
+        cdef uint32_t _curtail = curtail
+        cdef bool _smooth = smooth
+        cdef class_probability_vec *cpv
+        cdef class_probability *cp
+        cdef np.ndarray[np.float64_t, ndim=1] classes = None
+        cdef np.ndarray[np.float64_t, ndim=2] probas = None
+
+        vector = <float *> malloc(sizeof(float) * X.shape[1])
+        if not vector:
+            raise MemoryError()
+
+        for sample_idx in xrange(X.shape[0]):
+            for feature_idx in xrange(X.shape[1]):
+                vector[feature_idx] = X[sample_idx, feature_idx]
+
+            cpv = ET_forest_predict_probability(self._forest, vector,
+                                                _curtail, _smooth)
+            if not cpv:
+                raise MemoryError()
+
+            if classes is None:
+                shape = (X.shape[0], cpv.n)
+                probas  = numpy.empty(shape=shape, dtype=numpy.float64)
+                classes = numpy.empty(shape=(cpv.n,), dtype=numpy.float64)
+                for i in xrange(cpv.n):
+                    cp = &cpv.a[i]
+                    classes[i] = cp.label
+                    probas[sample_idx, i]  = cp.probability
+            else:
+                for i in xrange(cpv.n):
+                    cp = &cpv.a[i]
+                    probas[sample_idx, i]  = cp.probability
+
+            free(cpv.a)
+            free(cpv)
+
+        free(vector)
+        return classes, probas
+
+    @cython.boundscheck(False)
+    @cython.wraparound(False)
+    def neighbors(self, np.ndarray[np.float64_t, ndim=2] X, curtail=1):
+        cdef float *vector
+        cdef int sample_idx, feature_idx
+        cdef uint32_t _curtail = curtail
+        cdef neighbour_weight_vec *nwv
+        cdef neighbour_weight *nw
+        cdef np.ndarray[np.float64_t, ndim=2] adiacency
+
+        adiacency = numpy.zeros(shape=(X.shape[0], self._forest.n_samples),
+                                dtype=numpy.float64)
+
+        vector = <float *> malloc(sizeof(float) * X.shape[1])
+        if not vector:
+            raise MemoryError()
+
+        for sample_idx in xrange(X.shape[0]):
+            for feature_idx in xrange(X.shape[1]):
+                vector[feature_idx] = X[sample_idx, feature_idx]
+
+            nwv = ET_forest_neighbors(self._forest, vector, _curtail)
+            if not nwv:
+                raise MemoryError()
+
+            for i in xrange(nwv.n):
+                nw = &nwv.a[i]
+                adiacency[sample_idx, nw.key] = nw.weight
+
+            free(nwv.a)
+            free(nwv)
+
+        free(vector)
+        return adiacency
+
+    @cython.boundscheck(False)
+    @cython.wraparound(False)
+    def feature_importance(self):
+        cdef uint32_t n_features = self._forest.n_features
+        cdef double_vec *c_feat_imp = ET_forest_feature_importance(self._forest)
+        cdef np.ndarray[np.float64_t, ndim=1] feat_imp
+
+        if c_feat_imp == NULL:
+            raise MemoryError()
+
+        feat_imp = numpy.empty(shape=(n_features,))
+        for i in xrange(n_features):
+            feat_imp[i] = c_feat_imp.a[i]
+
+        free(c_feat_imp.a)
+        free(c_feat_imp)
+
+        return feat_imp
+
 
 cdef Forest forest_factory(ET_forest *forest):
     cdef Forest instance = Forest.__new__(Forest)
@@ -138,7 +242,7 @@ def convert_to_problem(np.ndarray[np.float64_t, ndim=2] X not None,
     cdef int i, j
 
     cdef ET_problem *cprob = <ET_problem *> malloc(sizeof(ET_problem))
-    
+
     n_features = X.shape[1]
     n_samples  = X.shape[0]
 
@@ -182,6 +286,6 @@ def convert_from_problem(Problem prob not None):
 
 
 def train(X, y, **params):
-    return convert_to_problem(X, y)._train(**params) 
+    return convert_to_problem(X, y)._train(**params)
 
 
