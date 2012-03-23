@@ -1,36 +1,31 @@
-FEATURE      prediction
-                - vicini
-                - curtailment
 FIX          gestire i casi:
                 - foglia vuota
                 - split non ha splittato (zero elementi da una parte)
                   (potrebbe essere per problemi numerici)
-FEATURE      serializzazione
-                - conversione albero -> kvec_t(unsigned char) (uno ad uno)
-                - aggancio a python
+FEATURE      serialization
+                - python
 FEATURE      cross validation
                 - shuffle
                 - stratified
 FEATURE      tools command line
-FEATURE      print albero
+FEATURE      print ET_forest
                 - statistiche
 FEATURE      multi thread
                 - generare in modo parallelo (vedi mersenne jump)
-FEATURE      calcolo della importanza variabili:
-                - ipotesi: sia per leaf che split salvare lo stato diversity
-                - dev'essere passato 
-FEATURE      implementare classification (gini diversity)
-FEATURE      implementare with replacement:
-                - ipotesi tree_builder deve contenere il ratio
+FEATURE      feature importance:
+                - curtail 
+FEATURE      train
+                - modified gini diversity for classification
+                - mad for regression
 FEATURE      categorical features
 FEATURE      "adaptive" feature subset selection
-OPTIM        mantenere vettore di features costanti
-OPTIM        eliminare recursion ovunque
-REFACTORING  review api pubblica/headers etc.etc
-REFACTORING  testing per confronto con versione python
-DOC          documentare licenza
+OPTIM        eliminate recursion everywhere
+REFACTORING  review api/headers etc.etc
+REFACTORING  mersenne by klib
+DOC          include third party licenses
                 - url: https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home
+DOC          Api, examples
 
 ### recurring ###
 
-REFACTORING  review tutti double/float
+REFACTORING  review double/float
