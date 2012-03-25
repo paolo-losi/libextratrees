@@ -27,7 +27,7 @@ struct ET_class_counter_struct {
 #define ET_class_counter_clear(cc) kv_clear(cc)
 #define ET_class_counter_destroy(cc) kv_destroy(cc)
 
-inline ET_class_counter *ET_class_counter_new() {
+inline ET_class_counter *ET_class_counter_new(void) {
     ET_class_counter *cc = NULL;
     cc = malloc(sizeof(ET_class_counter));
     check_mem(cc);
