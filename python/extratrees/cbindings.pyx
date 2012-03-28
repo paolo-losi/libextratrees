@@ -83,7 +83,7 @@ cdef class Forest:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def predict(self, np.ndarray[np.float64_t, ndim=2] X, bytes mode=None,
+    def predict(self, np.ndarray[np.float32_t, ndim=2] X, bytes mode=None,
                 curtail=1, smooth=False):
         cdef np.ndarray[np.float64_t, ndim=1] y
         cdef float *vector
@@ -125,7 +125,7 @@ cdef class Forest:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def predict_proba(self, np.ndarray[np.float64_t, ndim=2] X,
+    def predict_proba(self, np.ndarray[np.float32_t, ndim=2] X,
                       curtail=1, smooth=False):
         cdef float *vector
         cdef int sample_idx, feature_idx
@@ -170,7 +170,7 @@ cdef class Forest:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def neighbors(self, np.ndarray[np.float64_t, ndim=2] X, curtail=1):
+    def neighbors(self, np.ndarray[np.float32_t, ndim=2] X, curtail=1):
         cdef float *vector
         cdef int sample_idx, feature_idx
         cdef uint32_t _curtail = curtail
@@ -232,7 +232,7 @@ cdef Forest forest_factory(ET_forest *forest):
 # TODO use cython typed memoryviews to avoid copying
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def convert_to_problem(np.ndarray[np.float64_t, ndim=2] X not None,
+def convert_to_problem(np.ndarray[np.float32_t, ndim=2] X not None,
                        np.ndarray[np.float64_t, ndim=1] y not None):
 
     if y.shape[0] != X.shape[0]:
@@ -269,7 +269,7 @@ def convert_to_problem(np.ndarray[np.float64_t, ndim=2] X not None,
 def convert_from_problem(Problem prob not None):
     cdef int i, j
     cdef ET_problem *cprob = prob._prob
-    cdef np.ndarray[np.float64_t, ndim=2] X
+    cdef np.ndarray[np.float32_t, ndim=2] X
     cdef np.ndarray[np.float64_t, ndim=1] y
 
     X = numpy.empty(shape=(cprob.n_samples, cprob.n_features), dtype=np.float64)
