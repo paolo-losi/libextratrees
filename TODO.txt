@@ -20,6 +20,7 @@ FEATURE      train
 FEATURE      categorical features
 FEATURE      "adaptive" feature subset selection
 OPTIM        eliminate recursion everywhere
+OPTIM        keep track of constant label leafs and optimize prediction
 REFACTORING  review api/headers etc.etc
 REFACTORING  mersenne by klib
 DOC          include third party licenses
