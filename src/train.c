@@ -24,7 +24,7 @@ typedef struct {
 } builder_stack_node;
 
 
-ET_leaf_node *new_leaf_node(uint_vec *sample_idxs) {
+ET_leaf_node *new_leaf_node(uint_vec *sample_idxs, bool constant) {
     ET_leaf_node *ln = NULL;
     ln = malloc(sizeof(ET_leaf_node));
     check_mem(ln);
@@ -33,6 +33,7 @@ ET_leaf_node *new_leaf_node(uint_vec *sample_idxs) {
 
     kv_init(ln->indexes);
     kv_copy(uint32_t, ln->indexes, *sample_idxs);
+    ln->constant = constant;
     ln->base.n_samples = kv_size(*sample_idxs);
 
     exit:
@@ -156,7 +157,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         log_debug("min size (%d) reached. current sample size: %zu",
                                                     tb->params.min_split_size,
                                                     kv_size(*sample_idxs));
-        node = (ET_base_node *) new_leaf_node(sample_idxs);
+        node = (ET_base_node *) new_leaf_node(sample_idxs, false);
         goto exit;
     }
 
@@ -177,7 +178,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
     // if labels are constant return leaf node
     if(labels_are_constant) {
         log_debug("labels are constant. generating leaf node ...");
-        node = (ET_base_node *) new_leaf_node(sample_idxs);
+        node = (ET_base_node *) new_leaf_node(sample_idxs, true);
         goto exit;
     }
 
@@ -285,7 +286,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         node = (ET_base_node *) sn;
     } else {
         log_debug("split NOT found. building leaf node ...");
-        node = (ET_base_node *) new_leaf_node(sample_idxs);
+        node = (ET_base_node *) new_leaf_node(sample_idxs, false);
     }
 
     exit:

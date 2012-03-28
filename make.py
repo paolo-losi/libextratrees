@@ -7,7 +7,7 @@ from fabricate import *
 
 
 CC = os.getenv('CC', 'gcc')
-CCFLAGS = '-std=c99 -Wall -W -Wstrict-prototypes'
+CCFLAGS = '-std=c99 -Wall -W'
 DEBUG_FLAGS   = '-O0 -g -DDEBUG'
 RELEASE_FLAGS = '-O3'
 

@@ -69,6 +69,7 @@ typedef struct ET_split_node {
 
 typedef struct ET_leaf_node {
     ET_base_node base;
+    bool constant;
     uint_vec indexes;
 } ET_leaf_node;
 

@@ -125,6 +125,7 @@ static void node_dump(ET_base_node *node, uchar_vec *buffer) {
     switch(node->type) {
         case ET_LEAF_NODE: {
             ET_leaf_node *ln = CAST_LEAF(node);
+            dump_char((char) ln->constant, buffer);
             dump_uint_vec(&ln->indexes, buffer);
             break;
         }
@@ -151,6 +152,7 @@ static ET_base_node *node_load(unsigned char **bufferp) {
         case ET_LEAF_NODE: {
             ET_leaf_node *ln = malloc(sizeof(ET_leaf_node));
             check_mem(ln);
+            ln->constant = (bool) load_char(bufferp);
             kv_init(ln->indexes);
             load_uint_vec(&ln->indexes, bufferp);
             node = (ET_base_node *) ln;
