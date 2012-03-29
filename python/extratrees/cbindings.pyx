@@ -5,7 +5,7 @@ from libc.stdlib cimport malloc, free
 from libc.stdint cimport uint32_t
 from libc cimport math
 from libcpp cimport bool
-from cextratrees cimport (ET_problem, ET_problem_destroy,
+from cextratrees cimport (ET_problem, ET_problem_destroy, ET_load_libsvm_file,
                           ET_forest, ET_forest_destroy, ET_forest_build,
                           ET_forest_predict, ET_forest_predict_regression,
                           ET_forest_predict_class_majority,
@@ -272,8 +272,10 @@ def convert_from_problem(Problem prob not None):
     cdef np.ndarray[np.float32_t, ndim=2] X
     cdef np.ndarray[np.float64_t, ndim=1] y
 
-    X = numpy.empty(shape=(cprob.n_samples, cprob.n_features), dtype=np.float64)
-    y = numpy.empty(shape=(cprob.n_samples,), dtype=np.float64)
+    X = numpy.empty(shape=(cprob.n_samples, cprob.n_features),
+                    dtype=numpy.float32)
+    y = numpy.empty(shape=(cprob.n_samples,),
+                    dtype=numpy.float64)
 
     for j in xrange(cprob.n_features):
         for i in xrange(cprob.n_samples):
@@ -289,3 +291,10 @@ def train(X, y, **params):
     return convert_to_problem(X, y)._train(**params)
 
 
+def load(bytes fname):
+    cdef ET_problem *cprob = ET_load_libsvm_file(fname)
+
+    if not cprob:
+        raise MemoryError()
+
+    return problem_factory(cprob)

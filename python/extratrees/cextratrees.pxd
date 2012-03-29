@@ -11,6 +11,7 @@ cdef extern from "extratrees.h":
         uint32_t n_samples
 
     cdef void ET_problem_destroy(ET_problem *prob)
+    cdef ET_problem *ET_load_libsvm_file(char *fname)
 
     ctypedef struct ET_forest:
         uint32_t n_features
