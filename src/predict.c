@@ -23,22 +23,24 @@ static int compute_class_frequency(ET_forest *forest) {
 }
 
 
-static void append_neighbors(ET_base_node *node, uint_vec *neighbors) {
+// --- tree prediction utils ---
+
+typedef struct {
+    node_processor f;
+    void *data;
+} filter_leaves_data;
+
+static void filter_leaves(ET_base_node *node, filter_leaves_data *fld) {
     if IS_LEAF(node) {
-        uint_vec *new_neighbors = &CAST_LEAF(node)->indexes;
-        kv_extend(uint32_t, *neighbors, *new_neighbors);
+        fld->f(node, fld->data);
     }
 }
 
+static void tree_lookup(ET_tree tree, float *vector, uint32_t curtail_min_size,
+                        node_processor f, void *data) {
 
-static uint_vec *tree_neighbors(ET_tree tree, float *vector,
-                                uint32_t curtail_min_size) {
     ET_base_node *node = tree;
-    uint_vec *sample_idxs = NULL;
-
-    sample_idxs = malloc(sizeof(uint_vec));
-    check_mem(sample_idxs);
-    kv_init(*sample_idxs);
+    filter_leaves_data fld;
 
     while(1) {
         switch(node->type) {
@@ -53,8 +55,8 @@ static uint_vec *tree_neighbors(ET_tree tree, float *vector,
                 break;
             }
             case ET_LEAF_NODE: {
-                kv_copy(uint32_t, *sample_idxs, CAST_LEAF(node)->indexes);
-                return sample_idxs;
+                f(node, data);
+                return;
             }
             default:
                 sentinel("unexpected split type %c", node->type);
@@ -62,14 +64,73 @@ static uint_vec *tree_neighbors(ET_tree tree, float *vector,
     }
 
     curtail:
-    tree_navigate(node, (node_processor) append_neighbors, sample_idxs);
-    return sample_idxs;
+    fld = (filter_leaves_data) {f, data};
+    tree_navigate(node, (node_processor) filter_leaves, &fld);
 
     exit:
-    //sentinel
-    return NULL;
-
+    return;
 }
+
+
+// --- tree prediction ---
+
+// * neighbors
+
+static void append_neighbors(ET_base_node *node, uint_vec *neighbors) {
+    uint_vec *new_neighbors = &CAST_LEAF(node)->indexes;
+    kv_extend(uint32_t, *neighbors, *new_neighbors);
+}
+
+static uint_vec *tree_neighbors(ET_tree tree, float *vector,
+                                uint32_t curtail_min_size) {
+    uint_vec *sample_idxs = NULL;
+
+    sample_idxs = malloc(sizeof(uint_vec));
+    check_mem(sample_idxs);
+    kv_init(*sample_idxs);
+
+    tree_lookup(tree, vector, curtail_min_size,
+                (node_processor) append_neighbors, sample_idxs);
+
+    exit:
+    return sample_idxs;
+}
+
+// * regression
+
+typedef struct {
+    double sum;
+    uint32_t count;
+    double *labels;
+} sum_count;
+
+static void regression_node_processor(ET_base_node *node, sum_count *sc) {
+    ET_leaf_node *lf = CAST_LEAF(node);
+
+    if (lf->constant) {
+        uint32_t first_sample_idx = kv_A(lf->indexes, 0);
+        double label = sc->labels[first_sample_idx];
+        sc->sum += label;
+    } else {
+        for(size_t i = 0; i < kv_size(lf->indexes); i++) {
+            uint32_t sample_idx = kv_A(lf->indexes, i);
+            double label = sc->labels[sample_idx];
+            sc->sum += label;
+        }
+    }
+    sc->count += node->n_samples;
+}
+
+static double tree_regression(ET_tree tree, float *vector,
+                              uint32_t curtail_min_size, double *labels) {
+    sum_count sc = {0, 0, labels};
+    tree_lookup(tree, vector, curtail_min_size,
+                (node_processor) regression_node_processor, &sc);
+    return sc.sum / (double) sc.count;
+}
+
+
+// --- forest prediction ---
 
 
 uint_vec **ET_forest_neighbors_detail(ET_forest *forest, float *vector,

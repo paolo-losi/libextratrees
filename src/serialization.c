@@ -179,7 +179,7 @@ static ET_base_node *node_load(unsigned char **bufferp) {
 
     exit:
     return node;
-    
+
 }
 
 
@@ -241,13 +241,13 @@ void ET_forest_dump(ET_forest *forest, uchar_vec *buffer) {
     dump_data(&forest->params, sizeof(ET_params), buffer);
     dump_double(forest->n_features, buffer);
     dump_double(forest->n_samples, buffer);
-    
+
     for(uint32_t i = 0; i < forest->n_samples; i++) {
         dump_double(forest->labels[i], buffer);
     }
 
     dump_uint32(size, buffer);
-    
+
     for(uint32_t i = 0; i < size; i++) {
         ET_tree_dump(kv_A(forest->trees, i), buffer);
     }
