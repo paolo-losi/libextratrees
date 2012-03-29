@@ -110,7 +110,7 @@ static void regression_node_processor(ET_base_node *node, sum_count *sc) {
     if (lf->constant) {
         uint32_t first_sample_idx = kv_A(lf->indexes, 0);
         double label = sc->labels[first_sample_idx];
-        sc->sum += label;
+        sc->sum += label * node->n_samples;
     } else {
         for(size_t i = 0; i < kv_size(lf->indexes); i++) {
             uint32_t sample_idx = kv_A(lf->indexes, i);
@@ -261,24 +261,18 @@ double ET_forest_predict_class_majority(ET_forest *forest,
 double ET_forest_predict_regression(ET_forest *forest,
                                     float *vector,
                                     uint32_t curtail_min_size) {
-    neighbour_weight_vec *nwvec = NULL;
-    double y = 0.0;
+    double y, sum = 0;
+    uint32_t n_trees = kv_size(forest->trees);
 
-    nwvec = ET_forest_neighbors(forest, vector, curtail_min_size);
-    for(size_t i = 0; i < kv_size(*nwvec); i++) {
-        neighbour_weight nw = kv_A(*nwvec, i);
-        double weight = nw.weight;
-        uint32_t sample_idx = nw.key;
-        log_debug("sample_idx: %d weight: %g", sample_idx, weight);
-        double val = forest->labels[sample_idx];
+    for(size_t i = 0; i < n_trees; i++) {
+        ET_tree tree = kv_A(forest->trees, i);
 
-        y += val * weight;
+        y = tree_regression(tree, vector, curtail_min_size, forest->labels);
+        log_debug("tree #%zu regression prediction = %g", i, y);
+        sum += y;
     }
 
-    kv_destroy(*nwvec);
-    free(nwvec);
-
-    return y;
+    return sum / (double) n_trees;
 }
 
 
