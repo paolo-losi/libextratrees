@@ -379,7 +379,6 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
         free(nwvec);
     }
     return prob_vec;
-
 }
 
 

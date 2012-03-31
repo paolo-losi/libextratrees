@@ -151,10 +151,10 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
 
     log_debug(">>>>> split_problem. n samples: %zu", kv_size(*sample_idxs));
 
-    // NOTE: this does not guarantee that leaf size is always >= min_split_size
     // check if min_split_size is reached
-    if(kv_size(*sample_idxs) <= (size_t) tb->params.min_split_size) {
-        log_debug("min size (%d) reached. current sample size: %zu",
+    // NOTE: this does not guarantee that leaf size is always >= min_split_size
+    if(kv_size(*sample_idxs) < (size_t) tb->params.min_split_size) {
+        log_debug("min_split_size (%d) NOT reached. sample size: %zu",
                                                     tb->params.min_split_size,
                                                     kv_size(*sample_idxs));
         node = (ET_base_node *) new_leaf_node(sample_idxs, false);

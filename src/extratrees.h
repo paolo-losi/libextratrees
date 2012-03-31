@@ -36,7 +36,7 @@ typedef struct ET_params {
     (params).number_of_features_tested = ceil(sqrt((prob).n_features));  \
     (params).number_of_trees           = 100;                            \
     (params).regression                = false;                          \
-    (params).min_split_size            = 1;                              \
+    (params).min_split_size            = 2;                              \
     (params).select_features_with_replacement = false;                   \
     } while(0)
 
@@ -44,7 +44,7 @@ typedef struct ET_params {
     (params).number_of_features_tested = (prob).n_features;              \
     (params).number_of_trees           = 100;                            \
     (params).regression                = true;                           \
-    (params).min_split_size            = 1;                              \
+    (params).min_split_size            = 2;                              \
     (params).select_features_with_replacement = false;                   \
     } while(0)
 
