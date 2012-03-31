@@ -65,4 +65,12 @@ inline void ET_class_counter_sort(ET_class_counter *cc) {
                                         &compare_on_label);
 }
 
+inline uint32_t ET_class_counter_total(ET_class_counter *cc) {
+    double tot = 0;
+    for(size_t i = 0; i < kv_size(*cc); i++) {
+        tot += kv_A(*cc, i).count;
+    }
+    return tot;
+}
+
 #endif

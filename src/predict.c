@@ -320,6 +320,7 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
     bool error = true;
     class_probability_vec *prob_vec = NULL;
     neighbour_weight_vec *nwvec = NULL;
+    double n_trees = kv_size(forest->trees);
 
     prob_vec = malloc(sizeof(class_probability_vec));
     check_mem(prob_vec);
@@ -334,23 +335,28 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
         kv_push(class_probability, *prob_vec, ((class_probability) {label, 0}));
     }
 
-    nwvec = ET_forest_neighbors(forest, vector, curtail_min_size);
-    check_mem(nwvec);
+    for(size_t i = 0; i < n_trees; i++) {
+        ET_class_counter *cc = NULL;
+        ET_tree tree = kv_A(forest->trees, i);
 
-    for(size_t i = 0; i < kv_size(*nwvec); i++) {
-        uint32_t sample_idx = kv_A(*nwvec, i).key;
-        double weight       = kv_A(*nwvec, i).weight;
-        double label = forest->labels[sample_idx];
-        log_debug("sample_idx: %d weight: %g label: %g",
-                                                    sample_idx, weight, label);
+        cc = tree_classification(tree, vector, curtail_min_size,
+                                 forest->labels);
+        check_mem(cc);
 
-        for(size_t j = 0; j < kv_size(*prob_vec); j++) {
-            class_probability *cp = &kv_A(*prob_vec, j);
-            if (cp->label == label) {
-                cp->probability += weight;
-                break;
+        double total = ET_class_counter_total(cc);
+
+        for(size_t k = 0; k < kv_size(*cc); k++) {
+            class_counter_elm *ce = &(kv_A(*cc, k));
+            for(size_t j = 0; j < kv_size(*prob_vec); j++) {
+                class_probability *cp = &kv_A(*prob_vec, j);
+                if (cp->label == ce->key) {
+                    cp->probability += ce->count / total / n_trees;
+                    break;
+                }
             }
         }
+        ET_class_counter_destroy(*cc);
+        free(cc);
     }
 
     if (smooth) {
