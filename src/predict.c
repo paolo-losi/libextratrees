@@ -129,6 +129,44 @@ static double tree_regression(ET_tree tree, float *vector,
     return sc.sum / (double) sc.count;
 }
 
+// * classification
+
+typedef struct {
+    ET_class_counter *class_counter;
+    double *labels;
+} class_freq_labels;
+
+static void class_freq_node_processor(ET_base_node *node,
+                                      class_freq_labels *cfl) {
+    ET_leaf_node *ln = CAST_LEAF(node);
+
+    if (ln->constant) {
+        uint32_t first_sample_idx = kv_A(ln->indexes, 0);
+        double class = cfl->labels[first_sample_idx];
+        ET_class_counter_incr_n(cfl->class_counter, class, node->n_samples);
+    } else {
+        for(size_t i=0; i < kv_size(ln->indexes); i++) {
+            uint32_t sample_idx = kv_A(ln->indexes, i);
+            double class = cfl->labels[sample_idx];
+            ET_class_counter_incr(cfl->class_counter, class);
+        }
+    }
+}
+
+static ET_class_counter *tree_classification(ET_tree tree, float *vector,
+                                             uint32_t curtail_min_size,
+                                             double *labels) {
+    ET_class_counter *cc = NULL;
+    cc = ET_class_counter_new();
+    check_mem(cc);
+
+    class_freq_labels cfl = {cc, labels};
+    tree_lookup(tree, vector, curtail_min_size,
+                (node_processor) class_freq_node_processor, &cfl);
+
+    exit:
+    return cc;
+}
 
 // --- forest prediction ---
 
@@ -194,66 +232,65 @@ double ET_forest_predict_class_majority(ET_forest *forest,
                                         float *vector,
                                         uint32_t curtail_min_size) {
     double best_class = 0;
-    uint_vec **neigh_detail;
-    ET_class_counter class_counter_global, class_counter_tree;
+    ET_class_counter tree_vote_counter;
+    ET_class_counter_init(tree_vote_counter);
+    SimpleRandomKISS2_t rand_state;
 
-    ET_class_counter_init(class_counter_global);
-    ET_class_counter_init(class_counter_tree);
-    neigh_detail = ET_forest_neighbors_detail(forest, vector, curtail_min_size);
-    check_mem(neigh_detail);
+    simplerandom_kiss2_seed(&rand_state, 0, 1, 2, 3);
 
-    for(size_t i=0; i < kv_size(forest->trees); i++) {
-        double most_frequent_class = 0;
+    for(size_t i = 0; i < kv_size(forest->trees); i++) {
+        ET_class_counter *cc = NULL;
+        ET_tree tree = kv_A(forest->trees, i);
+
+        cc = tree_classification(tree, vector, curtail_min_size,
+                                 forest->labels);
+        check_mem(cc);
+
+        // compute class vote for tree
         int32_t most_frequent_count = -1;
-        uint_vec *tree_neighs = neigh_detail[i];
+        double_vec best_classes;
+        kv_init(best_classes);
 
         log_debug(" --- tree count # %zu", i);
-        kv_clear(class_counter_tree);
-
-        // count class freq in tree
-        for(size_t j=0; j < kv_size(*tree_neighs); j++) {
-            uint32_t sample_idx = kv_A(*tree_neighs, j);
-            double class = forest->labels[sample_idx];
-            ET_class_counter_incr(&class_counter_tree, class);
-        }
-
-        // look for most frequent class in tree
-        for(size_t k=0; k < kv_size(class_counter_tree); k++) {
-            class_counter_elm *ce = &(kv_A(class_counter_tree, k));
+        for(size_t k=0; k < kv_size(*cc); k++) {
+            class_counter_elm *ce = &(kv_A(*cc, k));
             log_debug("class: %g count: %d", ce->key, ce->count);
             if (most_frequent_count < (int32_t) ce->count) {
                 most_frequent_count = ce->count;
-                most_frequent_class = ce->key;
+                kv_clear(best_classes);
+                kv_push(double, best_classes, ce->key);
             } else if (most_frequent_count == (int32_t) ce->count) {
-                log_warn("labels in leaf are balanced");
+                kv_push(double, best_classes, ce->key);
             }
         }
+        ET_class_counter_destroy(*cc);
+        free(cc);
 
-        // record most frequent class for tree
-        ET_class_counter_incr(&class_counter_global, most_frequent_class);
+        // in case of tie, choose class randomly
+        uint32_t best_count = kv_size(best_classes);
+        uint32_t best_idx = best_count == 1 ? 0 : random_int(&rand_state,
+                                                             best_count);
+        double tree_best_class = kv_A(best_classes, best_idx);
 
-        kv_destroy(*tree_neighs);
-        free(tree_neighs);
+        ET_class_counter_incr(&tree_vote_counter, tree_best_class);
+        kv_destroy(best_classes);
     }
 
-    free(neigh_detail);
-    {
-        int32_t best_count = -1;
+    // voting
+    int32_t best_count = -1;
 
-        log_debug(" --- global count");
-        for(size_t i=0; i < kv_size(class_counter_global); i++) {
-            class_counter_elm *ce4 = &(kv_A(class_counter_global, i));
-            log_debug("class: %g count: %d", ce4->key, ce4->count);
-            if (best_count < (int32_t) ce4->count) {
-                best_count = ce4->count;
-                best_class = ce4->key;
-            }
+    log_debug(" --- global count");
+    for(size_t i=0; i < kv_size(tree_vote_counter); i++) {
+        class_counter_elm *ce = &(kv_A(tree_vote_counter, i));
+        log_debug("class: %g count: %d", ce->key, ce->count);
+        if (best_count < (int32_t) ce->count) {
+            best_count = ce->count;
+            best_class = ce->key;
         }
     }
 
     exit:
-    ET_class_counter_destroy(class_counter_tree);
-    ET_class_counter_destroy(class_counter_global);
+    kv_destroy(tree_vote_counter);
     return best_class;
 }
 

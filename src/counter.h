@@ -47,6 +47,17 @@ inline void ET_class_counter_incr(ET_class_counter *cc, double label) {
     };
 }
 
+inline void ET_class_counter_incr_n(ET_class_counter *cc, double label,
+                                                          uint32_t count) {
+    class_counter_elm *cce;
+    kal_getp(*cc, label, cce);
+    if(cce == NULL) {
+        kv_push(class_counter_elm, *cc, ((class_counter_elm) {label, count}));
+    } else {
+        cce->count += count;
+    };
+}
+
 int compare_on_label(const void *a, const void *b);
 
 inline void ET_class_counter_sort(ET_class_counter *cc) {
