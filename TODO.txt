@@ -10,7 +10,10 @@ FEATURE      multi thread
                 - generare in modo parallelo (vedi mersenne jump)
                 - be careful with concurrent access to feature_deck
 FEATURE      feature importance:
-                - curtail 
+                - curtail
+FEATURE      bias reduction via:
+                - feature probability distribution estimation
+                - outlier detection
 FEATURE      train
                 - modified gini diversity for classification
                 - mad for regression
