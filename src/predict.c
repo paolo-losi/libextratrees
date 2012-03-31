@@ -189,15 +189,14 @@ uint_vec **ET_forest_neighbors_detail(ET_forest *forest, float *vector,
 }
 
 
-neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
-                                          uint32_t curtail_min_size) {
+double *ET_forest_neighbors(ET_forest *forest, float *vector,
+                            uint32_t curtail_min_size) {
     uint_vec **neigh_detail;
-    neighbour_weight_vec *nwvec;
     size_t n_trees = kv_size(forest->trees);
+    double *nwa = NULL;
 
-    nwvec = malloc(sizeof(neighbour_weight_vec));
-    check_mem(nwvec);
-    kv_init(*nwvec);
+    nwa = calloc(sizeof(double), forest->n_samples);
+    check_mem(nwa);
 
     neigh_detail = ET_forest_neighbors_detail(forest, vector, curtail_min_size);
     check_mem(neigh_detail);
@@ -207,16 +206,8 @@ neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
         double incr = 1.0 / (double) (kv_size(*tree_neighs) * n_trees);
 
         for(size_t j = 0; j < kv_size(*tree_neighs); j++) {
-            neighbour_weight *nw = NULL;
             uint32_t sample_idx = kv_A(*tree_neighs, j);
-
-            kal_getp(*nwvec, sample_idx, nw);
-            if (nw == NULL) {
-                kv_push(neighbour_weight, *nwvec,
-                        ((neighbour_weight) { sample_idx, incr }));
-            } else {
-                nw->weight += incr;
-            }
+            nwa[sample_idx] += incr;
         }
         kv_destroy(*tree_neighs);
         free(tree_neighs);
@@ -224,7 +215,7 @@ neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest, float *vector,
     free(neigh_detail);
 
     exit:
-    return nwvec;
+    return nwa;
 }
 
 
@@ -319,7 +310,6 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
                                                      bool smooth) {
     bool error = true;
     class_probability_vec *prob_vec = NULL;
-    neighbour_weight_vec *nwvec = NULL;
     double n_trees = kv_size(forest->trees);
 
     prob_vec = malloc(sizeof(class_probability_vec));
@@ -379,10 +369,6 @@ class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
     if (error && prob_vec != NULL) {
         kv_destroy(*prob_vec);
         free(prob_vec);
-    }
-    if (nwvec != NULL) {
-        kv_destroy(*nwvec);
-        free(nwvec);
     }
     return prob_vec;
 }

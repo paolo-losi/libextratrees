@@ -18,6 +18,7 @@ void test_predict() {
     float vector2[3] = {2, 1, 1};
     float vector3[3] = {2.1, 1, 1};
     double prediction;
+    double *neighbor_weights;
     class_probability_vec *cpv;
 
     problem_init(&prob, vectors, labels);
@@ -64,8 +65,16 @@ void test_predict() {
     prediction = ET_forest_predict_class_bayes(forest, vector3, 1, false);
     fprintf(stderr, "class prediction vector3 (bayes): %g\n", prediction);
 
+    neighbor_weights = ET_forest_neighbors(forest, vector3, 1);
+    fprintf(stderr, "neighbor weights for vector3:\n");
+    for(size_t i = 0; i < forest->n_samples; i++) {
+        fprintf(stderr, "  - sample_idx: %zd. weight: %g\n",
+                i, neighbor_weights[i]);
+    }
+
     ET_forest_destroy(forest);
     free(forest);
+    free(neighbor_weights);
 }
 
 

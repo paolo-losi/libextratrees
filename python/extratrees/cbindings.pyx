@@ -13,7 +13,6 @@ from cextratrees cimport (ET_problem, ET_problem_destroy, ET_load_libsvm_file,
                           ET_forest_neighbors, ET_params,
                           ET_forest_predict_class_bayes,
                           class_probability_vec, class_probability,
-                          neighbour_weight, neighbour_weight_vec,
                           double_vec, ET_forest_feature_importance)
 
 
@@ -172,13 +171,12 @@ cdef class Forest:
     @cython.wraparound(False)
     def neighbors(self, np.ndarray[np.float32_t, ndim=2] X, curtail=1):
         cdef float *vector
+        cdef double *weights
         cdef int sample_idx, feature_idx
         cdef uint32_t _curtail = curtail
-        cdef neighbour_weight_vec *nwv
-        cdef neighbour_weight *nw
         cdef np.ndarray[np.float64_t, ndim=2] adiacency
 
-        adiacency = numpy.zeros(shape=(X.shape[0], self._forest.n_samples),
+        adiacency = numpy.empty(shape=(X.shape[0], self._forest.n_samples),
                                 dtype=numpy.float64)
 
         vector = <float *> malloc(sizeof(float) * X.shape[1])
@@ -189,16 +187,14 @@ cdef class Forest:
             for feature_idx in xrange(X.shape[1]):
                 vector[feature_idx] = X[sample_idx, feature_idx]
 
-            nwv = ET_forest_neighbors(self._forest, vector, _curtail)
-            if not nwv:
+            weights = ET_forest_neighbors(self._forest, vector, _curtail)
+            if not weights:
                 raise MemoryError()
 
-            for i in xrange(nwv.n):
-                nw = &nwv.a[i]
-                adiacency[sample_idx, nw.key] = nw.weight
+            for feature_idx in xrange(X.shape[1]):
+                adiacency[sample_idx, feature_idx] = weights[feature_idx]
 
-            free(nwv.a)
-            free(nwv)
+            free(weights)
 
         free(vector)
         return adiacency

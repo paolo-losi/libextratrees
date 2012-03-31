@@ -51,16 +51,7 @@ cdef extern from "extratrees.h":
                                              float *vector,
                                              uint32_t curtail_min_size,
                                              bool smooth)
-
-    ctypedef struct neighbour_weight:
-        uint32_t key
-        double weight
-
-    ctypedef struct neighbour_weight_vec:
-        size_t n, m
-        neighbour_weight *a
-
-    cdef neighbour_weight_vec *ET_forest_neighbors(ET_forest *forest,
+    cdef double *ET_forest_neighbors(ET_forest *forest,
                                              float *vector,
                                              uint32_t curtail_min_size)
 
