@@ -184,14 +184,17 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
 
     {
         double best_diversity = DBL_MAX;
+        uint32_t n_features = prob->n_features;
         uint32_t nb_features_tested = 0;
         uint32_t nb_features_to_test = tb->params.number_of_features_tested;
         bool with_replacement = tb->params.select_features_with_replacement;
 
+        uint32_t max_test = with_replacement ? 10 * n_features : n_features;
+
         log_debug("number of features to test: %d", nb_features_to_test);
 
         // select best split
-        while (true) {
+        while (nb_features_to_test && nb_features_tested < max_test) {
             min_max mm;
             uint32_t feature_idx;
             double threshold, diversity;
@@ -223,7 +226,9 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
             if (mm.min == mm.max) {
                 log_debug("constant feature");
                 continue;
-            } else split_found = true;
+            } else {
+                split_found = true;
+            }
 
             double delta = mm.max - mm.min;
             threshold = mm.min + random_double(&tb->rand_state) * delta;
@@ -259,13 +264,6 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
             }
 
             nb_features_to_test--;
-
-        if (nb_features_to_test <= 0) { break; }
-        if (with_replacement) {
-            if (nb_features_tested >= 10 * prob->n_features) { break; }
-        } else {
-            if (nb_features_tested >= prob->n_features) { break; }
-        }
 
         }
     }
