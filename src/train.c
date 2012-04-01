@@ -191,7 +191,7 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
         log_debug("number of features to test: %d", nb_features_to_test);
 
         // select best split
-        do {
+        while (true) {
             min_max mm;
             uint32_t feature_idx;
             double threshold, diversity;
@@ -201,29 +201,26 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
             // select random feature
             if (with_replacement) {
                 feature_idx = random_int(&tb->rand_state, prob->n_features);
-                log_debug("selected feature WITH replacement");
             } else {
                 uint32_t deck_idx, end_idx, *deck;
 
                 deck = tb->features_deck;
                 deck_idx = random_int(&tb->rand_state,
-                                      prob->n_features-nb_features_tested);
+                                      prob->n_features - nb_features_tested);
                 feature_idx = deck[deck_idx];
                 end_idx = prob->n_features - nb_features_tested - 1;
                 deck[deck_idx] = deck[end_idx];
                 deck[end_idx] = feature_idx;
-                nb_features_tested++;
-                log_debug("selected feature WITHOUT replacement: %d",
-                                                          nb_features_tested);
             }
+            nb_features_tested++;
+            log_debug("number of feature selected %s replacement: %d",
+                    with_replacement ? "WITH" : "WITHOUT", nb_features_tested);
             log_debug("feature index: %d", feature_idx);
 
             // select random threshold in (min, max)
             mm = get_feature_min_max(prob, sample_idxs, feature_idx);
             log_debug("values - min: %g max: %g", mm.min, mm.max);
             if (mm.min == mm.max) {
-                if (with_replacement)
-                    nb_features_to_test--;
                 log_debug("constant feature");
                 continue;
             } else split_found = true;
@@ -263,9 +260,14 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
 
             nb_features_to_test--;
 
-        } while (nb_features_to_test &&
-                                    (with_replacement ||
-                                     nb_features_tested < prob->n_features));
+        if (nb_features_to_test <= 0) { break; }
+        if (with_replacement) {
+            if (nb_features_tested >= 10 * prob->n_features) { break; }
+        } else {
+            if (nb_features_tested >= prob->n_features) { break; }
+        }
+
+        }
     }
 
     if (split_found) {
