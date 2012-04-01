@@ -19,11 +19,16 @@ from cextratrees cimport (ET_problem, ET_problem_destroy, ET_load_libsvm_file,
 cdef class Problem:
 
     cdef ET_problem *_prob
+    cdef _X
 
     def __dealloc__(self):
         if self._prob:
-            ET_problem_destroy(self._prob)
-            free(self._prob)
+            if self._X is not None:
+                free(self._prob.labels)
+                free(self._prob)
+            else:
+                ET_problem_destroy(self._prob)
+                free(self._prob)
 
     def _train(self, number_of_features_tested=None,
                      number_of_trees=100,
@@ -52,9 +57,11 @@ cdef class Problem:
         return forest_factory(cforest)
 
 
-cdef Problem problem_factory(ET_problem *prob):
+cdef Problem problem_factory(ET_problem *prob,
+                           np.ndarray[np.float32_t, ndim=2, mode='fortran'] X):
     cdef Problem instance = Problem.__new__(Problem)
     instance._prob = prob
+    instance._X = X
     return instance
 
 
@@ -82,8 +89,8 @@ cdef class Forest:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def predict(self, np.ndarray[np.float32_t, ndim=2] X, bytes mode=None,
-                curtail=1, smooth=False):
+    def predict(self, np.ndarray[np.float32_t, ndim=2] X not None,
+                bytes mode=None, curtail=1, smooth=False):
         cdef np.ndarray[np.float64_t, ndim=1] y
         cdef float *vector
         cdef int sample_idx, feature_idx
@@ -124,7 +131,7 @@ cdef class Forest:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def predict_proba(self, np.ndarray[np.float32_t, ndim=2] X,
+    def predict_proba(self, np.ndarray[np.float32_t, ndim=2] X not None,
                       curtail=1, smooth=False):
         cdef float *vector
         cdef int sample_idx, feature_idx
@@ -169,7 +176,7 @@ cdef class Forest:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def neighbors(self, np.ndarray[np.float32_t, ndim=2] X, curtail=1):
+    def neighbors(self, np.ndarray[np.float32_t, ndim=2] X not None, curtail=1):
         cdef float *vector
         cdef double *weights
         cdef int sample_idx, feature_idx
@@ -228,8 +235,9 @@ cdef Forest forest_factory(ET_forest *forest):
 # TODO use cython typed memoryviews to avoid copying
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def convert_to_problem(np.ndarray[np.float32_t, ndim=2] X not None,
-                       np.ndarray[np.float64_t, ndim=1] y not None):
+def convert_to_problem(
+    np.ndarray[np.float32_t, ndim=2, mode='fortran'] X not None,
+    np.ndarray[np.float64_t, ndim=1] y not None):
 
     if y.shape[0] != X.shape[0]:
         raise ValueError('y.shape[0] != X.shape[0]')
@@ -245,19 +253,15 @@ def convert_to_problem(np.ndarray[np.float32_t, ndim=2] X not None,
     cprob.n_features = n_features
     cprob.n_samples = n_samples
 
-    cprob.vectors = <float *> malloc(sizeof(float) * n_features * n_samples)
+    cprob.vectors = <float *> np.PyArray_DATA(X)
     cprob.labels = <double *> malloc(sizeof(double) * n_samples)
     if not cprob.labels or not cprob.vectors:
         raise MemoryError()
 
-    for j in xrange(n_features):
-        for i in xrange(n_samples):
-            cprob.vectors[j * n_samples + i] = X[i, j]
-
     for i in xrange(n_samples):
         cprob.labels[i] = y[i]
 
-    return problem_factory(cprob)
+    return problem_factory(cprob, X)
 
 
 @cython.boundscheck(False)
@@ -268,14 +272,17 @@ def convert_from_problem(Problem prob not None):
     cdef np.ndarray[np.float32_t, ndim=2] X
     cdef np.ndarray[np.float64_t, ndim=1] y
 
-    X = numpy.empty(shape=(cprob.n_samples, cprob.n_features),
-                    dtype=numpy.float32)
+    if prob._X is None:
+        X = numpy.empty(shape=(cprob.n_samples, cprob.n_features),
+                        dtype=numpy.float32)
+        for j in xrange(cprob.n_features):
+            for i in xrange(cprob.n_samples):
+                X[i, j] = cprob.vectors[j * cprob.n_samples + i]
+    else:
+        X = prob._X
+
     y = numpy.empty(shape=(cprob.n_samples,),
                     dtype=numpy.float64)
-
-    for j in xrange(cprob.n_features):
-        for i in xrange(cprob.n_samples):
-            X[i, j] = cprob.vectors[j * cprob.n_samples + i]
 
     for i in xrange(cprob.n_samples):
         y[i] = cprob.labels[i]
@@ -293,4 +300,4 @@ def load(bytes fname):
     if not cprob:
         raise MemoryError()
 
-    return problem_factory(cprob)
+    return problem_factory(cprob, None)
