@@ -106,7 +106,8 @@ typedef kvec_t(class_probability) class_probability_vec;
 
 ET_problem *ET_load_libsvm_file(char *fname);
 ET_forest *ET_forest_build(ET_problem *prob, ET_params *params);
-double_vec *ET_forest_feature_importance(ET_forest *forest);
+double *ET_forest_feature_importance(ET_forest *forest,
+                                     uint32_t curtail_min_size);
 void ET_forest_destroy(ET_forest *forest);
 void ET_forest_dump(ET_forest *forest, uchar_vec *buffer);
 void ET_problem_print(ET_problem *prob, FILE *f);

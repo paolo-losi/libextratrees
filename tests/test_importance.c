@@ -15,7 +15,7 @@ void test_importance_regression() {
     ET_problem prob;
     ET_params params;
     ET_forest *forest;
-    double_vec *feature_importance;
+    double *feature_importance;
 
     problem_init(&prob, vectors, labels);
     ET_problem_print(&prob, stderr);
@@ -26,14 +26,13 @@ void test_importance_regression() {
     params.select_features_with_replacement = false;
 
     forest = ET_forest_build(&prob, &params);
-    feature_importance = ET_forest_feature_importance(forest);
+    feature_importance = ET_forest_feature_importance(forest, 1);
     for(uint32_t i = 0; i < forest->n_features; i++) {
         fprintf(stderr, "feature #%d -> importance: %g\n",
-            i, kv_A(*feature_importance, i));
+            i, feature_importance[i]);
     }
 
     ET_forest_destroy(forest);
-    kv_destroy(*feature_importance);
     free(feature_importance);
     free(forest);
 }
@@ -45,7 +44,7 @@ void test_importance_classification() {
     ET_problem prob;
     ET_params params;
     ET_forest *forest;
-    double_vec *feature_importance;
+    double *feature_importance;
 
     problem_init(&prob, vectors, labels);
     ET_problem_print(&prob, stderr);
@@ -56,14 +55,13 @@ void test_importance_classification() {
     params.select_features_with_replacement = false;
 
     forest = ET_forest_build(&prob, &params);
-    feature_importance = ET_forest_feature_importance(forest);
+    feature_importance = ET_forest_feature_importance(forest, 1);
     for(uint32_t i = 0; i < forest->n_features; i++) {
         fprintf(stderr, "feature #%d -> importance: %g\n",
-            i, kv_A(*feature_importance, i));
+            i, feature_importance[i]);
     }
 
     ET_forest_destroy(forest);
-    kv_destroy(*feature_importance);
     free(feature_importance);
     free(forest);
 }

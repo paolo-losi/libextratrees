@@ -195,7 +195,7 @@ double *ET_forest_neighbors(ET_forest *forest, float *vector,
     size_t n_trees = kv_size(forest->trees);
     double *nwa = NULL;
 
-    nwa = calloc(sizeof(double), forest->n_samples);
+    nwa = calloc(forest->n_samples, sizeof(double));
     check_mem(nwa);
 
     neigh_detail = ET_forest_neighbors_detail(forest, vector, curtail_min_size);
@@ -412,39 +412,44 @@ double ET_forest_predict(ET_forest *forest, float *vector) {
 
 // --- feature importance ---
 
-void node_diversity(ET_base_node *node, double_vec *diversity_reduction) {
-    if (IS_SPLIT(node)) {
-        double curr_reduction;
+typedef struct {
+    double *diversity_reduction;
+    uint32_t curtail_min_size;
+} diversity_curtail;
+
+
+void node_diversity(ET_base_node *node, diversity_curtail *dc) {
+    if (IS_SPLIT(node) && node->n_samples > dc->curtail_min_size) {
         ET_split_node *sn = CAST_SPLIT(node);
-        curr_reduction = node->diversity - sn->higher_node->diversity
-                                         - sn->lower_node->diversity;
-        kv_A(*diversity_reduction, sn->feature_id) += curr_reduction;
+        double curr_reduction = node->diversity - sn->higher_node->diversity
+                                                - sn->lower_node->diversity;
+        dc->diversity_reduction[sn->feature_id] += curr_reduction;
     }
 }
 
 
-double_vec *ET_forest_feature_importance(ET_forest *forest) {
-    double_vec *diversity_reduction = NULL;
+double *ET_forest_feature_importance(ET_forest *forest,
+                                     uint32_t curtail_min_size) {
+    uint32_t n_trees = kv_size(forest->trees);
+    diversity_curtail dc;
+    double *diversity_reduction = NULL;
 
-    diversity_reduction = malloc(sizeof(double_vec));
+    diversity_reduction = calloc(forest->n_features, sizeof(double_vec));
     check_mem(diversity_reduction);
 
-    kv_init(*diversity_reduction);
-    kv_resize(double, *diversity_reduction, forest->n_features);
-    for(uint32_t i = 0; i < forest->n_features; i++) {
-        kv_A(*diversity_reduction, i) = 0;
-    }
+    dc.diversity_reduction = diversity_reduction;
+    dc.curtail_min_size = curtail_min_size;
 
-    for(uint32_t i = 0; i < forest->params.number_of_trees; i++) {
+    for(uint32_t i = 0; i < n_trees; i++) {
         tree_navigate(kv_A(forest->trees, i),
                       (node_processor) node_diversity,
-                      diversity_reduction);
+                      &dc);
     }
 
+    ET_tree tree = kv_A(forest->trees, 0);
+    double den = ((double) n_trees) * tree->diversity;
     for(uint32_t i = 0; i < forest->n_features; i++) {
-        ET_tree tree = kv_A(forest->trees, 0);
-        double den = forest->params.number_of_trees * tree->diversity;
-        kv_A(*diversity_reduction, i) /= den;
+        diversity_reduction[i] /= den;
     }
 
     exit:

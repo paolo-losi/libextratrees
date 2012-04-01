@@ -9,8 +9,6 @@ FEATURE      print ET_forest
 FEATURE      multi thread
                 - generare in modo parallelo (vedi mersenne jump)
                 - be careful with concurrent access to feature_deck
-FEATURE      feature importance:
-                - curtail
 FEATURE      bias reduction via:
                 - feature probability distribution estimation
                 - outlier detection

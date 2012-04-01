@@ -54,12 +54,7 @@ cdef extern from "extratrees.h":
     cdef double *ET_forest_neighbors(ET_forest *forest,
                                              float *vector,
                                              uint32_t curtail_min_size)
-
-    ctypedef struct double_vec:
-        size_t n, m
-        double *a
-
-    cdef double_vec *ET_forest_feature_importance(ET_forest *forest) 
+    cdef double *ET_forest_feature_importance(ET_forest *forest) 
         
 
     

@@ -13,7 +13,7 @@ from cextratrees cimport (ET_problem, ET_problem_destroy, ET_load_libsvm_file,
                           ET_forest_neighbors, ET_params,
                           ET_forest_predict_class_bayes,
                           class_probability_vec, class_probability,
-                          double_vec, ET_forest_feature_importance)
+                          ET_forest_feature_importance)
 
 
 cdef class Problem:
@@ -203,7 +203,7 @@ cdef class Forest:
     @cython.wraparound(False)
     def feature_importance(self):
         cdef uint32_t n_features = self._forest.n_features
-        cdef double_vec *c_feat_imp = ET_forest_feature_importance(self._forest)
+        cdef double *c_feat_imp = ET_forest_feature_importance(self._forest)
         cdef np.ndarray[np.float64_t, ndim=1] feat_imp
 
         if c_feat_imp == NULL:
@@ -211,11 +211,9 @@ cdef class Forest:
 
         feat_imp = numpy.empty(shape=(n_features,))
         for i in xrange(n_features):
-            feat_imp[i] = c_feat_imp.a[i]
+            feat_imp[i] = c_feat_imp[i]
 
-        free(c_feat_imp.a)
         free(c_feat_imp)
-
         return feat_imp
 
 
