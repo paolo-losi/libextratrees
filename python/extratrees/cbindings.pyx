@@ -201,10 +201,12 @@ cdef class Forest:
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    def feature_importance(self):
+    def feature_importance(self, curtail=1):
+        cdef uint32_t _curtail = curtail
         cdef uint32_t n_features = self._forest.n_features
-        cdef double *c_feat_imp = ET_forest_feature_importance(self._forest)
         cdef np.ndarray[np.float64_t, ndim=1] feat_imp
+        cdef double *c_feat_imp = \
+                           ET_forest_feature_importance(self._forest, _curtail)
 
         if c_feat_imp == NULL:
             raise MemoryError()
