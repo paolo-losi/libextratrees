@@ -227,10 +227,9 @@ void split_problem(tree_builder *tb, uint_vec *sample_idxs,
                 log_debug("constant feature");
                 continue;
             } else split_found = true;
-            do {
-                double delta = mm.max - mm.min;
-                threshold = mm.min + random_double(&tb->rand_state) * delta;
-            } while (threshold == mm.min);
+
+            double delta = mm.max - mm.min;
+            threshold = mm.min + random_double(&tb->rand_state) * delta;
 
             log_debug("threshold: %g", threshold);
 
