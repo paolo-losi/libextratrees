@@ -64,7 +64,7 @@ void test_forest_serialization() {
     params.select_features_with_replacement = true;
 
     forest = ET_forest_build(&prob, &params);
-    ET_forest_dump(forest, &buffer);
+    ET_forest_dump(forest, &buffer, true);
     fprintf(stderr, "forest dump: %zu bytes\n", kv_size(buffer));
 
     mobile_buffer = buffer.a;

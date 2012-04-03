@@ -13,7 +13,9 @@ from cextratrees cimport (ET_problem, ET_problem_destroy, ET_load_libsvm_file,
                           ET_forest_neighbors, ET_params,
                           ET_forest_predict_class_bayes,
                           class_probability_vec, class_probability,
-                          ET_forest_feature_importance)
+                          ET_forest_feature_importance, uchar_vec,
+                          ET_forest_dump, ET_forest_load, ET_tree, tree_vec,
+                          ET_tree_dump, ET_tree_load)
 
 
 cdef class Problem:
@@ -225,6 +227,33 @@ cdef class Forest:
         free(c_feat_imp)
         return feat_imp
 
+    def __reduce__(self):
+        cdef uchar_vec buffer
+        cdef bytes pickle_data
+        cdef char *cstring
+        buffer.n, buffer.m, buffer.a = 0, 0, NULL
+        ET_forest_dump(self._forest, &buffer, False);
+        cstring = <char *> buffer.a
+        try:
+            pickle_data = cstring[:buffer.n]
+        finally:
+            free(buffer.a)
+
+        return (forest_unpickler, (pickle_data,), None,
+                ForestIterator(self), None)
+
+    def extend(self, l):
+        for e in l:
+            self.append(e)
+
+    cpdef append(self, bytes pickle_data):
+        cdef tree_vec *trees = &self._forest.trees
+        cdef unsigned char *buffer = pickle_data
+
+        cdef ET_tree tree = ET_tree_load(&buffer)
+        trees.a[trees.n] = tree
+        trees.n += 1
+
 
 cdef Forest forest_factory(ET_forest *forest):
     cdef Forest instance = Forest.__new__(Forest)
@@ -232,7 +261,48 @@ cdef Forest forest_factory(ET_forest *forest):
     return instance
 
 
-# TODO use cython typed memoryviews to avoid copying
+def forest_unpickler(bytes pickle_data):
+    cdef unsigned char *buffer = pickle_data
+    cdef ET_forest *cforest = ET_forest_load(&buffer)
+    if not cforest:
+        raise MemoryError()
+    return forest_factory(cforest)
+
+
+cdef class ForestIterator:
+
+    cdef uint32_t i
+    cdef Forest _forest
+
+    def __cinit__(self, Forest forest):
+        self._forest = forest
+        self.i = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        cdef uchar_vec buffer
+        cdef bytes pickle_data
+        cdef char *cstring
+        buffer.n, buffer.m, buffer.a = 0, 0, NULL
+
+        if self.i >= self._forest._forest.trees.n:
+            raise StopIteration()
+
+        cdef ET_tree tree = self._forest._forest.trees.a[self.i]
+        ET_tree_dump(tree, &buffer)
+
+        cstring = <char *> buffer.a
+        try:
+            pickle_data = cstring[:buffer.n]
+        finally:
+            free(buffer.a)
+
+        self.i += 1
+        return pickle_data
+
+
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def convert_to_problem(

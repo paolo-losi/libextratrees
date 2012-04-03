@@ -235,7 +235,7 @@ ET_tree ET_tree_load(unsigned char **bufferp) {
 
 
 //FIXME handle endianess
-void ET_forest_dump(ET_forest *forest, uchar_vec *buffer) {
+void ET_forest_dump(ET_forest *forest, uchar_vec *buffer, bool with_trees) {
     uint32_t size = (uint32_t) kv_size(forest->trees);
 
     dump_data(&forest->params, sizeof(ET_params), buffer);
@@ -246,10 +246,14 @@ void ET_forest_dump(ET_forest *forest, uchar_vec *buffer) {
         dump_double(forest->labels[i], buffer);
     }
 
-    dump_uint32(size, buffer);
+    if (with_trees) {
+        dump_uint32(size, buffer);
 
-    for(uint32_t i = 0; i < size; i++) {
-        ET_tree_dump(kv_A(forest->trees, i), buffer);
+        for(uint32_t i = 0; i < size; i++) {
+            ET_tree_dump(kv_A(forest->trees, i), buffer);
+        }
+    } else {
+        dump_uint32(0, buffer);
     }
 }
 
@@ -273,6 +277,8 @@ ET_forest *ET_forest_load(unsigned char **bufferp) {
     for(size_t i = 0; i < forest->n_samples; i++) {
         forest->labels[i] = load_double(bufferp);
     }
+
+    kv_resize(ET_tree, forest->trees, forest->params.number_of_trees);
 
     n_trees = load_uint32(bufferp);
     for(uint32_t i = 0; i < n_trees; i++) {

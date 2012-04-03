@@ -82,10 +82,12 @@ typedef ET_base_node *ET_tree;
 typedef struct ET_class_counter_struct ET_class_counter;
 #endif
 
+typedef kvec_t(ET_tree) tree_vec;
+
 typedef struct {
     uint32_t n_features;
     uint32_t n_samples;
-    kvec_t(ET_tree) trees;
+    tree_vec trees;
     ET_params params;
     double *labels;
     ET_class_counter *class_frequency;
@@ -109,7 +111,10 @@ ET_forest *ET_forest_build(ET_problem *prob, ET_params *params);
 double *ET_forest_feature_importance(ET_forest *forest,
                                      uint32_t curtail_min_size);
 void ET_forest_destroy(ET_forest *forest);
-void ET_forest_dump(ET_forest *forest, uchar_vec *buffer);
+void ET_forest_dump(ET_forest *forest, uchar_vec *buffer, bool with_trees);
+ET_forest *ET_forest_load(unsigned char **bufferp);
+ET_tree ET_tree_load(unsigned char **bufferp);
+void ET_tree_dump(ET_tree tree, uchar_vec *buffer);
 void ET_problem_print(ET_problem *prob, FILE *f);
 void ET_problem_destroy(ET_problem *prob);
 
