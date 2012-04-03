@@ -55,28 +55,34 @@ cdef class Problem:
         params.select_features_with_replacement = \
                                              select_features_with_replacement
 
-        cforest = ET_forest_build(cprob, &params)
+        with nogil:
+            cforest = ET_forest_build(cprob, &params)
         return forest_factory(cforest)
 
 
 cdef Problem problem_factory(ET_problem *prob,
                            np.ndarray[np.float32_t, ndim=2, mode='fortran'] X):
     cdef Problem instance = Problem.__new__(Problem)
+    X.flags.writeable = False
     instance._prob = prob
     instance._X = X
     return instance
 
 
-cdef double _p_simple(ET_forest *f, float *v, uint32_t curtail, bool _):
+cdef double _p_simple(ET_forest *f, float *v,
+                                        uint32_t curtail, bool _) nogil:
     return ET_forest_predict(f, v)
 
-cdef double _p_regression(ET_forest *f, float *v, uint32_t curtail, bool _):
+cdef double _p_regression(ET_forest *f, float *v,
+                                        uint32_t curtail, bool _) nogil:
     return ET_forest_predict_regression(f, v, curtail)
 
-cdef double _p_class_majority(ET_forest *f, float *v, uint32_t curtail, bool _):
+cdef double _p_class_majority(ET_forest *f, float *v,
+                                        uint32_t curtail, bool _) nogil:
     return ET_forest_predict_class_majority(f, v, curtail)
 
-cdef double _p_cl_bayes(ET_forest *f, float *v, uint32_t curtail, bool smooth):
+cdef double _p_cl_bayes(ET_forest *f, float *v,
+                                        uint32_t curtail, bool smooth) nogil:
     return ET_forest_predict_class_bayes(f, v, curtail, smooth)
 
 
@@ -98,7 +104,10 @@ cdef class Forest:
         cdef int sample_idx, feature_idx
         cdef uint32_t _curtail = curtail
         cdef bool _smooth = smooth
-        cdef double (*predict_f)(ET_forest *f, float *v, uint32_t c, bool s)
+        cdef double (*predict_f)(ET_forest *f,
+                                 float *v,
+                                 uint32_t c,
+                                 bool s) nogil
 
         if mode is None:
             predict_f = _p_simple
@@ -126,7 +135,9 @@ cdef class Forest:
             for feature_idx in xrange(X.shape[1]):
                 vector[feature_idx] = X[sample_idx, feature_idx]
 
-            y[sample_idx] = predict_f(self._forest, vector, _curtail, _smooth)
+            with nogil:
+                y[sample_idx] = predict_f(self._forest, vector,
+                                          _curtail, _smooth)
 
         free(vector)
         return y
@@ -152,8 +163,9 @@ cdef class Forest:
             for feature_idx in xrange(X.shape[1]):
                 vector[feature_idx] = X[sample_idx, feature_idx]
 
-            cpv = ET_forest_predict_probability(self._forest, vector,
-                                                _curtail, _smooth)
+            with nogil:
+                cpv = ET_forest_predict_probability(self._forest, vector,
+                                                    _curtail, _smooth)
             if not cpv:
                 raise MemoryError()
 
@@ -196,7 +208,8 @@ cdef class Forest:
             for feature_idx in xrange(X.shape[1]):
                 vector[feature_idx] = X[sample_idx, feature_idx]
 
-            weights = ET_forest_neighbors(self._forest, vector, _curtail)
+            with nogil:
+                weights = ET_forest_neighbors(self._forest, vector, _curtail)
             if not weights:
                 raise MemoryError()
 

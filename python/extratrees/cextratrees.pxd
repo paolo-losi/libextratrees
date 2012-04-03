@@ -28,7 +28,8 @@ cdef extern from "extratrees.h":
         tree_vec trees
 
     cdef void ET_forest_destroy(ET_forest *forest)
-    cdef ET_forest *ET_forest_build(ET_problem *problem, ET_params *parmas)
+    cdef ET_forest *ET_forest_build(ET_problem *problem, ET_params *parmas) \
+                                                                        nogil
 
     ctypedef struct ET_params:
         
@@ -46,24 +47,24 @@ cdef extern from "extratrees.h":
         size_t n, m
         class_probability *a
 
-    cdef double ET_forest_predict(ET_forest *forest, float *vector)
+    cdef double ET_forest_predict(ET_forest *forest, float *vector) nogil
     cdef double ET_forest_predict_regression(ET_forest *forest,
                                              float *vector,
-                                             uint32_t curtail_min_size)
+                                             uint32_t curtail_min_size) nogil
     cdef double ET_forest_predict_class_majority(ET_forest *forest,
                                              float *vector,
-                                             uint32_t curtail_min_size)
+                                             uint32_t curtail_min_size) nogil
     cdef double ET_forest_predict_class_bayes(ET_forest *forest,
                                              float *vector,
                                              uint32_t curtail_min_size,
-                                             bool smooth)
+                                             bool smooth) nogil
     cdef class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
                                              float *vector,
                                              uint32_t curtail_min_size,
-                                             bool smooth)
+                                             bool smooth) nogil
     cdef double *ET_forest_neighbors(ET_forest *forest,
                                              float *vector,
-                                             uint32_t curtail_min_size)
+                                             uint32_t curtail_min_size) nogil
     cdef double *ET_forest_feature_importance(ET_forest *forest,
                                              uint32_t curtail_min_size)
 
