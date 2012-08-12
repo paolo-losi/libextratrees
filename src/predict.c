@@ -304,6 +304,62 @@ double ET_forest_predict_regression(ET_forest *forest,
 }
 
 
+typedef struct {
+    double value;
+    double weight;
+} value_weight;
+
+
+static int value_weight_compare(const void *a, const void *b) {
+    value_weight *aa = (value_weight *) a;
+    value_weight *bb = (value_weight *) b;
+    if (aa->value < bb->value) {
+        return -1;
+    } else if (aa->value == bb->value) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+
+double ET_forest_predict_quantile(ET_forest *forest,
+                                  float *vector,
+                                  double quantile,
+                                  uint32_t curtail_min_size) {
+    double *nwa = NULL;
+    value_weight *vwa = NULL;
+
+    nwa = ET_forest_neighbors(forest, vector, curtail_min_size);
+    check_mem(nwa);
+    vwa = malloc(forest->n_samples * sizeof(value_weight));
+    check_mem(vwa);
+
+    for(size_t i = 0; i < forest->n_samples; i++) {
+        vwa[i].value = forest->labels[i];
+        vwa[i].weight = nwa[i];
+    }
+
+    qsort(vwa, forest->n_samples, sizeof(value_weight), value_weight_compare);
+
+    double weight_accum = 0;
+    for(size_t i = 0; i < forest->n_samples - 1; i++) {
+        weight_accum += vwa[i].weight;
+        log_debug("weight: %g value: %g", weight_accum, vwa[i].value);
+        if (weight_accum == quantile) {
+            return (vwa[i].value + vwa[i+1].value) / 2;
+        } else if(weight_accum > quantile) {
+            return vwa[i].value;
+        }
+    }
+
+    return vwa[forest->n_samples - 1].value;
+
+    exit:
+    return 0;
+}
+
+
 class_probability_vec *ET_forest_predict_probability(ET_forest *forest,
                                                      float *vector,
                                                      uint32_t curtail_min_size,

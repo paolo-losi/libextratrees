@@ -43,6 +43,12 @@ void test_predict() {
     prediction = ET_forest_predict_regression(forest, vector2, 5);
     fprintf(stderr, "reg prediction vector2 (curtail=5): %g\n", prediction);
 
+    prediction = ET_forest_predict_quantile(forest, vector1, .5, 2);
+    fprintf(stderr, "reg quantile vector1 (curtail=2): %g\n", prediction);
+
+    prediction = ET_forest_predict_quantile(forest, vector2, .5, 2);
+    fprintf(stderr, "reg quantile vector2 (curtail=2): %g\n", prediction);
+
     prediction = ET_forest_predict_class_majority(forest, vector2, 1);
     fprintf(stderr, "class prediction vector2: %g\n", prediction);
 

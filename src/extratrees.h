@@ -121,6 +121,8 @@ void ET_problem_destroy(ET_problem *prob);
 double ET_forest_predict(ET_forest *forest, float *vector);
 double ET_forest_predict_regression(ET_forest *forest, float *v,
                                     uint32_t curtail_min_size);
+double ET_forest_predict_quantile(ET_forest *forest, float *v, double quantile,
+                                    uint32_t curtail_min_size);
 double ET_forest_predict_class_majority(ET_forest *forest, float *v,
                                         uint32_t curtail_min_size);
 double ET_forest_predict_class_bayes(ET_forest *forest, float *v,
