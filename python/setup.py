@@ -20,7 +20,7 @@ setup(
                   include_dirs=["../src", numpy_include],
                   extra_compile_args=["-std=c99", "-O3",
                                       "-Wno-unused", "-mtune=native"]),
-                  #extra_compile_args=["-std=c99"]),
+                  #extra_compile_args=["-std=c99", "-Wno-unused"]),
     ],
 )
 
