@@ -329,6 +329,7 @@ double ET_forest_predict_quantile(ET_forest *forest,
                                   uint32_t curtail_min_size) {
     double *nwa = NULL;
     value_weight *vwa = NULL;
+    double ret = 0;
 
     nwa = ET_forest_neighbors(forest, vector, curtail_min_size);
     check_mem(nwa);
@@ -347,16 +348,20 @@ double ET_forest_predict_quantile(ET_forest *forest,
         weight_accum += vwa[i].weight;
         log_debug("weight: %g value: %g", weight_accum, vwa[i].value);
         if (weight_accum == quantile) {
-            return (vwa[i].value + vwa[i+1].value) / 2;
+            ret = (vwa[i].value + vwa[i+1].value) / 2;
+            goto exit;
         } else if(weight_accum > quantile) {
-            return vwa[i].value;
+            ret = vwa[i].value;
+            goto exit;
         }
     }
 
-    return vwa[forest->n_samples - 1].value;
+    ret = vwa[forest->n_samples - 1].value;
 
     exit:
-    return 0;
+    if (nwa) free(nwa);
+    if (vwa) free(vwa);
+    return ret;
 }
 
 
