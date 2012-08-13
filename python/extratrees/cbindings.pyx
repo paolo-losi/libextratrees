@@ -8,6 +8,7 @@ from libcpp cimport bool
 from cextratrees cimport (ET_problem, ET_problem_destroy, ET_load_libsvm_file,
                           ET_forest, ET_forest_destroy, ET_forest_build,
                           ET_forest_predict, ET_forest_predict_regression,
+                          ET_forest_predict_quantile,
                           ET_forest_predict_class_majority,
                           ET_forest_predict_probability,
                           ET_forest_neighbors, ET_params,
@@ -69,19 +70,22 @@ cdef Problem problem_factory(ET_problem *prob,
     return instance
 
 
-cdef double _p_simple(ET_forest *f, float *v,
+cdef double _p_simple(ET_forest *f, float *v, double quantile,
                                         uint32_t curtail, bool _) nogil:
     return ET_forest_predict(f, v)
 
-cdef double _p_regression(ET_forest *f, float *v,
+cdef double _p_regression(ET_forest *f, float *v, double quantile,
                                         uint32_t curtail, bool _) nogil:
-    return ET_forest_predict_regression(f, v, curtail)
+    if quantile == -1:
+        return ET_forest_predict_regression(f, v, curtail)
+    else:
+        return ET_forest_predict_quantile(f, v, quantile, curtail)
 
-cdef double _p_class_majority(ET_forest *f, float *v,
+cdef double _p_class_majority(ET_forest *f, float *v, double quantile,
                                         uint32_t curtail, bool _) nogil:
     return ET_forest_predict_class_majority(f, v, curtail)
 
-cdef double _p_cl_bayes(ET_forest *f, float *v,
+cdef double _p_cl_bayes(ET_forest *f, float *v, double quantile,
                                         uint32_t curtail, bool smooth) nogil:
     return ET_forest_predict_class_bayes(f, v, curtail, smooth)
 
@@ -98,14 +102,16 @@ cdef class Forest:
     @cython.boundscheck(False)
     @cython.wraparound(False)
     def predict(self, np.ndarray[np.float32_t, ndim=2] X not None,
-                bytes mode=None, curtail=1, smooth=False):
+                bytes mode=None, quantile=-1, curtail=1, smooth=False):
         cdef np.ndarray[np.float64_t, ndim=1] y
         cdef float *vector
         cdef int sample_idx, feature_idx
         cdef uint32_t _curtail = curtail
         cdef bool _smooth = smooth
+        cdef double _quantile = quantile
         cdef double (*predict_f)(ET_forest *f,
                                  float *v,
+                                 double q,
                                  uint32_t c,
                                  bool s) nogil
 
@@ -125,6 +131,8 @@ cdef class Forest:
 
         if mode != 'classify_bayes' and smooth == True:
             raise ValueError('smooth supported only for "classify_bayes" mode')
+        if quantile != -1 and mode == 'regression':
+            raise ValueError('quantile supported only for "regression" mode')
 
         y = numpy.empty(shape=(X.shape[0],), dtype=numpy.float64)
         vector = <float *> malloc(sizeof(float) * X.shape[1])
@@ -136,7 +144,7 @@ cdef class Forest:
                 vector[feature_idx] = X[sample_idx, feature_idx]
 
             with nogil:
-                y[sample_idx] = predict_f(self._forest, vector,
+                y[sample_idx] = predict_f(self._forest, vector, _quantile,
                                           _curtail, _smooth)
 
         free(vector)

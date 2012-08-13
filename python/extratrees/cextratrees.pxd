@@ -51,6 +51,10 @@ cdef extern from "extratrees.h":
     cdef double ET_forest_predict_regression(ET_forest *forest,
                                              float *vector,
                                              uint32_t curtail_min_size) nogil
+    cdef double ET_forest_predict_quantile(ET_forest *forest,
+                                             float *vector,
+                                             double quantile,
+                                             uint32_t curtail_min_size) nogil
     cdef double ET_forest_predict_class_majority(ET_forest *forest,
                                              float *vector,
                                              uint32_t curtail_min_size) nogil
