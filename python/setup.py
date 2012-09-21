@@ -18,7 +18,7 @@ setup(
     ext_modules = [
         Extension("extratrees.cbindings", sources,
                   include_dirs=["../src", numpy_include],
-                  extra_compile_args=["-std=c99", "-O3",
+                  extra_compile_args=["-std=c99", "-O2",
                                       "-Wno-unused", "-mtune=native"]),
                   #extra_compile_args=["-std=c99", "-Wno-unused"]),
     ],
